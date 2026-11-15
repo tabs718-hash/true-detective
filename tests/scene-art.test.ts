@@ -6,7 +6,8 @@ import { expect, test } from 'vitest';
 import { sceneArt } from '../src/cases/chuzhoe-alibi/art';
 import { roomPresentations } from '../src/cases/chuzhoe-alibi/rooms';
 import { SceneEvidence } from '../src/features/SceneEvidence';
-import { initialState } from '../src/engine/engine';
+import { Scene } from '../src/features/Scene';
+import { initialState, travel } from '../src/engine/engine';
 import type { GameState } from '../src/engine/types';
 import { sequence } from './routes';
 
@@ -22,7 +23,7 @@ test('каждый план имеет фон, а реалистичные ре�
     expect(existsSync('public' + art.src)).toBe(true);
     expect(existsSync('public' + art.fallback)).toBe(true);
     if (art.src === art.fallback) continue;
-    const entry = manifest.assets.find(asset => art.src.endsWith('/' + asset.file));
+    const entry = manifest.assets.find(asset => art.src === '/assets/realistic/' + asset.file);
     expect(entry).toBeDefined();
     const bytes = readFileSync('public' + art.src);
     expect(bytes.subarray(0, 8).toString('hex')).toBe('89504e470d0a1a0a');
@@ -33,6 +34,24 @@ test('каждый план имеет фон, а реалистичные ре�
     used.add(entry!.file);
   }
   expect([...used].sort()).toEqual(manifest.assets.map(a => a.file).sort());
+});
+
+test('новый рабочий фон не выдаёт документы: точки осмотра исчезают отдельно после действия', () => {
+  let game = sequence(initialState(), ['A_START', 'A_FRANK', 'A_SCENE_PHOTOS', 'A_AUTOPSY', 'A_NORA_OFFICE', 'A_OWEN', 'A_BRENNAN_1', 'A_LILLIAN_1', 'A_WORK_OFFICE']);
+  game = travel(game, 'WHITMORE_OFFICE', 'richard_work_office');
+  const render = (state: GameState) => renderToStaticMarkup(createElement(Scene, {
+    game: state, onTravel: () => {}, onAct: () => {}, onItem: () => {}, onDetail: () => {}, onConsult: () => {}
+  }));
+  const first = render(game);
+  expect(first).toContain('/assets/realistic/rooms/office-richard.png');
+  expect(first).toContain('data-action="A_INVOICE"');
+  expect(first).toContain('data-action="A_RENT_TALLY"');
+  expect(game.collectedCards).not.toContain('D_INVOICE_COMPARE');
+  const invoiceOnly = sequence(game, ['A_INVOICE']);
+  expect(render(invoiceOnly)).not.toContain('data-action="A_INVOICE"');
+  expect(render(invoiceOnly)).toContain('data-action="A_RENT_TALLY"');
+  expect(invoiceOnly.collectedCards).toContain('D_INVOICE_COMPARE');
+  expect(invoiceOnly.collectedCards).not.toContain('D_RENT_TALLY');
 });
 
 test('осмотр не убирает предметы с фона, отдельное изъятие убирает только выбранный предмет', () => {

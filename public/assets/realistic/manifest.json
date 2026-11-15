@@ -3,7 +3,7 @@
   "method": "OpenAI image generation tool; original generated PNG, unmodified",
   "setting": "Chicago, autumn 1966; color cinematic environment studies",
   "purpose": "Environment only. All collectible evidence remains separate interactive artwork.",
-  "historical_review": "Construction skyline corrected to low-rise industrial buildings; no post-1966 landmark retained. Interior props reviewed in source images without launching a browser. Version 0.6 adds a mechanical gasoline station register, clearly distinct rented sitting room and private bedroom, and a neutral civilian prosecutor office. No built-in coat, clocks, readable story documents or modern devices.",
+  "historical_review": "Construction skyline corrected to low-rise industrial buildings; no post-1966 landmark retained. Interior props reviewed in source images without launching a browser. Version 0.6 adds a mechanical gasoline station register, clearly distinct rented sitting room and private bedroom, and a neutral civilian prosecutor office. No built-in coat, clocks, readable story documents or modern devices. Version 0.7 adds a plain interview room, optical forensic office with closed anonymous packages, mechanical bookkeeping room and separate corporate work office. No case results or readable document contents are embedded.",
   "assets": [
     {
       "file": "construction.png",
@@ -53,6 +53,34 @@
       "height": 1024,
       "bytes": 2335029,
       "sha256": "7cc3389229b4e421e2ad1d90075d19494fe0eba090d9b58bae81a9598af6aaec"
+    },
+    {
+      "file": "rooms/office-accounting.png",
+      "width": 1536,
+      "height": 1024,
+      "bytes": 2296354,
+      "sha256": "cb1cf6a99e33f0676a31712fe14ee88517dbe66579cef15191a5d4fdcf1c761f"
+    },
+    {
+      "file": "rooms/office-richard.png",
+      "width": 1536,
+      "height": 1024,
+      "bytes": 2212044,
+      "sha256": "61310d95222db43e53c25e8376bce1a382b18443cdb43e0db293a7e08d98a886"
+    },
+    {
+      "file": "rooms/police-forensics.png",
+      "width": 1536,
+      "height": 1024,
+      "bytes": 2279758,
+      "sha256": "bb8b917b46795bc20ffa6e6ec7037073fdd6bc0e3a71dd1a46fa5c38873010ec"
+    },
+    {
+      "file": "rooms/police-interrogation.png",
+      "width": 1536,
+      "height": 1024,
+      "bytes": 2215463,
+      "sha256": "63c3af184009b8a739398323509d38a3cdfbcbf4e06c7fc172cdc2fb797ab235"
     },
     {
       "file": "secret-apartment.png",

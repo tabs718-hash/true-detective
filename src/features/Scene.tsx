@@ -24,7 +24,7 @@ export function Scene({game,onTravel,onAct,onItem,onDetail,onConsult}:Props){
  const [loadedArt,setLoadedArt]=useState<{art:string;width:number;height:number}|null>(null);
  const dimensions=loadedArt?.art===presentation.art?loadedArt:art;
  const roomText=presentation.description;
- const spatial:Record<string,{x:number;y:number}>={A_HOME_DRAWER:{x:30,y:73},A_HOME_DIARY:{x:66,y:61},A_INVOICE:{x:49,y:56},A_RENT_TALLY:{x:73,y:68}};
+ const spatial:Record<string,{x:number;y:number}>={A_HOME_DRAWER:{x:30,y:73},A_HOME_DIARY:{x:66,y:61},A_INVOICE:{x:49,y:56},A_RENT_TALLY:{x:73,y:61}};
  return <div className="scene-layout"><section className={'scene-stage room-'+game.room} aria-label={location.name+' — '+roomNames[game.room]}><SceneBackground art={presentation.art} className="scene-art" onDimensions={(width,height)=>setLoadedArt({art:presentation.art,width,height})}/><div className="scene-vignette"/><div className="scene-title"><span className="eyebrow"><MapPin size={12}/>{locationSubtitles[game.location]}</span><h1>{location.name}</h1><span className="scene-room">{roomNames[game.room]}</span></div><span className="scene-take">CHICAGO · 1966</span>
  {location.rooms.length>1&&<div className="scene-doors">{location.rooms.filter(r=>r.id!==game.room&&game.openedRooms.includes(location.id+'/'+r.id)).map(r=><button key={r.id} aria-label={'Дверь: '+r.name} onClick={()=>onTravel(location.id,r.id)}><DoorOpen size={20} strokeWidth={1}/><span>{r.name}</span><ChevronRight size={12}/></button>)}</div>}
  <SceneEvidence game={game} width={dimensions.width} height={dimensions.height} onItem={onItem}/>
