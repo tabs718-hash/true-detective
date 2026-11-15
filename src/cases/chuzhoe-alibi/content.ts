@@ -49,3 +49,11 @@ export const endings:Record<string,{title:string;text:string[];reveal:boolean}>=
 };
 export function consultationText(outcome:string){if(outcome==='NORA_CONVICTED')return 'Ваша цепочка связывает личный конфликт, назначенную встречу, предметные следы и медицинскую картину. Она требует аккуратной правовой квалификации, но у обвинения есть основания.';if(outcome==='BRENNAN_WRONGFUL_CONVICTION')return 'При таком выбранном пакете угроза, присутствие и предмет с кровью выглядят убедительно. Я оцениваю только то, что вы приложили.';if(outcome==='BRENNAN_ACQUITTED')return 'В этом пакете недостаточно связи между подозреваемым и травмой. Если приложено заключение, исключающее ключ как орудие, на ключе обвинение строить нельзя.';return 'Эти материалы дают вопросы, но не достаточную доказательственную цепочку. Вы можете продолжить расследование. Второй консультации не будет.'}
 export const cardTitle=(id:string)=>cardTitles[id]??cards[id]?.id??id;
+export function presentationReaction(character:string,cardId:string):string {
+ if(character==='BRENNAN'&&cardId==='E_WRENCH')return 'Я пользовался этим ключом. Это не значит, что я бил им Уитмора.';
+ if(character==='NORA'&&cardId==='D_DIARY')return 'Он мог записать встречу. Запись сама по себе не доказывает, что она состоялась.';
+ if(character==='NORA'&&cardId==='D_LETTER')return 'Это личное письмо. Вы можете спросить о нём официально, но оно не подтверждает ваших догадок о смерти.';
+ if(character==='ELIZABETH'&&cardId==='D_INSURANCE')return 'Страхование было семейным решением. Я понимаю, как это выглядит в вашей папке.';
+ if(character==='EXPERT')return 'Я могу оценить только то, что относится к исследованию. Для нового заключения оформите отдельный запрос.';
+ return 'Я вижу, что вы это нашли. Но не стану подтверждать связь, которой сам не знаю. Спросите конкретнее.';
+}

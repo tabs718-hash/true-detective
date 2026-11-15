@@ -18,6 +18,9 @@ jobs:
       - run: npm run build
       - run: npx playwright install --with-deps chromium
       - run: npm run test:e2e
+      - name: Show browser failure context
+        if: failure()
+        run: find test-results -name error-context.md -exec cat '{}' \;
       - uses: actions/upload-artifact@v4
         if: failure()
         with:

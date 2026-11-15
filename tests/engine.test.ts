@@ -2,7 +2,7 @@ import { describe, expect, test } from 'vitest';
 import { actions, cards, caseDefinition } from '../src/engine/case';
 import { actionHere, addBoardCard, canPerform, connectCards, consult, holds, initialState, perform, selectPacket, submitCase, toggleSuspect, travel, verdict } from '../src/engine/engine';
 import { parseSave } from '../src/persistence/save';
-import { dialogueFor, endings } from '../src/cases/chuzhoe-alibi/content';
+import { dialogueFor, endings, presentationReaction } from '../src/cases/chuzhoe-alibi/content';
 import { act, beforeAffair, labMatch, lateInvestigation, sequence, winPacket } from './routes';
 describe('Сценарные маршруты',()=>{
  test.each([{medicalFirst:false,seriousFirst:false},{medicalFirst:true,seriousFirst:false},{medicalFirst:false,seriousFirst:true},{medicalFirst:true,seriousFirst:true}])('полный маршрут %j',options=>{const s=labMatch(lateInvestigation(beforeAffair(),options));expect(verdict(winPacket(s))).toBe('NORA_CONVICTED');expect(s.completedActions.filter(x=>x==='A_NORA_SERIOUS')).toHaveLength(1);expect(s.collectedCards).toHaveLength(new Set(s.collectedCards).size)});
@@ -37,4 +37,5 @@ describe('Контракт и сохранение',()=>{
  test('клиентский реестр не содержит авторских summary и truthGuards',()=>{expect('truthGuards'in caseDefinition).toBe(false);expect(cards.E_WRENCH.summary).not.toMatch(/не орудие/);expect(cards.W_NORA_INITIAL.summary).not.toMatch(/ложно|лжёт|лжет/)});
  test('у всех разговоров есть реальные реплики без авторских тегов',()=>{for(const id of ['A_FRANK','A_NORA_OFFICE','A_EDDIE','A_NORA_SERIOUS','A_NORA_AFFAIR']){const lines=dialogueFor(id);expect(lines.length).toBeGreaterThan(2);expect(lines.some(l=>l.text.includes('[КАРТА'))).toBe(false)}});
  test('все ссылки существуют, предикаты не используют время',()=>{expect(Object.keys(cards)).toHaveLength(40);expect(Object.keys(actions)).toHaveLength(67);expect(holds(initialState(),{always:true})).toBe(true);expect(caseDefinition.requests).toHaveLength(7)});
+ test('предъявление карточки не подменяет допрос или признание',()=>{for(const id of Object.keys(cards)){expect(presentationReaction('NORA',id)).not.toMatch(/я толкнула|я убила/i)}expect(presentationReaction('BRENNAN','E_WRENCH')).toContain('не значит');expect(presentationReaction('HAYES','D_LETTER')).toContain('не знаю')});
 });
