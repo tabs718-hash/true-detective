@@ -1,0 +1,108 @@
+{
+  "created": "2026-11-15",
+  "method": "OpenAI image generation; original transparent PNG, expression variants edited from the same neutral reference",
+  "art_direction": {
+    "nora": "Revised at owner request: blonde, visually younger, smooth chin-length1960s bob; composed professional first meeting. Brown-haired drafts excluded.",
+    "elizabeth": "Mature50-year-old appearance, dark pinned hairstyle, restrained grief and dignity.",
+    "brennan": "48-year-old construction manager, ordinary work jacket, irritation without villain symbolism."
+  },
+  "limitations": "Appearance is an art direction choice; facial expressions do not establish guilt. Original age and story data were not changed.",
+  "assets": [
+    {
+      "file": "nora-neutral.png",
+      "width": 1086,
+      "height": 1448,
+      "bytes": 1717564,
+      "sha256": "a07b7cbd73a0ea6f31f49df8e15c367204c200598868537cf07076b6e01934f3",
+      "pngColorType": 6
+    },
+    {
+      "file": "nora-concerned.png",
+      "width": 1086,
+      "height": 1448,
+      "bytes": 1592934,
+      "sha256": "774492c98d6baf0eb9355f46f6f7c1339daf06857c8815c73d2568fdcd847b96",
+      "pngColorType": 6
+    },
+    {
+      "file": "nora-guarded.png",
+      "width": 1086,
+      "height": 1448,
+      "bytes": 1616917,
+      "sha256": "2ad7d96a0ad0b8fdff7867d035d66d2b553ac9bd5688f6d91852fb3b2b0336a4",
+      "pngColorType": 6
+    },
+    {
+      "file": "nora-firm.png",
+      "width": 1086,
+      "height": 1448,
+      "bytes": 1682567,
+      "sha256": "6a1df23a897c125c0de38318cce4aec11698b07bb7e03af60a8c090e3fd24f5e",
+      "pngColorType": 6
+    },
+    {
+      "file": "elizabeth-neutral.png",
+      "width": 1086,
+      "height": 1448,
+      "bytes": 1851818,
+      "sha256": "268941be522ede777a1a586e5bc9c5c13df74118fe51c1349bbfdc8d60af8b95",
+      "pngColorType": 6
+    },
+    {
+      "file": "elizabeth-concerned.png",
+      "width": 1086,
+      "height": 1448,
+      "bytes": 1748690,
+      "sha256": "edfed516aa0694b4401e4c6191430df2a96ff6b5f4bbce630fb561bcd37181b8",
+      "pngColorType": 6
+    },
+    {
+      "file": "elizabeth-guarded.png",
+      "width": 1086,
+      "height": 1448,
+      "bytes": 1714623,
+      "sha256": "22cf2e2e3c2b0c8e0613d747d0c41289d2cbeb037a7b96f287acf0c44771270b",
+      "pngColorType": 6
+    },
+    {
+      "file": "elizabeth-firm.png",
+      "width": 1086,
+      "height": 1448,
+      "bytes": 1700304,
+      "sha256": "ece02bd75fa73b7956a5fd7c428f010f1b3cb911e8610c2cd164b1a95f3d5c41",
+      "pngColorType": 6
+    },
+    {
+      "file": "brennan-neutral.png",
+      "width": 1086,
+      "height": 1448,
+      "bytes": 2133570,
+      "sha256": "52ad5d562749d2749db1336762f1e8e3bcc7a4899d116db5f289fe881be18c1e",
+      "pngColorType": 6
+    },
+    {
+      "file": "brennan-concerned.png",
+      "width": 1086,
+      "height": 1448,
+      "bytes": 2027966,
+      "sha256": "113a4a3262d2d4a04ab56991a2cf361a4b075029c68de31e7e624d579fe70b22",
+      "pngColorType": 6
+    },
+    {
+      "file": "brennan-guarded.png",
+      "width": 1086,
+      "height": 1448,
+      "bytes": 1994575,
+      "sha256": "5daee4cafeb1b432822d2dcf2aaa672f1c2a65e7c50d3e0412e0560073ad5bb1",
+      "pngColorType": 6
+    },
+    {
+      "file": "brennan-firm.png",
+      "width": 1086,
+      "height": 1448,
+      "bytes": 1999874,
+      "sha256": "09270c07ab5d67bb6ebe139391bcb30cfa1071bff99d0f65933ba7a88f842ee8",
+      "pngColorType": 6
+    }
+  ]
+}

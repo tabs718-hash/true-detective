@@ -2,6 +2,18 @@ import { actionCharacters } from './content';
 
 export type PortraitEmotion = 'neutral' | 'concerned' | 'guarded' | 'firm';
 const expressive = new Set(['NORA', 'ELIZABETH', 'BRENNAN', 'DANIEL', 'EDDIE', 'LILLIAN', 'HAYES', 'IRENE']);
+export const realisticPortraitCharacters = ['NORA', 'ELIZABETH', 'BRENNAN'] as const;
+const realistic = new Set<string>(realisticPortraitCharacters);
+
+export function portraitResource(character: string, emotion: PortraitEmotion = 'neutral') {
+  const name = character.toLowerCase();
+  const base = realistic.has(character) ? `/assets/portraits/realistic/${name}-neutral.png` : `/assets/portraits/${name}.svg`;
+  const source = realistic.has(character)
+    ? `/assets/portraits/realistic/${name}-${emotion}.png`
+    : expressive.has(character) && emotion !== 'neutral' ? `/assets/portraits/emotions/${name}-${emotion}.svg` : base;
+  // A realistic face falls back to its own neutral portrait, never an older design.
+  return { source, base, sources: [...new Set([source, base])] };
+}
 const directions: Record<string, { initial: PortraitEmotion; beats?: { from: number; emotion: PortraitEmotion }[] }> = {
   A_NORA_OFFICE: { initial: 'neutral' },
   A_NORA_AFFAIR: { initial: 'concerned', beats: [{ from: 6, emotion: 'guarded' }] },
@@ -30,12 +42,11 @@ const directions: Record<string, { initial: PortraitEmotion; beats?: { from: num
 
 export function portraitFor(actionId: string, index: number, presenting = false) {
   const character = actionCharacters[actionId] ?? 'COLLEAGUE';
-  const base = '/assets/portraits/' + character.toLowerCase() + '.svg';
   const direction = directions[actionId];
   let emotion = direction?.initial ?? 'neutral';
   for (const beat of direction?.beats ?? []) if (index >= beat.from) emotion = beat.emotion;
   if (presenting && expressive.has(character) && actionId !== 'A_NORA_OFFICE') {
     emotion = ['NORA', 'BRENNAN', 'DANIEL'].includes(character) ? 'guarded' : character === 'ELIZABETH' ? 'concerned' : 'firm';
   }
-  return { character, emotion, base, source: expressive.has(character) && emotion !== 'neutral' ? '/assets/portraits/emotions/' + character.toLowerCase() + '-' + emotion + '.svg' : base };
+  return { character, emotion, ...portraitResource(character, emotion) };
 }

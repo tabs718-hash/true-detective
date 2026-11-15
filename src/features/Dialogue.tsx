@@ -5,6 +5,7 @@ import { actionCharacters, actionLabels, cardTitle, presentationReaction, speake
 import type { TranscriptLine } from '../engine/types';
 import { Modal } from '../ui/Modal';
 import { portraitFor } from '../cases/chuzhoe-alibi/portraits';
+import { Portrait } from '../ui/Portrait';
 import type { SoundEvent } from '../ui/sound-design';
 
 interface Props {
@@ -55,7 +56,7 @@ export function Dialogue({ id, lines, cardIds, speed, readOnly = false, onComple
   return <Modal title={(readOnly ? 'Протокол: ' : '') + title} onClose={onClose} wide>
     <div className="dialogue-layout">
       <div className="dialogue-portrait">
-        <img key={portrait.source} className="emotional-portrait" src={portrait.source} alt={personName} onError={event => { if (event.currentTarget.dataset.fallback) return; event.currentTarget.dataset.fallback = 'true'; event.currentTarget.src = portrait.base; }}/>
+        <Portrait key={portrait.source} character={portrait.character} emotion={portrait.emotion} className="emotional-portrait" alt={personName}/>
         <span>{personName}</span>
       </div>
       <div className="dialogue-body">
