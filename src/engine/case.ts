@@ -1,5 +1,5 @@
 import { z } from 'zod';
-import raw from '../cases/chuzhoe-alibi/generated.json';
+import raw from '../cases/chuzhoe-alibi/generated.json' with {type:'json'};
 import type { CaseDefinition, Condition } from './types';
 const status=z.enum(['not_submitted','pending','ready','collected']);
 const condition:z.ZodType<Condition>=z.lazy(()=>z.union([
