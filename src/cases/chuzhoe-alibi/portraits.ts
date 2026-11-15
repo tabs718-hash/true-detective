@@ -2,14 +2,23 @@ import { actionCharacters } from './content';
 
 export type PortraitEmotion = 'neutral' | 'concerned' | 'guarded' | 'firm';
 const expressive = new Set(['NORA', 'ELIZABETH', 'BRENNAN', 'DANIEL', 'EDDIE', 'LILLIAN', 'HAYES', 'IRENE']);
-export const realisticPortraitCharacters = ['NORA', 'ELIZABETH', 'BRENNAN'] as const;
-const realistic = new Set<string>(realisticPortraitCharacters);
+export const realisticPortraitEmotions: Readonly<Record<string, readonly PortraitEmotion[]>> = {
+  NORA: ['neutral', 'concerned', 'guarded', 'firm'],
+  ELIZABETH: ['neutral', 'concerned', 'guarded', 'firm'],
+  BRENNAN: ['neutral', 'concerned', 'guarded', 'firm'],
+  DANIEL: ['neutral', 'firm', 'guarded'],
+  LILLIAN: ['neutral', 'concerned', 'firm'],
+  IRENE: ['neutral', 'firm']
+};
+export const realisticPortraitCharacters = Object.keys(realisticPortraitEmotions);
 
 export function portraitResource(character: string, emotion: PortraitEmotion = 'neutral') {
   const name = character.toLowerCase();
-  const base = realistic.has(character) ? `/assets/portraits/realistic/${name}-neutral.png` : `/assets/portraits/${name}.svg`;
-  const source = realistic.has(character)
-    ? `/assets/portraits/realistic/${name}-${emotion}.png`
+  const available = Object.hasOwn(realisticPortraitEmotions, character) ? realisticPortraitEmotions[character] : undefined;
+  const resolvedEmotion = available && !available.includes(emotion) ? 'neutral' : emotion;
+  const base = available ? `/assets/portraits/realistic/${name}-neutral.png` : `/assets/portraits/${name}.svg`;
+  const source = available
+    ? `/assets/portraits/realistic/${name}-${resolvedEmotion}.png`
     : expressive.has(character) && emotion !== 'neutral' ? `/assets/portraits/emotions/${name}-${emotion}.svg` : base;
   // A realistic face falls back to its own neutral portrait, never an older design.
   return { source, base, sources: [...new Set([source, base])] };

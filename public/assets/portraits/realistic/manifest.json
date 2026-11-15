@@ -4,88 +4,27 @@
   "art_direction": {
     "nora": "Revised at owner request: blonde, visually younger, smooth chin-length1960s bob; composed professional first meeting. Brown-haired drafts excluded.",
     "elizabeth": "Mature50-year-old appearance, dark pinned hairstyle, restrained grief and dignity.",
-    "brennan": "48-year-old construction manager, ordinary work jacket, irritation without villain symbolism."
+    "brennan": "48-year-old construction manager, ordinary work jacket, irritation without villain symbolism.",
+    "daniel": "29-year-old courteous business heir, youthful face and modest1960s suit; neutral/firm/guarded without homicide symbolism.",
+    "lillian": "Art direction choice: middle-aged Black bookkeeper with short dark hair, modest glasses and burgundy cardigan; neutral/concerned/firm, no invented knowledge.",
+    "irene": "Art direction choice: older silver-haired neighbor in everyday blue-gray cardigan; neutral/firm only, truthful confident witness."
   },
   "limitations": "Appearance is an art direction choice; facial expressions do not establish guilt. Original age and story data were not changed.",
   "assets": [
-    {
-      "file": "nora-neutral.png",
-      "width": 1086,
-      "height": 1448,
-      "bytes": 1717564,
-      "sha256": "a07b7cbd73a0ea6f31f49df8e15c367204c200598868537cf07076b6e01934f3",
-      "pngColorType": 6
-    },
-    {
-      "file": "nora-concerned.png",
-      "width": 1086,
-      "height": 1448,
-      "bytes": 1592934,
-      "sha256": "774492c98d6baf0eb9355f46f6f7c1339daf06857c8815c73d2568fdcd847b96",
-      "pngColorType": 6
-    },
-    {
-      "file": "nora-guarded.png",
-      "width": 1086,
-      "height": 1448,
-      "bytes": 1616917,
-      "sha256": "2ad7d96a0ad0b8fdff7867d035d66d2b553ac9bd5688f6d91852fb3b2b0336a4",
-      "pngColorType": 6
-    },
-    {
-      "file": "nora-firm.png",
-      "width": 1086,
-      "height": 1448,
-      "bytes": 1682567,
-      "sha256": "6a1df23a897c125c0de38318cce4aec11698b07bb7e03af60a8c090e3fd24f5e",
-      "pngColorType": 6
-    },
-    {
-      "file": "elizabeth-neutral.png",
-      "width": 1086,
-      "height": 1448,
-      "bytes": 1851818,
-      "sha256": "268941be522ede777a1a586e5bc9c5c13df74118fe51c1349bbfdc8d60af8b95",
-      "pngColorType": 6
-    },
-    {
-      "file": "elizabeth-concerned.png",
-      "width": 1086,
-      "height": 1448,
-      "bytes": 1748690,
-      "sha256": "edfed516aa0694b4401e4c6191430df2a96ff6b5f4bbce630fb561bcd37181b8",
-      "pngColorType": 6
-    },
-    {
-      "file": "elizabeth-guarded.png",
-      "width": 1086,
-      "height": 1448,
-      "bytes": 1714623,
-      "sha256": "22cf2e2e3c2b0c8e0613d747d0c41289d2cbeb037a7b96f287acf0c44771270b",
-      "pngColorType": 6
-    },
-    {
-      "file": "elizabeth-firm.png",
-      "width": 1086,
-      "height": 1448,
-      "bytes": 1700304,
-      "sha256": "ece02bd75fa73b7956a5fd7c428f010f1b3cb911e8610c2cd164b1a95f3d5c41",
-      "pngColorType": 6
-    },
-    {
-      "file": "brennan-neutral.png",
-      "width": 1086,
-      "height": 1448,
-      "bytes": 2133570,
-      "sha256": "52ad5d562749d2749db1336762f1e8e3bcc7a4899d116db5f289fe881be18c1e",
-      "pngColorType": 6
-    },
     {
       "file": "brennan-concerned.png",
       "width": 1086,
       "height": 1448,
       "bytes": 2027966,
       "sha256": "113a4a3262d2d4a04ab56991a2cf361a4b075029c68de31e7e624d579fe70b22",
+      "pngColorType": 6
+    },
+    {
+      "file": "brennan-firm.png",
+      "width": 1086,
+      "height": 1448,
+      "bytes": 1999874,
+      "sha256": "09270c07ab5d67bb6ebe139391bcb30cfa1071bff99d0f65933ba7a88f842ee8",
       "pngColorType": 6
     },
     {
@@ -97,12 +36,141 @@
       "pngColorType": 6
     },
     {
-      "file": "brennan-firm.png",
+      "file": "brennan-neutral.png",
       "width": 1086,
       "height": 1448,
-      "bytes": 1999874,
-      "sha256": "09270c07ab5d67bb6ebe139391bcb30cfa1071bff99d0f65933ba7a88f842ee8",
+      "bytes": 2133570,
+      "sha256": "52ad5d562749d2749db1336762f1e8e3bcc7a4899d116db5f289fe881be18c1e",
+      "pngColorType": 6
+    },
+    {
+      "file": "daniel-firm.png",
+      "width": 1086,
+      "height": 1448,
+      "bytes": 1593917,
+      "sha256": "9596f14929b67066265886f62da182c5a28fe59209b48f99d96e56b9c2eba5f3",
+      "pngColorType": 6
+    },
+    {
+      "file": "daniel-guarded.png",
+      "width": 1086,
+      "height": 1448,
+      "bytes": 1611028,
+      "sha256": "547c64b4ec62143fc94521ab34c5584a016cbc1fa2b377b88cd44370008f7676",
+      "pngColorType": 6
+    },
+    {
+      "file": "daniel-neutral.png",
+      "width": 1086,
+      "height": 1448,
+      "bytes": 1707436,
+      "sha256": "3569e0f2c04a89f95beaf42bcaba4a61da8b401755fd7455d5462eaddef4adb2",
+      "pngColorType": 6
+    },
+    {
+      "file": "elizabeth-concerned.png",
+      "width": 1086,
+      "height": 1448,
+      "bytes": 1748690,
+      "sha256": "edfed516aa0694b4401e4c6191430df2a96ff6b5f4bbce630fb561bcd37181b8",
+      "pngColorType": 6
+    },
+    {
+      "file": "elizabeth-firm.png",
+      "width": 1086,
+      "height": 1448,
+      "bytes": 1700304,
+      "sha256": "ece02bd75fa73b7956a5fd7c428f010f1b3cb911e8610c2cd164b1a95f3d5c41",
+      "pngColorType": 6
+    },
+    {
+      "file": "elizabeth-guarded.png",
+      "width": 1086,
+      "height": 1448,
+      "bytes": 1714623,
+      "sha256": "22cf2e2e3c2b0c8e0613d747d0c41289d2cbeb037a7b96f287acf0c44771270b",
+      "pngColorType": 6
+    },
+    {
+      "file": "elizabeth-neutral.png",
+      "width": 1086,
+      "height": 1448,
+      "bytes": 1851818,
+      "sha256": "268941be522ede777a1a586e5bc9c5c13df74118fe51c1349bbfdc8d60af8b95",
+      "pngColorType": 6
+    },
+    {
+      "file": "irene-firm.png",
+      "width": 1086,
+      "height": 1448,
+      "bytes": 2100208,
+      "sha256": "b0f0fa00018dfca1fe010cd5d4e2da4d7c11f78bc75fb7a4397e3e0cfb672036",
+      "pngColorType": 6
+    },
+    {
+      "file": "irene-neutral.png",
+      "width": 1086,
+      "height": 1448,
+      "bytes": 2303612,
+      "sha256": "d9ea451b88245bdd38f4f3fdceca4a6f4bcb302c48cef13609839bd3ca2e001a",
+      "pngColorType": 6
+    },
+    {
+      "file": "lillian-concerned.png",
+      "width": 1086,
+      "height": 1448,
+      "bytes": 1654014,
+      "sha256": "371e3c92f0e7b1422c5e25f2439e72222a28f2b31edf1f7a43472caa6adb6862",
+      "pngColorType": 6
+    },
+    {
+      "file": "lillian-firm.png",
+      "width": 1086,
+      "height": 1448,
+      "bytes": 1664839,
+      "sha256": "ef906219d962507d3d75c64bdaa063b0a95003e582f0ffd4e51fd7c150f3c325",
+      "pngColorType": 6
+    },
+    {
+      "file": "lillian-neutral.png",
+      "width": 1086,
+      "height": 1448,
+      "bytes": 1717501,
+      "sha256": "dcf93a9844d8e156d3fb6aae0eb18f59eac27311182d4aa306538008cc863b1c",
+      "pngColorType": 6
+    },
+    {
+      "file": "nora-concerned.png",
+      "width": 1086,
+      "height": 1448,
+      "bytes": 1592934,
+      "sha256": "774492c98d6baf0eb9355f46f6f7c1339daf06857c8815c73d2568fdcd847b96",
+      "pngColorType": 6
+    },
+    {
+      "file": "nora-firm.png",
+      "width": 1086,
+      "height": 1448,
+      "bytes": 1682567,
+      "sha256": "6a1df23a897c125c0de38318cce4aec11698b07bb7e03af60a8c090e3fd24f5e",
+      "pngColorType": 6
+    },
+    {
+      "file": "nora-guarded.png",
+      "width": 1086,
+      "height": 1448,
+      "bytes": 1616917,
+      "sha256": "2ad7d96a0ad0b8fdff7867d035d66d2b553ac9bd5688f6d91852fb3b2b0336a4",
+      "pngColorType": 6
+    },
+    {
+      "file": "nora-neutral.png",
+      "width": 1086,
+      "height": 1448,
+      "bytes": 1717564,
+      "sha256": "a07b7cbd73a0ea6f31f49df8e15c367204c200598868537cf07076b6e01934f3",
       "pngColorType": 6
     }
-  ]
+  ],
+  "updated": "2026-11-15"
 }
