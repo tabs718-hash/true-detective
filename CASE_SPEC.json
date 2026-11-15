@@ -257,280 +257,320 @@
       "type": "object",
       "source": "construction/stairs",
       "summary": "Гаечный ключ с кровью потерпевшего и отпечатками Бреннана; не орудие",
-      "requiresManualCollection": true
+      "requiresManualCollection": true,
+      "playerSummary": "Тяжёлый гаечный ключ. На металле видны бурые следы, на рукояти — следы захвата. Предмет изъят у лестницы."
     },
     {
       "id": "E_BUTTON",
       "type": "object",
       "source": "construction/stair_debris",
       "summary": "Маленькая пуговица у лестницы, видна сразу, легко пропустить",
-      "requiresManualCollection": true
+      "requiresManualCollection": true,
+      "playerSummary": "Тёмная пуговица, найденная среди мусора у основания лестницы. На изнанке сохранились остатки нитей."
     },
     {
       "id": "E_COAT",
       "type": "object",
       "source": "nora_private/bedroom",
       "summary": "Пальто Норы с отсутствующей пуговицей",
-      "requiresManualCollection": true
+      "requiresManualCollection": true,
+      "playerSummary": "Пальто, изъятое в личной квартире Норы. Одной пуговицы недостаёт; ткань у крепления повреждена."
     },
     {
       "id": "D_SCENE_PHOTOS",
       "type": "document",
       "source": "construction/scene_photo",
       "summary": "Фотографии места падения",
-      "requiresManualCollection": false
+      "requiresManualCollection": false,
+      "playerSummary": "Фотографии металлической лестницы, положения тела и следов крови. Сняты при осмотре объекта."
     },
     {
       "id": "D_AUTOPSY",
       "type": "document",
       "source": "police/coroner_report",
       "summary": "Первое заключение о травме головы; точный час смерти неизвестен",
-      "requiresManualCollection": false
+      "requiresManualCollection": false,
+      "playerSummary": "Заключение патологоанатома при коронере: причиной смерти стала травма головы. Точную минуту смерти установить нельзя."
     },
     {
       "id": "D_INVOICE_COMPARE",
       "type": "document",
       "source": "whitmore_office/richard_work_office",
       "summary": "Сопоставление завышенных счетов",
-      "requiresManualCollection": false
+      "requiresManualCollection": false,
+      "playerSummary": "Папка Ричарда с сопоставлением договорных, рыночных и закупочных цен. Несколько счетов заметно завышены."
     },
     {
       "id": "D_RENT_TALLY",
       "type": "document",
       "source": "whitmore_office/richard_work_office",
       "summary": "Ведомость Marlowe Realty; точного адреса квартиры нет",
-      "requiresManualCollection": false
+      "requiresManualCollection": false,
+      "playerSummary": "Отдельная ведомость повторяющихся платежей Marlowe Realty. Назначение аренды неясно; адрес объекта не указан."
     },
     {
       "id": "D_MARLOWE_OWNER",
       "type": "document",
       "source": "police/inbox",
       "summary": "Ответ: связь фиктивной фирмы с Дэниелом",
-      "requiresManualCollection": false
+      "requiresManualCollection": false,
+      "playerSummary": "Служебная проверка установила связь Marlowe Realty с Дэниелом Уитмором. Ответ относится к финансовым операциям."
     },
     {
       "id": "D_APT_ADDRESS",
       "type": "document",
       "source": "police/inbox",
       "summary": "Адрес тайной съемной квартиры",
-      "requiresManualCollection": false
+      "requiresManualCollection": false,
+      "playerSummary": "Служебный ответ об адресе помещения, оплачиваемого через Marlowe Realty. Это отдельная съёмная квартира."
     },
     {
       "id": "D_DIVORCE",
       "type": "document",
       "source": "mansion/elizabeth_private",
       "summary": "След консультации адвоката о разводе",
-      "requiresManualCollection": false
+      "requiresManualCollection": false,
+      "playerSummary": "Сведения о консультации Элизабет с адвокатом по поводу развода. Консультация состоялась до смерти Ричарда."
     },
     {
       "id": "D_INSURANCE",
       "type": "document",
       "source": "mansion/elizabeth_private",
       "summary": "Страховой полис жизни Ричарда",
-      "requiresManualCollection": false
+      "requiresManualCollection": false,
+      "playerSummary": "Полис страхования жизни Ричарда с указанием Элизабет как получателя выплаты."
     },
     {
       "id": "D_FIRING",
       "type": "document",
       "source": "mansion/richard_home_study",
       "summary": "Проект увольнения Норы, в ящике вместе с письмом",
-      "requiresManualCollection": false
+      "requiresManualCollection": false,
+      "playerSummary": "Неоформленный проект увольнения Норы Хилл. Найден в ящике домашнего письменного стола Ричарда."
     },
     {
       "id": "D_LETTER",
       "type": "document",
       "source": "mansion/richard_home_study",
       "summary": "Неотправленное письмо о разрыве, в том же ящике",
-      "requiresManualCollection": false
+      "requiresManualCollection": false,
+      "playerSummary": "Неотправленное письмо Норе: Ричард намерен прекратить отношения и вернуться к Элизабет. Найдено вместе с проектом увольнения."
     },
     {
       "id": "D_DIARY",
       "type": "document",
       "source": "mansion/richard_home_study",
       "summary": "Нора. 20:30. Западный объект. Последний разговор",
-      "requiresManualCollection": false
+      "requiresManualCollection": false,
+      "playerSummary": "Запись в ежедневнике: «Нора. 20:30. Западный объект. Последний разговор». Это план встречи, не подтверждение её проведения."
     },
     {
       "id": "D_NORA_ADDRESS",
       "type": "document",
       "source": "police/inbox",
       "summary": "Служебный ответ: личный адрес Норы",
-      "requiresManualCollection": false
+      "requiresManualCollection": false,
+      "playerSummary": "Служебный ответ о личном адресе Норы Хилл. Этот адрес отличается от съёмной квартиры."
     },
     {
       "id": "D_DANIEL_ALIBI",
       "type": "document",
       "source": "police/inbox",
       "summary": "Подтвержденный деловой вечер в Милуоки",
-      "requiresManualCollection": false
+      "requiresManualCollection": false,
+      "playerSummary": "Независимая проверка подтверждает присутствие Дэниела на деловом мероприятии в Милуоки в вечер смерти отца."
     },
     {
       "id": "W_FRANK",
       "type": "witness",
       "source": "construction/guard",
       "summary": "Нашел тело утром, о машине знает только со слов Хейза",
-      "requiresManualCollection": false
+      "requiresManualCollection": false,
+      "playerSummary": "Фрэнк Миллер обнаружил тело утром и вызвал полицию. О машине у главных ворот он знает только со слов ночного сторожа."
     },
     {
       "id": "W_NORA_INITIAL",
       "type": "witness",
       "source": "whitmore_office/reception",
       "summary": "Нора ложно сказала о давнем конце романа и поездке домой",
-      "requiresManualCollection": false
+      "requiresManualCollection": false,
+      "playerSummary": "По словам Норы, отношения с Ричардом закончились несколько месяцев назад. Она утверждает, что после работы отправилась домой."
     },
     {
       "id": "W_OWEN",
       "type": "witness",
       "source": "construction/foreman",
       "summary": "Угрозы Бреннана при свидетелях",
-      "requiresManualCollection": false
+      "requiresManualCollection": false,
+      "playerSummary": "Оуэн лично слышал публичные угрозы Бреннана после увольнения. В ночь смерти на объекте Оуэн не работал."
     },
     {
       "id": "W_ELIZABETH_1",
       "type": "witness",
       "source": "mansion/salon",
       "summary": "Сочувственная первая беседа, подтверждение угроз Бреннана",
-      "requiresManualCollection": false
+      "requiresManualCollection": false,
+      "playerSummary": "Элизабет подтверждает, что слышала угрозы Бреннана. О деловых конфликтах мужа она знала не всё."
     },
     {
       "id": "W_BRENNAN_1",
       "type": "witness",
       "source": "police/interrogation",
       "summary": "Бреннан был на объекте и уехал за бумагами, утаивает схему",
-      "requiresManualCollection": false
+      "requiresManualCollection": false,
+      "playerSummary": "Бреннан признаёт угрозы и визит на объект. Утверждает, что уехал за бумагами, останавливаясь на заправке."
     },
     {
       "id": "W_GAS",
       "type": "witness",
       "source": "gas_station/cashier",
       "summary": "АЗС подтверждена, точный час неизвестен",
-      "requiresManualCollection": false
+      "requiresManualCollection": false,
+      "playerSummary": "Кассир помнит визит Бреннана той ночью. Точное время назвать не может; датированного подтверждения нет."
     },
     {
       "id": "W_HAYES_1",
       "type": "witness",
       "source": "police/interrogation",
       "summary": "Неопознанная женщина у главных ворот, боковой проход не видел",
-      "requiresManualCollection": false
+      "requiresManualCollection": false,
+      "playerSummary": "Хейз видел тёмный седан и неопознанную женщину у главных ворот. Боковые проходы с его поста не просматривались."
     },
     {
       "id": "W_ELIZABETH_2",
       "type": "witness",
       "source": "mansion/salon",
       "summary": "Признала приезд к воротам и встречу с Бреннаном",
-      "requiresManualCollection": false
+      "requiresManualCollection": false,
+      "playerSummary": "Элизабет признала поездку к объекту. По её словам, Бреннан сообщил, что Ричарда нет, и она уехала."
     },
     {
       "id": "W_NORA_AFFAIR",
       "type": "witness",
       "source": "secret_apartment/living",
       "summary": "Нора признала роман без особой улики",
-      "requiresManualCollection": false
+      "requiresManualCollection": false,
+      "playerSummary": "В съёмной квартире Нора признала, что отношения с Ричардом продолжались до недавнего времени. Её первоначальный рассказ об этом был неверен."
     },
     {
       "id": "W_ELIZABETH_AFFAIR",
       "type": "witness",
       "source": "mansion/salon",
       "summary": "Знала роман, угрожала прежде, теперь примирение",
-      "requiresManualCollection": false
+      "requiresManualCollection": false,
+      "playerSummary": "Элизабет знала о романе и прежде угрожала разводом. Недавно Ричард сказал ей, что хочет вернуться в семью."
     },
     {
       "id": "W_NORA_ALIBI",
       "type": "witness",
       "source": "secret_apartment/living",
       "summary": "Нора назвала соседку Айрин и время ~21:15",
-      "requiresManualCollection": false
+      "requiresManualCollection": false,
+      "playerSummary": "Нора назвала соседку Айрин Мейсон: та видела её дома около 21:15. Показание требует отдельной проверки."
     },
     {
       "id": "W_IRENE",
       "type": "witness",
       "source": "police/interrogation",
       "summary": "Айрин правдиво видела Нору дома ~21:15",
-      "requiresManualCollection": false
+      "requiresManualCollection": false,
+      "playerSummary": "Айрин уверенно подтверждает встречу с Норой у её дома около 21:15. Где Нора находилась раньше, Айрин не знает."
     },
     {
       "id": "W_HAYES_2",
       "type": "witness",
       "source": "police/interrogation",
       "summary": "Второе отдельное появление: задержан Эдди",
-      "requiresManualCollection": false
+      "requiresManualCollection": false,
+      "playerSummary": "По сведениям полиции, электрик Эдди Альварес был на объекте в ту ночь. Он задержан за кражу материалов и находится в участке."
     },
     {
       "id": "W_EDDIE",
       "type": "witness",
       "source": "police/interrogation",
       "summary": "Кража, спор без лиц, сон, живой Ричард ~21:25–21:30",
-      "requiresManualCollection": false
+      "requiresManualCollection": false,
+      "playerSummary": "Эдди слышал спор мужчины и женщины, но не видел их и не знает времени ссоры. После сна увидел Ричарда живым около 21:25–21:30 по своим часам и ушёл без помощи."
     },
     {
       "id": "W_BRENNAN_FIN",
       "type": "witness",
       "source": "police/interrogation",
       "summary": "Бреннан: финансовая роль и чужое руководство схемой",
-      "requiresManualCollection": false
+      "requiresManualCollection": false,
+      "playerSummary": "Бреннан признаёт участие в завышении счетов. По его словам, схемой руководили на более высоком уровне."
     },
     {
       "id": "W_LILLIAN_FIN",
       "type": "witness",
       "source": "whitmore_office/accounting",
       "summary": "Бухгалтерская сверка спорных платежей",
-      "requiresManualCollection": false
+      "requiresManualCollection": false,
+      "playerSummary": "Лилиан сверила спорные платежи и подтвердила расхождения. Личность владельца Marlowe требует служебной проверки."
     },
     {
       "id": "W_DANIEL_1",
       "type": "witness",
       "source": "whitmore_office/reception",
       "summary": "Первый разговор после находки счетов",
-      "requiresManualCollection": false
+      "requiresManualCollection": false,
+      "playerSummary": "Дэниел утверждает, что видел лишь отдельные сводки счетов и не руководил всеми закупками."
     },
     {
       "id": "W_DANIEL_EXPOSED",
       "type": "witness",
       "source": "police/interrogation",
       "summary": "Дэниел изобличен в мошенничестве, не в убийстве",
-      "requiresManualCollection": false
+      "requiresManualCollection": false,
+      "playerSummary": "При предъявлении счетов и ответа о Marlowe Дэниел признал свою роль в финансовой схеме. Утверждает, что в вечер смерти был в Милуоки."
     },
     {
       "id": "W_NORA_SERIOUS",
       "type": "witness",
       "source": "police/interrogation",
       "summary": "Серьезный допрос Норы; не признание толчка",
-      "requiresManualCollection": false
+      "requiresManualCollection": false,
+      "playerSummary": "Проведён официальный допрос Норы по записи о встрече и личным документам Ричарда. Причинение травмы она отрицает."
     },
     {
       "id": "W_NORA_VISIT",
       "type": "witness",
       "source": "police/interrogation",
       "summary": "При сильном предъявлении Нора признала приезд на стройку",
-      "requiresManualCollection": false
+      "requiresManualCollection": false,
+      "playerSummary": "При предъявлении поздних документов Нора признала, что приезжала поговорить с Ричардом. Утверждает, что оставила его стоящим на ногах."
     },
     {
       "id": "R_WRENCH",
       "type": "forensic",
       "source": "police/forensics",
       "summary": "Ключ исключен как орудие, кровь попала вторично",
-      "requiresManualCollection": false
+      "requiresManualCollection": false,
+      "playerSummary": "Форма травмы не соответствует удару изъятым ключом. Кровь могла попасть на него вторично; вывод относится к предмету, а не к виновности человека."
     },
     {
       "id": "R_DELAYED",
       "type": "forensic",
       "source": "police/forensics",
       "summary": "Падение совместимо с травмой, отсроченная смерть возможна",
-      "requiresManualCollection": false
+      "requiresManualCollection": false,
+      "playerSummary": "Повреждение совместимо с падением у металлической лестницы. После травмы пострадавший мог некоторое время жить; точный момент падения неизвестен."
     },
     {
       "id": "R_EDDIE_COMPAT",
       "type": "forensic",
       "source": "police/forensics",
       "summary": "Живой Ричард ~21:25 совместим с травмой",
-      "requiresManualCollection": false
+      "requiresManualCollection": false,
+      "playerSummary": "Рассказ Эдди о живом Ричарде около 21:25–21:30 совместим с медицинской картиной. Это не устанавливает время первоначальной травмы."
     },
     {
       "id": "R_BUTTON_MATCH",
       "type": "forensic",
       "source": "police/forensics",
       "summary": "Пуговица соответствует пальто, не доказывает толчок",
-      "requiresManualCollection": false
+      "requiresManualCollection": false,
+      "playerSummary": "Пуговица и место крепления на пальто соответствуют по нитям, ткани и повреждениям. Вероятность принадлежности высока; обстоятельства утраты экспертиза не устанавливает."
     }
   ],
   "requests": [
@@ -1917,6 +1957,15 @@
           },
           {
             "card": "E_COAT"
+          },
+          {
+            "boardLink": [
+              "E_BUTTON",
+              "E_COAT"
+            ]
+          },
+          {
+            "boardHypothesis": "H_BUTTON_COAT_SIMILAR"
           }
         ]
       },

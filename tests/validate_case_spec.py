@@ -29,6 +29,7 @@ def validate_references():
     observed={e['addObserved'] for a in ACTIONS.values() for e in a['effects'] if 'addObserved' in e}
     requests={r['id'] for r in SPEC['requests']}
     suspects={c['id'] for c in SPEC['characters'] if c['canMarkSuspect']}
+    assert all(c.get('playerSummary') for c in CARDS.values()), 'Missing player-safe text'
     for action in ACTIONS.values():
         for clause in walk_condition(action['requires']):
             for k,valid in [('card',CARDS),('fact',facts),('observed',observed),('suspect',suspects)]:
@@ -53,12 +54,14 @@ class Game:
     def __init__(self):
         self.facts=set();self.cards=set();self.observed=set();self.suspects=set()
         self.requests={r['id']:'not_submitted' for r in SPEC['requests']}
-        self.done=set();self.rooms=set()
+        self.done=set();self.rooms=set();self.links=set();self.hypotheses=set()
     def holds(self,cond):
         if cond.get('always'): return True
         if 'all' in cond:return all(self.holds(c) for c in cond['all'])
         if 'any' in cond:return any(self.holds(c) for c in cond['any'])
         if 'atLeast' in cond:return sum(self.holds(c) for c in cond['atLeast']['of'])>=cond['atLeast']['n']
+        if 'boardLink' in cond:return frozenset(cond['boardLink']) in self.links
+        if 'boardHypothesis' in cond:return cond['boardHypothesis'] in self.hypotheses
         if 'fact' in cond:return cond['fact'] in self.facts
         if 'card' in cond:return cond['card'] in self.cards
         if 'observed' in cond:return cond['observed'] in self.observed
@@ -83,6 +86,11 @@ class Game:
                     self.requests[v['id']]=v['status']
         self.done.add(actionid)
         self.stabilize()
+    def connect_button_coat(self):
+        assert {'E_BUTTON','E_COAT'} <= self.cards
+        self.links.add(frozenset(['E_BUTTON','E_COAT']))
+        self.hypotheses.add('H_BUTTON_COAT_SIMILAR')
+        self.do('A_BUTTON_COAT_LINK')
     def stabilize(self):
         while True:
             ready=[a for a in SPEC['actions'] if a['mode']=='auto' and a['id'] not in self.done and self.holds(a['requires'])]
@@ -148,7 +156,8 @@ def win_packet(g):
 def suite():
     validate_references()
     g=Game();before_affair(g);late_nora(g,serious_first=True)
-    g.do('A_BUTTON_COAT_LINK');g.do('A_BUTTON_LAB_REQ');g.do('A_BUTTON_GET')
+    assert not g.holds(ACTIONS['A_BUTTON_COAT_LINK']['requires'])
+    g.connect_button_coat();g.do('A_BUTTON_LAB_REQ');g.do('A_BUTTON_GET')
     assert verdict('NORA',win_packet(g))=='NORA_CONVICTED'
     assert verdict('NORA',win_packet(g)-{'R_BUTTON_MATCH'})=='NORA_ACQUITTED'
     assert 'W_NORA_SERIOUS' in g.cards and 'R_BUTTON_MATCH' in g.cards
@@ -157,7 +166,7 @@ def suite():
     g2=Game();before_affair(g2,collect_wrench=False);late_nora(g2,medical_first=True)
     assert 'E_WRENCH' not in g2.cards and not g2.holds(ACTIONS['A_WRENCH_REQUEST']['requires'])
     assert 'W_EDDIE' in g2.cards and 'F_HOME_STUDY_OPEN' in g2.facts
-    g2.do('A_BUTTON_COAT_LINK');g2.do('A_BUTTON_LAB_REQ');g2.do('A_BUTTON_GET')
+    g2.connect_button_coat();g2.do('A_BUTTON_LAB_REQ');g2.do('A_BUTTON_GET')
     assert verdict('NORA',win_packet(g2))=='NORA_CONVICTED'
     print('PASS: no wrench, medical-first branch, winner still reachable')
 
@@ -166,7 +175,7 @@ def suite():
     assert not g3.holds(ACTIONS['A_BUTTON_COAT_LINK']['requires'])
     assert verdict('NORA',win_packet(g3))=='NORA_ACQUITTED'
     g3.do('A_OBSERVE_BUTTON');assert 'E_BUTTON' not in g3.cards
-    g3.do('A_COLLECT_BUTTON');g3.do('A_BUTTON_COAT_LINK');g3.do('A_BUTTON_LAB_REQ');g3.do('A_BUTTON_GET')
+    g3.do('A_COLLECT_BUTTON');g3.connect_button_coat();g3.do('A_BUTTON_LAB_REQ');g3.do('A_BUTTON_GET')
     assert verdict('NORA',win_packet(g3))=='NORA_CONVICTED'
     print('PASS: missing button loses; inspect-only not evidence; return and collect works')
 
