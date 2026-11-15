@@ -13,6 +13,7 @@
   height: 100%;
   pointer-events: auto;
 }
-.scene-evidence .wrench-object svg { width: 94%; height: 100%; }
-.scene-evidence .button-object svg { width: 56%; height: 56%; }
-.scene-evidence .coat-object svg { width: 100%; height: 100%; }
+.scene-evidence .scene-item-sprite { width: 100%; height: 100%; object-fit: contain; pointer-events: none; }
+.scene-evidence .wrench-object { transform: none; }
+.scene-evidence .button-object .scene-item-sprite { width: 42%; height: 42%; }
+.scene-evidence .artwork-unavailable { min-height: 0; background: transparent; font-size: 8px; }

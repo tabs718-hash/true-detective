@@ -61,7 +61,7 @@ describe('Судебная подача', () => {
     expect(sequence.scenes.some(scene => scene.phase === 'reconstruction')).toBe(false);
     const publicText = sequence.scenes.flatMap(scene => scene.paragraphs).join(' ');
     expect(publicText).not.toMatch(/я толкнула|нора толкает|с пальто отделяется пуговица|Ричард подтверждает разрыв/i);
-    expect(sequence.scenes.every(scene => !/\/(argument|fall|alive|home)\.svg$/.test(scene.art))).toBe(true);
+    expect(sequence.scenes.every(scene => !/\/(argument|fall|alive|home)\.(?:png|svg)$/.test(scene.art))).toBe(true);
   });
 
   test('повреждённая отметка правильного финала не раскрывает истину', () => {
@@ -80,7 +80,7 @@ describe('Судебная подача', () => {
     for (let index = 0; index < sequence.scenes.length; index++) {
       const html = renderToStaticMarkup(createElement(EndingPlayer, { game: { ...game, endingProgress: index }, onProgress() {}, onNewGame() {}, notice() {} }));
       expect(html).not.toContain('исключает ключ');
-      expect(html).not.toContain('/assets/finale/fall.svg');
+      expect(html).not.toContain('/assets/finale/fall.png');
       expect(html).not.toContain('Я толкнула');
     }
   });

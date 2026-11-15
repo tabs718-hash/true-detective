@@ -1,0 +1,63 @@
+{
+  "created": "2026-11-15",
+  "method": "OpenAI image generation and reference-based edits; original PNG, no postprocessing",
+  "notes": "Original generated1966 cinematic scenes; argument/fall/alive/home are restricted to verified true ending after the decision. Neutral courtroom/corridor/closed-case disclose no culprit. Nora remains blonde; argument coat has all buttons before the fall; home is nighttime; Eddie is only in alive.",
+  "assets": [
+    {
+      "file": "alive.png",
+      "width": 1536,
+      "height": 1024,
+      "bytes": 2403799,
+      "sha256": "2862bae33768a19b1cb27d486d07de05cf090ca6c54a6535b67f14844cd5c292",
+      "pngColorType": 2
+    },
+    {
+      "file": "argument.png",
+      "width": 1536,
+      "height": 1024,
+      "bytes": 2105744,
+      "sha256": "1ed05c564474e1437d76096780f9404017adc3f9fc77456f22b2b958be01e997",
+      "pngColorType": 2
+    },
+    {
+      "file": "closed-case.png",
+      "width": 1536,
+      "height": 1024,
+      "bytes": 1982303,
+      "sha256": "89223b5befd62f9206304ef24fcc83034bfe87caa6ff4a47c22179ee00da8bb4",
+      "pngColorType": 2
+    },
+    {
+      "file": "corridor.png",
+      "width": 1536,
+      "height": 1024,
+      "bytes": 2252641,
+      "sha256": "bee371324584f9e71ed63c11d6d3f158fef6005aeeb4fce27b881ba24c6640c8",
+      "pngColorType": 2
+    },
+    {
+      "file": "courtroom.png",
+      "width": 1536,
+      "height": 1024,
+      "bytes": 2155963,
+      "sha256": "e75e36ab28bb9d4b8756e7eccd47aa37ef758b09d0efbc20074a2c763c34fe76",
+      "pngColorType": 2
+    },
+    {
+      "file": "fall.png",
+      "width": 1536,
+      "height": 1024,
+      "bytes": 2291413,
+      "sha256": "2612b6ec083f4082f8ec534615f492c195c0c11304834f1ee138d5c338939ce5",
+      "pngColorType": 2
+    },
+    {
+      "file": "home.png",
+      "width": 1536,
+      "height": 1024,
+      "bytes": 2143608,
+      "sha256": "514440e8791b4d83418eac7f3aa336dcaec3d1ad13fa91d385cb6c674cd15590",
+      "pngColorType": 2
+    }
+  ]
+}

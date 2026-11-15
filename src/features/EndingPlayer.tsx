@@ -1,3 +1,5 @@
+import { ArtworkImage } from '../ui/ArtworkImage';
+import { Portrait } from '../ui/Portrait';
 import { useMemo, useRef, useState, useEffect } from 'react';
 import { ArrowLeft, ArrowRight, FileText, RotateCcw, Scale } from 'lucide-react';
 import type { GameState } from '../engine/types';
@@ -29,7 +31,7 @@ export function EndingPlayer({ game, onProgress, onNewGame, notice, onSound, onE
 
   useEffect(() => { panel.current?.focus(); }, [index]);
   useEffect(() => {
-    const environment = scene.phase === 'reconstruction' ? scene.id === 'truth-home' ? 'NORA_PRIVATE' : 'CONSTRUCTION' : scene.phase === 'report' ? 'POLICE' : scene.art === '/assets/mansion.svg' ? 'MANSION' : 'PROSECUTOR';
+    const environment = scene.phase === 'reconstruction' ? scene.id === 'truth-home' ? 'NORA_PRIVATE' : 'CONSTRUCTION' : scene.phase === 'report' ? 'POLICE' : scene.art === '/assets/realistic/mansion.png' ? 'MANSION' : 'PROSECUTOR';
     onEnvironment?.(environment);
   }, [scene.phase, scene.id, scene.art, onEnvironment]);
   async function go(next: number) {
@@ -41,7 +43,7 @@ export function EndingPlayer({ game, onProgress, onNewGame, notice, onSound, onE
   }
 
   return <div className={'finale-screen phase-' + scene.phase}>
-    <img key={scene.art} className="finale-backdrop" src={scene.art} alt={scene.phase === 'reconstruction' ? 'Сцена реконструкции после решения суда' : 'Сцена завершения дела'}/>
+    <ArtworkImage key={scene.art} className="finale-backdrop" src={scene.art} alt={scene.phase === 'reconstruction' ? 'Сцена реконструкции после решения суда' : 'Сцена завершения дела'}/>
     <div className="finale-shade"/>
     <header className="finale-header"><span><Scale size={20}/>ЧУЖОЕ АЛИБИ</span><span>Дело № 66–041 · {phaseNames[scene.phase]}</span></header>
     <main className={'finale-panel ' + (final ? 'finale-report' : '')} ref={panel} tabIndex={-1} aria-label={scene.title} onKeyDown={event => {
@@ -52,7 +54,7 @@ export function EndingPlayer({ game, onProgress, onNewGame, notice, onSound, onE
       <span className="eyebrow">{phaseNames[scene.phase]}</span>
       <h1>{scene.title}</h1>
       {scene.speaker && <span className="finale-speaker">{scene.speaker}</span>}
-      {scene.portrait && <img className="finale-portrait" src={scene.portrait} alt={scene.speaker ?? 'Участник дела'}/>}
+      {scene.portrait && <Portrait className="finale-portrait" character={scene.portrait.character} emotion={scene.portrait.emotion} alt={scene.speaker ?? 'Участник дела'}/>}
       <div className="finale-prose">{scene.paragraphs.map((text, i) => <p key={i}>{text}</p>)}</div>
       {scene.citedCardIds.length > 0 && <details className="finale-evidence"><summary><FileText size={14}/>Материалы этой сцены</summary><div>{scene.citedCardIds.map(id => <button key={id} onClick={() => setCard(id)}>{cardTitle(id)}</button>)}</div></details>}
       {final && <>
@@ -67,7 +69,7 @@ export function EndingPlayer({ game, onProgress, onNewGame, notice, onSound, onE
       {!final && <button className="finale-skip" disabled={busy} onClick={() => void go(sequence.scenes.length - 1)}>К итоговому отчёту</button>}
       {final && index > 0 && <button className="finale-skip" disabled={busy} onClick={() => void go(0)}>Пересмотреть финал</button>}
     </main>
-    <footer className="finale-footer"><span>Чикаго · осень 1966</span><span>Сценографические эскизы · тестовая редакция</span></footer>
+    <footer className="finale-footer"><span>Чикаго · осень 1966</span><span>Художественная редакция · тестовая версия</span></footer>
     {card && game.casePacket.selectedCardIds.includes(card) && <Modal title={cardTitle(card)} onClose={() => setCard(null)}><span className="card-kind">{typeSingular[cards[card].type]}</span><p className="detail-text">{cards[card].summary}</p><button className="primary" onClick={() => setCard(null)}>Вернуться к сцене</button></Modal>}
   </div>;
 }

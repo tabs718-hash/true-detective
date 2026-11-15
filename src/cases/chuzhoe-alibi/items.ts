@@ -1,6 +1,12 @@
 export type ItemKind = 'wrench' | 'button' | 'coat';
 export type ItemView = { label: string; text: string; frame: [number, number, number, number] };
 
+export const sceneItemArt: Record<ItemKind, { src: string; width: number; height: number }> = {
+  wrench: { src: '/assets/items/sprites/wrench.png', width: 1774, height: 887 },
+  button: { src: '/assets/items/sprites/button.png', width: 1254, height: 1254 },
+  coat: { src: '/assets/items/sprites/coat.png', width: 1075, height: 1464 }
+};
+
 // Crops are display viewports into the original image, not new evidence or lab results.
 export const itemArt: Record<ItemKind, { src: string; alt: string; width: number; height: number; views: [ItemView, ItemView] }> = {
   button: {

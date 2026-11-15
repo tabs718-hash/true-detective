@@ -11,7 +11,12 @@ export const realisticPortraitEmotions: Readonly<Record<string, readonly Portrai
   IRENE: ['neutral', 'firm'],
   EDDIE: ['neutral', 'concerned', 'firm'],
   HAYES: ['neutral', 'firm'],
-  FRANK: ['neutral']
+  FRANK: ['neutral'],
+  OWEN: ['neutral'],
+  COLLEAGUE: ['neutral'],
+  EXPERT: ['neutral'],
+  PROSECUTOR: ['neutral'],
+  RICHARD: ['neutral']
 };
 export const realisticPortraitCharacters = Object.keys(realisticPortraitEmotions);
 
@@ -19,12 +24,12 @@ export function portraitResource(character: string, emotion: PortraitEmotion = '
   const name = character.toLowerCase();
   const available = Object.hasOwn(realisticPortraitEmotions, character) ? realisticPortraitEmotions[character] : undefined;
   const resolvedEmotion = available && !available.includes(emotion) ? 'neutral' : emotion;
-  const base = available ? `/assets/portraits/realistic/${name}-neutral.png` : `/assets/portraits/${name}.svg`;
+  const base = available ? `/assets/portraits/realistic/${name}-neutral.png` : '';
   const source = available
     ? `/assets/portraits/realistic/${name}-${resolvedEmotion}.png`
-    : expressive.has(character) && emotion !== 'neutral' ? `/assets/portraits/emotions/${name}-${emotion}.svg` : base;
+    : base;
   // A realistic face falls back to its own neutral portrait, never an older design.
-  return { source, base, sources: [...new Set([source, base])] };
+  return { source, base, sources: [...new Set([source, base])].filter(Boolean) };
 }
 const directions: Record<string, { initial: PortraitEmotion; beats?: { from: number; emotion: PortraitEmotion }[] }> = {
   A_NORA_OFFICE: { initial: 'neutral' },

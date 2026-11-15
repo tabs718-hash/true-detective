@@ -5,7 +5,6 @@ import { renderToStaticMarkup } from 'react-dom/server';
 import { expect, test } from 'vitest';
 import { itemArt, type ItemKind } from '../src/cases/chuzhoe-alibi/items';
 import { ItemArtwork } from '../src/ui/ItemArtwork';
-import { PrototypeItemArtwork } from '../src/ui/PrototypeItemArtwork';
 import { ItemInspection } from '../src/features/ItemInspection';
 
 const kinds = Object.keys(itemArt) as ItemKind[];
@@ -23,7 +22,6 @@ test('общие изображения осмотра и архива соот�
     expect(bytes.byteLength).toBe(record.bytes);
     expect(createHash('sha256').update(bytes).digest('hex')).toBe(record.sha256);
     expect(renderToStaticMarkup(createElement(ItemArtwork, { kind }))).toContain(art.src);
-    expect(renderToStaticMarkup(createElement(PrototypeItemArtwork, { kind }))).toContain('<svg');
   }
 });
 

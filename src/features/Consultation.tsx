@@ -3,12 +3,13 @@ import { Modal } from '../ui/Modal';
 import { characters } from '../engine/case';
 import type { ConsultationRecord } from '../engine/types';
 import { cardTitle } from '../cases/chuzhoe-alibi/content';
+import { Portrait } from '../ui/Portrait';
 
 export function Consultation({ record, onClose }: { record: ConsultationRecord; onClose: () => void }) {
   return <Modal title="Замечания прокурора" onClose={onClose} wide>
     <div className="consultation-layout">
       <aside>
-        <img src="/assets/portraits/prosecutor.svg" alt="Прокурор округа Кук"/>
+        <Portrait character="PROSECUTOR" alt="Прокурор округа Кук"/>
         <span className="eyebrow">Пакет на момент консультации</span>
         <h3>{characters[record.packet.defendant]?.name ?? 'Обвиняемый'}</h3>
         <p>Приложено: {record.packet.selectedCardIds.length}</p>

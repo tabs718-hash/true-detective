@@ -66,7 +66,7 @@ test('новое выражение откатывается к той же не
       expect(expressive.sources.every(src => existsSync('public' + src) && src.endsWith('.png'))).toBe(true);
     }
   }
-  expect(portraitResource('OWEN', 'firm').source).toBe('/assets/portraits/owen.svg');
+  expect(portraitResource('OWEN', 'firm').source).toBe('/assets/portraits/realistic/owen-neutral.png');
 });
 
 test('отсутствующее выражение сразу выбирает новый нейтральный PNG без лишнего запроса', () => {

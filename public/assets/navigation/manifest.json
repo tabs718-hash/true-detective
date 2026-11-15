@@ -1,0 +1,15 @@
+{
+  "created": "2026-11-15",
+  "method": "OpenAI image generation and reference-based edits; original PNG, no postprocessing",
+  "notes": "Original generated photograph-like printed fictional district map, no exact historical addresses or labels. Functional markers are separate UI.",
+  "assets": [
+    {
+      "file": "chicago-map.png",
+      "width": 1402,
+      "height": 1122,
+      "bytes": 3650165,
+      "sha256": "d128fe19a81cb3bc81bfeb981e0762fc6671daa59a25ecd1552681ceb39ee627",
+      "pngColorType": 2
+    }
+  ]
+}

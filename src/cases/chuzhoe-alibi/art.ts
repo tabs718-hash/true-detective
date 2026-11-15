@@ -1,6 +1,5 @@
 export interface SceneArt {
   src: string;
-  fallback: string;
   alt: string;
   caption: string;
   width: number;
@@ -29,14 +28,12 @@ const realisticScenes: Record<string, string> = {
 };
 
 export function sceneArt(art: string): SceneArt {
-  const fallback = '/assets/' + art + '.svg';
   const description = realisticScenes[art];
   return {
-    src: description ? '/assets/realistic/' + art + '.png' : fallback,
-    fallback,
-    alt: description ? description + ' — Чикаго, 1966 год' : 'Сценографический эскиз помещения эпохи 1960-х годов',
-    caption: description ? 'Художественная сцена' : 'Сценографический эскиз',
-    width: description ? 1536 : 1600,
-    height: description ? 1024 : 1000
+    src: description ? '/assets/realistic/' + art + '.png' : '',
+    alt: description ? description + ' — Чикаго, 1966 год' : 'Помещение',
+    caption: 'Художественная сцена',
+    width: 1536,
+    height: 1024
   };
 }

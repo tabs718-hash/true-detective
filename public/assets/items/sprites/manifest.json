@@ -1,0 +1,31 @@
+{
+  "created": "2026-11-15",
+  "method": "OpenAI image generation and reference-based edits; original PNG, no postprocessing",
+  "notes": "Transparent imagegen edits from the same original item closeups. No postprocessing. Sprites preserve manual observation/collection; no duplicate in background.",
+  "assets": [
+    {
+      "file": "button.png",
+      "width": 1254,
+      "height": 1254,
+      "bytes": 2228981,
+      "sha256": "83d632e2dc6d519dde19d3fef89f3166e899567d9f305a643515daa2c6848981",
+      "pngColorType": 6
+    },
+    {
+      "file": "coat.png",
+      "width": 1075,
+      "height": 1464,
+      "bytes": 1963113,
+      "sha256": "bb588774e429fac9a867ee20d3bdc14ff67548b1ad657503722f64758994cbd5",
+      "pngColorType": 6
+    },
+    {
+      "file": "wrench.png",
+      "width": 1774,
+      "height": 887,
+      "bytes": 753400,
+      "sha256": "f42e00135331c428908b435e1f81ea82e15130fac9e22e929bc4a931140fe59b",
+      "pngColorType": 6
+    }
+  ]
+}

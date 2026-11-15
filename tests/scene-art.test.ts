@@ -15,14 +15,12 @@ function evidence(game: GameState, width = 1536, height = 1024) {
   return renderToStaticMarkup(createElement(SceneEvidence, { game, width, height, onItem: () => { throw new Error('Осмотр не должен запускаться при рендере'); } }));
 }
 
-test('каждый план имеет фон, а реалистичные ресурсы совпадают с реестром и резервным SVG', () => {
+test('каждый план имеет фон, а реалистичные ресурсы совпадают с реестром', () => {
   const manifest = JSON.parse(readFileSync('public/assets/realistic/manifest.json', 'utf8')) as { assets: {file: string; bytes: number; width: number; height: number; sha256: string}[] };
   const used = new Set<string>();
   for (const room of Object.values(roomPresentations)) {
     const art = sceneArt(room.art);
     expect(existsSync('public' + art.src)).toBe(true);
-    expect(existsSync('public' + art.fallback)).toBe(true);
-    expect(art.src).not.toBe(art.fallback);
     const entry = manifest.assets.find(asset => art.src === '/assets/realistic/' + asset.file);
     expect(entry).toBeDefined();
     const bytes = readFileSync('public' + art.src);

@@ -10,7 +10,12 @@
     "irene": "Art direction choice: older silver-haired neighbor in everyday blue-gray cardigan; neutral/firm only, truthful confident witness.",
     "eddie": "Art direction choice: slim young adult electrician with dark wavy hair and small moustache, plain work clothes; neutral/concerned/firm, no props or knowledge of the shove.",
     "hayes": "59-year-old night watchman, gray moustache and brown flat cap, precise limited recollection; neutral/firm.",
-    "frank": "Art direction choice: broad sandy-haired daytime watchman in a blue work jacket; neutral portrait only. Expression edit was not returned by the image service, so prior dialogue direction is retained."
+    "frank": "Art direction choice: broad sandy-haired daytime watchman in a blue work jacket; neutral portrait only. Expression edit was not returned by the image service, so prior dialogue direction is retained.",
+    "owen": "Practical foreman, short auburn hair and moustache, plain work vest; neutral, no case props.",
+    "colleague": "Young detective colleague, short hair and modest gray suit; neutral attentive assistant, no solution clues.",
+    "expert": "Neutral precise forensic professional, middle-aged woman with short dark hair and plain laboratory coat; no modern equipment or case props.",
+    "prosecutor": "Assistant States Attorney around53, thinning gray hair, wire-frame glasses and restrained dark suit; neutral.",
+    "richard": "54-year-old construction company owner, angular mature face, swept-back salt-and-pepper hair, charcoal suit; neutral reference for archive and reconstruction."
   },
   "limitations": "Appearance is an art direction choice; facial expressions do not establish guilt. Original age and story data were not changed.",
   "assets": [
@@ -44,6 +49,14 @@
       "height": 1448,
       "bytes": 2133570,
       "sha256": "52ad5d562749d2749db1336762f1e8e3bcc7a4899d116db5f289fe881be18c1e",
+      "pngColorType": 6
+    },
+    {
+      "file": "colleague-neutral.png",
+      "width": 1086,
+      "height": 1448,
+      "bytes": 2199959,
+      "sha256": "903acdb1ce048a45ad9a332c220fbd5fc8a66e8fceffa1404e8dba131819e803",
       "pngColorType": 6
     },
     {
@@ -124,6 +137,14 @@
       "height": 1448,
       "bytes": 1851818,
       "sha256": "268941be522ede777a1a586e5bc9c5c13df74118fe51c1349bbfdc8d60af8b95",
+      "pngColorType": 6
+    },
+    {
+      "file": "expert-neutral.png",
+      "width": 1086,
+      "height": 1448,
+      "bytes": 2052840,
+      "sha256": "5bb527916139fdc595734eeee6a1568f03678c48833ae57d54b13465b09a2575",
       "pngColorType": 6
     },
     {
@@ -220,6 +241,30 @@
       "height": 1448,
       "bytes": 1717564,
       "sha256": "a07b7cbd73a0ea6f31f49df8e15c367204c200598868537cf07076b6e01934f3",
+      "pngColorType": 6
+    },
+    {
+      "file": "owen-neutral.png",
+      "width": 1086,
+      "height": 1448,
+      "bytes": 2298300,
+      "sha256": "2365832d161b02bc6fdb4ecb14e67d35b0d9d68b281e02a9014dcbc2596e1173",
+      "pngColorType": 6
+    },
+    {
+      "file": "prosecutor-neutral.png",
+      "width": 1086,
+      "height": 1448,
+      "bytes": 1618110,
+      "sha256": "f1f99244f427bbd89d5561653e528fb916146cbea4b20e2e0e84262748e4de92",
+      "pngColorType": 6
+    },
+    {
+      "file": "richard-neutral.png",
+      "width": 1086,
+      "height": 1448,
+      "bytes": 2295670,
+      "sha256": "dd3590a384d2b63c9f959cb7b577be324e3db93aeb8ced9571497eb0e1825e7a",
       "pngColorType": 6
     }
   ],
