@@ -1,0 +1,29 @@
+{
+  "created": "2026-11-15",
+  "method": "OpenAI image generation tool; original generated PNG, unmodified",
+  "purpose": "Object inspection and archive artwork. Zooms are viewports into the same original image. Observation does not collect evidence or produce forensic results.",
+  "visual_review": "One ordinary combination wrench with small brown specks and indistinct handling marks; one dark four-hole button with pale frayed thread and worn rim; one dark coat with three surviving buttons and one damaged fastening. No readable labels, owners or reconstruction.",
+  "assets": [
+    {
+      "file": "button.png",
+      "width": 1536,
+      "height": 1024,
+      "bytes": 2714844,
+      "sha256": "fc7bf3ccb4950aba89aca050d10950a135fc4b9cb1c91f97b05312a9b4a41ea5"
+    },
+    {
+      "file": "coat.png",
+      "width": 1536,
+      "height": 1024,
+      "bytes": 2363330,
+      "sha256": "705286f0c5a4963ad35e78a6d66fce09a110a3e1e78cb2a1cff30aa19d32a04c"
+    },
+    {
+      "file": "wrench.png",
+      "width": 1536,
+      "height": 1024,
+      "bytes": 2653662,
+      "sha256": "69fe8e42cd2dd4afd5c6cd775832490faa5373cc462f64c683ff908a46f4883a"
+    }
+  ]
+}
