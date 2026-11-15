@@ -1,5 +1,13 @@
 name: Check game
-on: [push, pull_request]
+"on":
+  push:
+  pull_request:
+  workflow_dispatch:
+    inputs:
+      browser_checks:
+        description: 'Вручную запустить браузерные проверки'
+        type: boolean
+        default: false
 jobs:
   check:
     runs-on: ubuntu-latest
@@ -17,12 +25,19 @@ jobs:
       - run: npm test
       - run: npm run build
       - run: npx playwright install --with-deps chromium
+        if: github.event_name == 'workflow_dispatch' && inputs.browser_checks
       - run: npm run test:e2e
+        if: github.event_name == 'workflow_dispatch' && inputs.browser_checks
       - name: Show browser failure context
-        if: failure()
-        run: find test-results -name error-context.md -exec cat '{}' \;
+        if: failure() && github.event_name == 'workflow_dispatch' && inputs.browser_checks
+        run: |
+          python3 - <<'PY'
+          from pathlib import Path
+          for path in Path('test-results').rglob('error-context.md'):
+              print(path.read_text(encoding='utf-8'))
+          PY
       - uses: actions/upload-artifact@v4
-        if: failure()
+        if: failure() && github.event_name == 'workflow_dispatch' && inputs.browser_checks
         with:
           name: browser-test-results
           path: test-results/

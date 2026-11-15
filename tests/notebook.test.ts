@@ -64,9 +64,13 @@ describe('Блокнот и протоколы', () => {
     const legacy = JSON.parse(JSON.stringify(original));
     delete legacy.personalNotes;
     delete legacy.dialogueHistory;
+    delete legacy.consultationRecord;
+    delete legacy.endingProgress;
     const migrated = parseSave(legacy);
     expect(migrated.personalNotes).toEqual([]);
     expect(migrated.dialogueHistory).toEqual({});
+    expect(migrated.consultationRecord).toBeNull();
+    expect(migrated.endingProgress).toBe(0);
     expect(migrated.collectedCards).toEqual(original.collectedCards);
     expect(migrated.requests).toEqual(original.requests);
     expect(migrated.openedRooms).toEqual(original.openedRooms);

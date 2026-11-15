@@ -17,6 +17,7 @@ export interface BoardLink {id:string;from:string;to:string;interpretation:strin
 export interface Hypothesis {id:string;linkId:string;text:string;status:'tentative'|'confirmed'|'refuted'}
 export interface CasePacket {defendant:string;selectedCardIds:string[]}
 export interface TranscriptLine {speaker:string;text:string}
+export interface ConsultationRecord {packet:CasePacket;lines:TranscriptLine[]}
 export interface GameState {
   saveVersion:1;caseId:string;facts:string[];suspects:string[];openedRooms:string[];
   observedObjects:string[];collectedCards:string[];completedActions:string[];
@@ -26,4 +27,6 @@ export interface GameState {
   journal:{id:string;text:string}[];hintUsage:Record<string,number>;
   personalNotes:{id:string;text:string}[];
   dialogueHistory:Record<string,TranscriptLine[]>;
+  consultationRecord:ConsultationRecord|null;
+  endingProgress:number;
 }

@@ -1,9 +1,11 @@
 import { actions, cards, caseDefinition, characters } from './case';
 import { actionRooms } from '../cases/chuzhoe-alibi/contexts';
-import type { Action, CasePacket, Condition, GameState, RequestStatus } from './types';
+import { verdict } from './verdict';
+export { verdict } from './verdict';
+import type { Action, CasePacket, Condition, GameState, RequestStatus, TranscriptLine } from './types';
 const add=(list:string[],id:string)=>{if(!list.includes(id))list.push(id)};
 export function initialState():GameState {
-  return {saveVersion:1,caseId:caseDefinition.caseId,facts:[],suspects:[],openedRooms:[],observedObjects:[],collectedCards:[],completedActions:[],requests:Object.fromEntries(caseDefinition.requests.map(r=>[r.id,'not_submitted'])),location:'CONSTRUCTION',room:'gate',visitedLocations:[],board:{nodes:[],links:[],hypotheses:[],view:{x:0,y:0,zoom:1}},casePacket:{defendant:'',selectedCardIds:[]},consultationUsed:false,endingId:null,journal:[],hintUsage:{},personalNotes:[],dialogueHistory:{}};
+  return {saveVersion:1,caseId:caseDefinition.caseId,facts:[],suspects:[],openedRooms:[],observedObjects:[],collectedCards:[],completedActions:[],requests:Object.fromEntries(caseDefinition.requests.map(r=>[r.id,'not_submitted'])),location:'CONSTRUCTION',room:'gate',visitedLocations:[],board:{nodes:[],links:[],hypotheses:[],view:{x:0,y:0,zoom:1}},casePacket:{defendant:'',selectedCardIds:[]},consultationUsed:false,endingId:null,journal:[],hintUsage:{},personalNotes:[],dialogueHistory:{},consultationRecord:null,endingProgress:0};
 }
 export function holds(s:GameState,c:Condition):boolean {
   if('always'in c)return c.always;
@@ -64,15 +66,14 @@ export function connectCards(s:GameState,from:string,to:string,interpretation:st
   if(canPerform(n,'A_BUTTON_COAT_LINK')&&interpretation==='H_BUTTON_COAT_SIMILAR')return perform(n,'A_BUTTON_COAT_LINK');
   return n;
 }
-type Rule={all:string[];oneFromEach:string[][];none?:string[]};
-export function verdict(packet:CasePacket):string{
-  const ids=new Set(packet.selectedCardIds);if([...ids].some(id=>!cards[id]))throw Error('Неизвестные материалы');
-  if(!ids.size)return 'EMPTY_FILE_REPRIMAND';
-  const matches=(key:string)=>{const r=caseDefinition.finalRules[key] as Rule;return r.all.every(x=>ids.has(x))&&r.oneFromEach.every(g=>g.some(x=>ids.has(x)))&&!(r.none??[]).some(x=>ids.has(x))};
-  if(packet.defendant==='NORA')return matches('NORA_CONVICTED')?'NORA_CONVICTED':'NORA_ACQUITTED';
-  if(packet.defendant==='BRENNAN')return matches('BRENNAN_WRONGFUL_CONVICTION')?'BRENNAN_WRONGFUL_CONVICTION':'BRENNAN_ACQUITTED';
-  return ({ELIZABETH:'ELIZABETH_ACQUITTED',DANIEL:'DANIEL_DISMISSED',EDDIE:'EDDIE_DISMISSED',HAYES:'HAYES_DISMISSED'} as Record<string,string>)[packet.defendant]??'OTHER_DISMISSED';
-}
 export function selectPacket(s:GameState,packet:CasePacket){if(s.endingId)throw Error('Дело завершено');if(packet.defendant&&!knownCharacters(s).some(c=>c.id===packet.defendant))throw Error('Неизвестный обвиняемый');if(packet.selectedCardIds.some(x=>!s.collectedCards.includes(x)))throw Error('В пакете есть ненайденные материалы');return {...s,casePacket:{defendant:packet.defendant,selectedCardIds:[...new Set(packet.selectedCardIds)]}}}
-export function consult(s:GameState){if(s.endingId||s.consultationUsed||!characters[s.casePacket.defendant])throw Error('Консультация недоступна');return {...structuredClone(s),consultationUsed:true}}
-export function submitCase(s:GameState){if(s.endingId||!s.casePacket.defendant)throw Error('Выберите обвиняемого');return {...structuredClone(s),endingId:verdict(s.casePacket)}}
+export function consult(s:GameState,lines:TranscriptLine[]=[]){
+ if(s.endingId||s.consultationUsed||!characters[s.casePacket.defendant])throw Error('Консультация недоступна');
+ selectPacket(s,s.casePacket);
+ return {...structuredClone(s),consultationUsed:true,consultationRecord:{packet:structuredClone(s.casePacket),lines:structuredClone(lines)}};
+}
+export function submitCase(s:GameState){
+ if(s.endingId||!s.casePacket.defendant)throw Error('Выберите обвиняемого');
+ selectPacket(s,s.casePacket);
+ return {...structuredClone(s),endingId:verdict(s.casePacket),endingProgress:0};
+}
