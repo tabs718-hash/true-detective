@@ -3,6 +3,7 @@ import { ArrowRight, MessageCircle } from 'lucide-react';
 import { actions, characters } from '../engine/case';
 import { actionCharacters, actionLabels, cardTitle, presentationReaction, speakerNames } from '../cases/chuzhoe-alibi/content';
 import type { TranscriptLine } from '../engine/types';
+import { dialogueAdvance } from '../ui/dialogue-controls';
 import { Modal } from '../ui/Modal';
 import { portraitFor } from '../cases/chuzhoe-alibi/portraits';
 import { Portrait } from '../ui/Portrait';
@@ -42,6 +43,8 @@ export function Dialogue({ id, lines, cardIds, speed, readOnly = false, onComple
     }), 20);
     return () => clearInterval(interval);
   }, [index, speed, all, line.text]);
+
+  const advance = dialogueAdvance({readOnly, all, last: index === lines.length - 1, typing: letters < line.text.length});
 
   function present() {
     onSound?.('paper');
@@ -84,11 +87,11 @@ export function Dialogue({ id, lines, cardIds, speed, readOnly = false, onComple
         <div className="dialogue-controls">
           {!readOnly && <button className="text-button" onClick={() => setAll(!all)}>{all ? 'По одной реплике' : 'Прочитать разговор целиком'}</button>}
           <button className="primary" onClick={() => {
-            if (readOnly) onClose();
-            else if (all || index === lines.length - 1) onComplete([...lines, ...presentations]);
-            else if (letters < line.text.length) setLetters(line.text.length);
-            else setIndex(index + 1);
-          }}>{readOnly ? 'Закрыть протокол' : all || index === lines.length - 1 ? 'Закончить разговор' : 'Продолжить'}<ArrowRight size={17}/></button>
+            if (advance === 'close') onClose();
+            else if (advance === 'reveal') setLetters(line.text.length);
+            else if (advance === 'finish') onComplete([...lines, ...presentations]);
+            else { setLetters(speed === 0 ? lines[index + 1].text.length : 0); setIndex(index + 1); }
+          }}>{advance === 'close' ? 'Закрыть протокол' : advance === 'reveal' ? 'Показать реплику' : advance === 'finish' ? 'Закончить разговор' : 'Продолжить'}<ArrowRight size={17}/></button>
         </div>
       </div>
     </div>
