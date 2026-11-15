@@ -1,3 +1,6 @@
+import { useState } from 'react';
+import { SceneEvidence } from './SceneEvidence';
+import '../ui/scene-evidence.css';
 import { ArrowUpRight, ChevronRight, DoorOpen, FileText, MessageCircle, Search, LockKeyhole, MapPin, Scale } from 'lucide-react';
 import { caseDefinition, characters } from '../engine/case';
 import { actionHere, canPerform, knownCharacters } from '../engine/engine';
@@ -17,15 +20,14 @@ export function Scene({game,onTravel,onAct,onItem,onDetail,onConsult}:Props){
  const physical=['A_OBSERVE_WRENCH','A_COLLECT_WRENCH','A_OBSERVE_BUTTON','A_COLLECT_BUTTON','A_OBSERVE_COAT','A_COLLECT_COAT'];
  const objects=here.filter(a=>!actionCharacters[a.id]&&!physical.includes(a.id));
  const presentation=roomPresentation(game.location,game.room);
+ const art=sceneArt(presentation.art);
+ const [loadedArt,setLoadedArt]=useState<{art:string;width:number;height:number}|null>(null);
+ const dimensions=loadedArt?.art===presentation.art?loadedArt:art;
  const roomText=presentation.description;
  const spatial:Record<string,{x:number;y:number}>={A_HOME_DRAWER:{x:30,y:73},A_HOME_DIARY:{x:66,y:61},A_INVOICE:{x:49,y:56},A_RENT_TALLY:{x:73,y:68}};
- return <div className="scene-layout"><section className={'scene-stage room-'+game.room} aria-label={location.name+' — '+roomNames[game.room]}><SceneBackground art={presentation.art} className="scene-art"/><div className="scene-vignette"/><div className="scene-title"><span className="eyebrow"><MapPin size={12}/>{locationSubtitles[game.location]}</span><h1>{location.name}</h1><span className="scene-room">{roomNames[game.room]}</span></div><span className="scene-take">CHICAGO · 1966</span>
+ return <div className="scene-layout"><section className={'scene-stage room-'+game.room} aria-label={location.name+' — '+roomNames[game.room]}><SceneBackground art={presentation.art} className="scene-art" onDimensions={(width,height)=>setLoadedArt({art:presentation.art,width,height})}/><div className="scene-vignette"/><div className="scene-title"><span className="eyebrow"><MapPin size={12}/>{locationSubtitles[game.location]}</span><h1>{location.name}</h1><span className="scene-room">{roomNames[game.room]}</span></div><span className="scene-take">CHICAGO · 1966</span>
  {location.rooms.length>1&&<div className="scene-doors">{location.rooms.filter(r=>r.id!==game.room&&game.openedRooms.includes(location.id+'/'+r.id)).map(r=><button key={r.id} aria-label={'Дверь: '+r.name} onClick={()=>onTravel(location.id,r.id)}><DoorOpen size={20} strokeWidth={1}/><span>{r.name}</span><ChevronRight size={12}/></button>)}</div>}
- {game.location==='CONSTRUCTION'&&game.room==='stairs'&&<>
- {!game.collectedCards.includes('E_WRENCH')&&<button className="physical-object wrench-object" aria-label="Осмотреть металлический предмет у лестницы" onClick={()=>onItem('wrench')}><svg viewBox="0 0 100 40" aria-hidden="true"><path d="M7 20l12-12 8 2 4 9 48 1 6-8 10 2-2 12-12 7-8-7-43-1-9 8-11-3z" fill="#899088" stroke="#c0c0a9" strokeWidth="2"/><path d="M22 14l6 8 13 0" stroke="#51382c" strokeWidth="4"/></svg></button>}
- {!game.collectedCards.includes('E_BUTTON')&&<button className="physical-object button-object" aria-label="Осмотреть небольшой предмет среди мусора" onClick={()=>onItem('button')}><svg viewBox="0 0 32 32" aria-hidden="true"><circle cx="16" cy="16" r="10" fill="#423a2c" stroke="#9b8b65" strokeWidth="1.8"/><circle cx="13" cy="14" r="1.2" fill="#161c18"/><circle cx="18" cy="18" r="1.2" fill="#161c18"/></svg></button>}
- </>}
- {game.location==='NORA_PRIVATE'&&game.room==='bedroom'&&!game.collectedCards.includes('E_COAT')&&<button className="physical-object coat-object" aria-label="Осмотреть пальто на стуле" onClick={()=>onItem('coat')}><svg viewBox="0 0 180 260" aria-hidden="true"><path d="M40 30L65 14 90 22 115 14 140 30 167 115 141 129 132 93 143 239 38 239 48 93 36 130 12 115Z" fill="#29332f" stroke="#82785e" strokeWidth="2"/><path d="M65 14L91 69 115 14M90 68L90 239" fill="none" stroke="#a49a78" strokeWidth="2"/><circle cx="101" cy="106" r="4" fill="#9b8a68"/><circle cx="101" cy="166" r="4" fill="#9b8a68"/></svg></button>}
+ <SceneEvidence game={game} width={dimensions.width} height={dimensions.height} onItem={onItem}/>
  <div className="document-hotspots">{objects.filter(a=>spatial[a.id]).map(a=><button className="object-hotspot" data-action={a.id} key={a.id} style={{left:spatial[a.id].x+'%',top:spatial[a.id].y+'%'}} onClick={()=>onAct(a.id)}><FileText size={17}/><span>{actionLabels[a.id]??a.label}</span><ArrowUpRight size={14}/></button>)}</div><div className="scene-objects">{objects.filter(a=>!spatial[a.id]).map(a=><button className="object-hotspot" data-action={a.id} key={a.id} onClick={()=>onAct(a.id)}><FileText size={17}/><span>{actionLabels[a.id]??a.label}</span><ArrowUpRight size={14}/></button>)}</div>
  {people.length>0&&<div className="scene-person"><img src={'/assets/portraits/'+people[0].toLowerCase()+'.svg'} alt={characters[people[0]]?.name??'Собеседник'}/></div>}
  <div className="scene-caption"><span className="caption-line"/><p>{roomText}</p><span className="prototype-label">{sceneArt(presentation.art).caption}</span></div>

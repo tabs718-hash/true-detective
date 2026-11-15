@@ -3,7 +3,7 @@
   "method": "OpenAI image generation tool; original generated PNG, unmodified",
   "setting": "Chicago, autumn 1966; color cinematic environment studies",
   "purpose": "Environment only. All collectible evidence remains separate interactive artwork.",
-  "historical_review": "Construction skyline corrected to low-rise industrial buildings; no post-1966 landmark retained. Interior props reviewed in source images without launching a browser.",
+  "historical_review": "Construction skyline corrected to low-rise industrial buildings; no post-1966 landmark retained. Interior props reviewed in source images without launching a browser. Version 0.6 adds a mechanical gasoline station register, clearly distinct rented sitting room and private bedroom, and a neutral civilian prosecutor office. No built-in coat, clocks, readable story documents or modern devices.",
   "assets": [
     {
       "file": "construction.png",
@@ -13,11 +13,25 @@
       "sha256": "4032cbc3a26476ee52a84440f6739f05d289359e8b0b5ea9e35bc9ef5474154b"
     },
     {
+      "file": "gas.png",
+      "width": 1536,
+      "height": 1024,
+      "bytes": 2662567,
+      "sha256": "ac722f3bfe8779b266219095026287a520b414260428240ff5a47c7fbf070da9"
+    },
+    {
       "file": "mansion.png",
       "width": 1536,
       "height": 1024,
       "bytes": 2498469,
       "sha256": "0bb808d22ba423e443b2cf1b26f368ee11394f1eda32416950781a525c30dbb8"
+    },
+    {
+      "file": "nora-apartment.png",
+      "width": 1536,
+      "height": 1024,
+      "bytes": 2346541,
+      "sha256": "182a008618026929892a04dca59fc5194643e09104d188d140beb026df8e8ee0"
     },
     {
       "file": "office.png",
@@ -32,6 +46,21 @@
       "height": 1024,
       "bytes": 2282571,
       "sha256": "4b1334f6f8642aa868411d06edcad16caf98da5fa4f10a607753f16c0e70dbdb"
+    },
+    {
+      "file": "prosecutor.png",
+      "width": 1536,
+      "height": 1024,
+      "bytes": 2335029,
+      "sha256": "7cc3389229b4e421e2ad1d90075d19494fe0eba090d9b58bae81a9598af6aaec"
+    },
+    {
+      "file": "secret-apartment.png",
+      "width": 1536,
+      "height": 1024,
+      "bytes": 2466824,
+      "sha256": "1bddfd83f3bbc19aa1cc923b12e5228c5fc6c2071c78b2cf227da004d7fd9aa5"
     }
-  ]
+  ],
+  "updated": "2026-11-15"
 }
