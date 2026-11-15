@@ -8,7 +8,10 @@ export const realisticPortraitEmotions: Readonly<Record<string, readonly Portrai
   BRENNAN: ['neutral', 'concerned', 'guarded', 'firm'],
   DANIEL: ['neutral', 'firm', 'guarded'],
   LILLIAN: ['neutral', 'concerned', 'firm'],
-  IRENE: ['neutral', 'firm']
+  IRENE: ['neutral', 'firm'],
+  EDDIE: ['neutral', 'concerned', 'firm'],
+  HAYES: ['neutral', 'firm'],
+  FRANK: ['neutral']
 };
 export const realisticPortraitCharacters = Object.keys(realisticPortraitEmotions);
 

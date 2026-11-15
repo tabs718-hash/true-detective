@@ -7,7 +7,10 @@
     "brennan": "48-year-old construction manager, ordinary work jacket, irritation without villain symbolism.",
     "daniel": "29-year-old courteous business heir, youthful face and modest1960s suit; neutral/firm/guarded without homicide symbolism.",
     "lillian": "Art direction choice: middle-aged Black bookkeeper with short dark hair, modest glasses and burgundy cardigan; neutral/concerned/firm, no invented knowledge.",
-    "irene": "Art direction choice: older silver-haired neighbor in everyday blue-gray cardigan; neutral/firm only, truthful confident witness."
+    "irene": "Art direction choice: older silver-haired neighbor in everyday blue-gray cardigan; neutral/firm only, truthful confident witness.",
+    "eddie": "Art direction choice: slim young adult electrician with dark wavy hair and small moustache, plain work clothes; neutral/concerned/firm, no props or knowledge of the shove.",
+    "hayes": "59-year-old night watchman, gray moustache and brown flat cap, precise limited recollection; neutral/firm.",
+    "frank": "Art direction choice: broad sandy-haired daytime watchman in a blue work jacket; neutral portrait only. Expression edit was not returned by the image service, so prior dialogue direction is retained."
   },
   "limitations": "Appearance is an art direction choice; facial expressions do not establish guilt. Original age and story data were not changed.",
   "assets": [
@@ -68,6 +71,30 @@
       "pngColorType": 6
     },
     {
+      "file": "eddie-concerned.png",
+      "width": 1086,
+      "height": 1448,
+      "bytes": 1814811,
+      "sha256": "651196677f2b5b6b8b9b0ec645e1d0e254fbc8f1d6f9cb649ae247e66876dcb2",
+      "pngColorType": 6
+    },
+    {
+      "file": "eddie-firm.png",
+      "width": 1086,
+      "height": 1448,
+      "bytes": 1769888,
+      "sha256": "ac7cda700062070da4f6185822f32ae4bb4a82aad66d6753357d4fb9456bc620",
+      "pngColorType": 6
+    },
+    {
+      "file": "eddie-neutral.png",
+      "width": 1086,
+      "height": 1448,
+      "bytes": 1879323,
+      "sha256": "86ab35fc0a12fbf6af40b8a1480afc3bbdae9d1856d4c235ab03bedfbee895f8",
+      "pngColorType": 6
+    },
+    {
       "file": "elizabeth-concerned.png",
       "width": 1086,
       "height": 1448,
@@ -97,6 +124,30 @@
       "height": 1448,
       "bytes": 1851818,
       "sha256": "268941be522ede777a1a586e5bc9c5c13df74118fe51c1349bbfdc8d60af8b95",
+      "pngColorType": 6
+    },
+    {
+      "file": "frank-neutral.png",
+      "width": 1086,
+      "height": 1448,
+      "bytes": 1866675,
+      "sha256": "5845fd8194e2beeb0b4fdfe47d9e10f53beec9575c048c9a6544bcfbd05dfc72",
+      "pngColorType": 6
+    },
+    {
+      "file": "hayes-firm.png",
+      "width": 1086,
+      "height": 1448,
+      "bytes": 2075398,
+      "sha256": "8a5c0e5fc0ea1fadf72f37003bba3fd0db46e877b3492215d9baf962c3f782f3",
+      "pngColorType": 6
+    },
+    {
+      "file": "hayes-neutral.png",
+      "width": 1086,
+      "height": 1448,
+      "bytes": 2206540,
+      "sha256": "e8ca41f9058bcf1afcf3620f35dcbae746e8404c176a0d4bae17cd4903b8c801",
       "pngColorType": 6
     },
     {

@@ -60,19 +60,37 @@ test('новое выражение откатывается к той же не
   for (const character of realisticPortraitCharacters) {
     const neutral = portraitResource(character);
     expect(neutral.sources).toEqual([neutral.source]);
-    const emotion = realisticPortraitEmotions[character].find(value => value !== 'neutral')!;
-    const expressive = portraitResource(character, emotion);
-    expect(expressive.sources).toEqual([expressive.source, neutral.source]);
-    expect(expressive.sources.every(src => existsSync('public' + src) && src.endsWith('.png'))).toBe(true);
+    for (const emotion of realisticPortraitEmotions[character].filter(value => value !== 'neutral')) {
+      const expressive = portraitResource(character, emotion);
+      expect(expressive.sources).toEqual([expressive.source, neutral.source]);
+      expect(expressive.sources.every(src => existsSync('public' + src) && src.endsWith('.png'))).toBe(true);
+    }
   }
-  expect(portraitResource('HAYES', 'firm').source).toBe('/assets/portraits/emotions/hayes-firm.svg');
+  expect(portraitResource('OWEN', 'firm').source).toBe('/assets/portraits/owen.svg');
 });
 
 test('отсутствующее выражение сразу выбирает новый нейтральный PNG без лишнего запроса', () => {
-  for (const [character, emotion] of [['IRENE', 'guarded'], ['IRENE', 'concerned'], ['DANIEL', 'concerned'], ['LILLIAN', 'guarded']] as [string, PortraitEmotion][]) {
+  for (const [character, emotion] of [['IRENE', 'guarded'], ['IRENE', 'concerned'], ['DANIEL', 'concerned'], ['LILLIAN', 'guarded'], ['FRANK', 'concerned'], ['FRANK', 'firm'], ['FRANK', 'guarded']] as [string, PortraitEmotion][]) {
     const neutral = portraitResource(character);
     expect(portraitResource(character, emotion).sources).toEqual([neutral.source]);
   }
+});
+
+test('портреты свидетелей сохраняют пределы их реакций и не добавляют новых знаний', () => {
+  for (const presenting of [false, true]) {
+    for (let index = 0; index < dialogueFor('A_FRANK').length; index++) {
+      expect(portraitFor('A_FRANK', index, presenting).emotion).toBe('neutral');
+      expect(portraitFor('A_FRANK', index, presenting).source).toBe(portraitResource('FRANK').source);
+    }
+    for (const action of ['A_HAYES_FIRST', 'A_HAYES_SECOND']) {
+      expect(portraitFor(action, 0, presenting).emotion).toBe('firm');
+      expect(portraitFor(action, 0, presenting).source).toBe(portraitResource('HAYES', 'firm').source);
+    }
+  }
+  expect(portraitFor('A_EDDIE', 0).emotion).toBe('concerned');
+  expect(portraitFor('A_EDDIE', 0, true).emotion).toBe('firm');
+  // Portrait rendering does not edit witness lines or turn uncertainty into identification.
+  expect(dialogueFor('A_EDDIE').map(line => line.text).join(' ')).toContain('Я не видел');
 });
 
 test('все используемые в репликах выражения новых персонажей подготовлены', () => {
