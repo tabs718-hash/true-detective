@@ -1,0 +1,2102 @@
+{
+  "schemaVersion": 1,
+  "caseId": "CHUZHOE_ALIBI",
+  "title": "Чужое алиби",
+  "language": "ru-RU",
+  "setting": {
+    "city": "Chicago",
+    "country": "USA",
+    "period": "Осень 1966",
+    "localTime": true,
+    "runtimeClock": false
+  },
+  "audience": {
+    "mode": "single-player",
+    "targetPlatforms": [
+      "desktop browser"
+    ],
+    "estimatedPlayMinutes": [
+      60,
+      120
+    ]
+  },
+  "factsPolicy": "monotonic",
+  "suspectsPolicy": "user-editable; does not erase previous scene access",
+  "save": {
+    "manualSlots": 1,
+    "overwrite": true,
+    "canLoadAfterEnding": false,
+    "restartOnlyAfterEnding": true
+  },
+  "characters": [
+    {
+      "id": "RICHARD",
+      "name": "Ричард Уитмор",
+      "canMarkSuspect": true
+    },
+    {
+      "id": "NORA",
+      "name": "Нора Хилл",
+      "canMarkSuspect": true
+    },
+    {
+      "id": "ELIZABETH",
+      "name": "Элизабет Уитмор",
+      "canMarkSuspect": true
+    },
+    {
+      "id": "BRENNAN",
+      "name": "Томас Бреннан",
+      "canMarkSuspect": true
+    },
+    {
+      "id": "DANIEL",
+      "name": "Дэниел Уитмор",
+      "canMarkSuspect": true
+    },
+    {
+      "id": "LILLIAN",
+      "name": "Лилиан Эйвери",
+      "canMarkSuspect": true
+    },
+    {
+      "id": "OWEN",
+      "name": "Оуэн Прайс",
+      "canMarkSuspect": true
+    },
+    {
+      "id": "HAYES",
+      "name": "Уолтер Хейз",
+      "canMarkSuspect": true
+    },
+    {
+      "id": "FRANK",
+      "name": "Фрэнк Миллер",
+      "canMarkSuspect": true
+    },
+    {
+      "id": "EDDIE",
+      "name": "Эдди Альварес",
+      "canMarkSuspect": true
+    },
+    {
+      "id": "IRENE",
+      "name": "Айрин Мейсон",
+      "canMarkSuspect": true
+    },
+    {
+      "id": "COLLEAGUE",
+      "name": "Молодой коллега",
+      "canMarkSuspect": true
+    },
+    {
+      "id": "EXPERT",
+      "name": "Криминалист",
+      "canMarkSuspect": true
+    },
+    {
+      "id": "PROSECUTOR",
+      "name": "Прокурор округа Кук",
+      "canMarkSuspect": true
+    }
+  ],
+  "characterVisibility": {
+    "RICHARD": "F_GAME_STARTED",
+    "FRANK": "F_GAME_STARTED",
+    "NORA": "F_GAME_STARTED",
+    "ELIZABETH": "F_GAME_STARTED",
+    "BRENNAN": "F_BRENNAN_KNOWN",
+    "OWEN": "F_OWEN_AVAILABLE",
+    "HAYES": "W_FRANK",
+    "LILLIAN": "F_ACCOUNTING_OPEN",
+    "DANIEL": "D_INVOICE_COMPARE",
+    "EDDIE": "W_HAYES_2",
+    "IRENE": "W_NORA_ALIBI",
+    "COLLEAGUE": "F_GAME_STARTED",
+    "EXPERT": "F_GAME_STARTED",
+    "PROSECUTOR": "F_GAME_STARTED"
+  },
+  "locations": [
+    {
+      "id": "CONSTRUCTION",
+      "name": "Строительный объект",
+      "rooms": [
+        {
+          "id": "gate",
+          "name": "Главные ворота",
+          "unlockFact": null
+        },
+        {
+          "id": "stairs",
+          "name": "Лестничная конструкция",
+          "unlockFact": null
+        },
+        {
+          "id": "side",
+          "name": "Боковой проход",
+          "unlockFact": null
+        },
+        {
+          "id": "storage",
+          "name": "Складская часть",
+          "unlockFact": null
+        }
+      ]
+    },
+    {
+      "id": "POLICE",
+      "name": "Полицейский участок",
+      "rooms": [
+        {
+          "id": "desk",
+          "name": "Стол коллеги",
+          "unlockFact": null
+        },
+        {
+          "id": "interrogation",
+          "name": "Допросная",
+          "unlockFact": null
+        },
+        {
+          "id": "forensics",
+          "name": "Кабинет криминалиста",
+          "unlockFact": null
+        }
+      ]
+    },
+    {
+      "id": "WHITMORE_OFFICE",
+      "name": "Whitmore Development",
+      "rooms": [
+        {
+          "id": "reception",
+          "name": "Приемная",
+          "unlockFact": null
+        },
+        {
+          "id": "accounting",
+          "name": "Бухгалтерия",
+          "unlockFact": "F_ACCOUNTING_OPEN"
+        },
+        {
+          "id": "richard_work_office",
+          "name": "Рабочий кабинет Ричарда",
+          "unlockFact": "F_RICHARD_WORK_OPEN"
+        }
+      ]
+    },
+    {
+      "id": "MANSION",
+      "name": "Особняк Уитморов",
+      "rooms": [
+        {
+          "id": "salon",
+          "name": "Гостиная",
+          "unlockFact": null
+        },
+        {
+          "id": "elizabeth_private",
+          "name": "Личные помещения Элизабет",
+          "unlockFact": "F_ELIZABETH_PRIVATE_OPEN"
+        },
+        {
+          "id": "richard_home_study",
+          "name": "Домашний кабинет Ричарда",
+          "unlockFact": "F_HOME_STUDY_OPEN"
+        }
+      ]
+    },
+    {
+      "id": "GAS_STATION",
+      "name": "Автозаправка",
+      "rooms": [
+        {
+          "id": "cashier",
+          "name": "Касса",
+          "unlockFact": "F_GAS_OPEN"
+        }
+      ]
+    },
+    {
+      "id": "SECRET_APARTMENT",
+      "name": "Тайная съемная квартира",
+      "rooms": [
+        {
+          "id": "living",
+          "name": "Гостиная",
+          "unlockFact": "F_SECRET_APT_OPEN"
+        }
+      ]
+    },
+    {
+      "id": "NORA_PRIVATE",
+      "name": "Личная квартира Норы",
+      "rooms": [
+        {
+          "id": "bedroom",
+          "name": "Спальня",
+          "unlockFact": "F_NORA_PRIVATE_OPEN"
+        }
+      ]
+    },
+    {
+      "id": "PROSECUTOR",
+      "name": "Отдельный кабинет прокурора",
+      "rooms": [
+        {
+          "id": "meeting",
+          "name": "Прием прокурора",
+          "unlockFact": null
+        }
+      ]
+    }
+  ],
+  "evidence": [
+    {
+      "id": "E_WRENCH",
+      "type": "object",
+      "source": "construction/stairs",
+      "summary": "Гаечный ключ с кровью потерпевшего и отпечатками Бреннана; не орудие",
+      "requiresManualCollection": true
+    },
+    {
+      "id": "E_BUTTON",
+      "type": "object",
+      "source": "construction/stair_debris",
+      "summary": "Маленькая пуговица у лестницы, видна сразу, легко пропустить",
+      "requiresManualCollection": true
+    },
+    {
+      "id": "E_COAT",
+      "type": "object",
+      "source": "nora_private/bedroom",
+      "summary": "Пальто Норы с отсутствующей пуговицей",
+      "requiresManualCollection": true
+    },
+    {
+      "id": "D_SCENE_PHOTOS",
+      "type": "document",
+      "source": "construction/scene_photo",
+      "summary": "Фотографии места падения",
+      "requiresManualCollection": false
+    },
+    {
+      "id": "D_AUTOPSY",
+      "type": "document",
+      "source": "police/coroner_report",
+      "summary": "Первое заключение о травме головы; точный час смерти неизвестен",
+      "requiresManualCollection": false
+    },
+    {
+      "id": "D_INVOICE_COMPARE",
+      "type": "document",
+      "source": "whitmore_office/richard_work_office",
+      "summary": "Сопоставление завышенных счетов",
+      "requiresManualCollection": false
+    },
+    {
+      "id": "D_RENT_TALLY",
+      "type": "document",
+      "source": "whitmore_office/richard_work_office",
+      "summary": "Ведомость Marlowe Realty; точного адреса квартиры нет",
+      "requiresManualCollection": false
+    },
+    {
+      "id": "D_MARLOWE_OWNER",
+      "type": "document",
+      "source": "police/inbox",
+      "summary": "Ответ: связь фиктивной фирмы с Дэниелом",
+      "requiresManualCollection": false
+    },
+    {
+      "id": "D_APT_ADDRESS",
+      "type": "document",
+      "source": "police/inbox",
+      "summary": "Адрес тайной съемной квартиры",
+      "requiresManualCollection": false
+    },
+    {
+      "id": "D_DIVORCE",
+      "type": "document",
+      "source": "mansion/elizabeth_private",
+      "summary": "След консультации адвоката о разводе",
+      "requiresManualCollection": false
+    },
+    {
+      "id": "D_INSURANCE",
+      "type": "document",
+      "source": "mansion/elizabeth_private",
+      "summary": "Страховой полис жизни Ричарда",
+      "requiresManualCollection": false
+    },
+    {
+      "id": "D_FIRING",
+      "type": "document",
+      "source": "mansion/richard_home_study",
+      "summary": "Проект увольнения Норы, в ящике вместе с письмом",
+      "requiresManualCollection": false
+    },
+    {
+      "id": "D_LETTER",
+      "type": "document",
+      "source": "mansion/richard_home_study",
+      "summary": "Неотправленное письмо о разрыве, в том же ящике",
+      "requiresManualCollection": false
+    },
+    {
+      "id": "D_DIARY",
+      "type": "document",
+      "source": "mansion/richard_home_study",
+      "summary": "Нора. 20:30. Западный объект. Последний разговор",
+      "requiresManualCollection": false
+    },
+    {
+      "id": "D_NORA_ADDRESS",
+      "type": "document",
+      "source": "police/inbox",
+      "summary": "Служебный ответ: личный адрес Норы",
+      "requiresManualCollection": false
+    },
+    {
+      "id": "D_DANIEL_ALIBI",
+      "type": "document",
+      "source": "police/inbox",
+      "summary": "Подтвержденный деловой вечер в Милуоки",
+      "requiresManualCollection": false
+    },
+    {
+      "id": "W_FRANK",
+      "type": "witness",
+      "source": "construction/guard",
+      "summary": "Нашел тело утром, о машине знает только со слов Хейза",
+      "requiresManualCollection": false
+    },
+    {
+      "id": "W_NORA_INITIAL",
+      "type": "witness",
+      "source": "whitmore_office/reception",
+      "summary": "Нора ложно сказала о давнем конце романа и поездке домой",
+      "requiresManualCollection": false
+    },
+    {
+      "id": "W_OWEN",
+      "type": "witness",
+      "source": "construction/foreman",
+      "summary": "Угрозы Бреннана при свидетелях",
+      "requiresManualCollection": false
+    },
+    {
+      "id": "W_ELIZABETH_1",
+      "type": "witness",
+      "source": "mansion/salon",
+      "summary": "Сочувственная первая беседа, подтверждение угроз Бреннана",
+      "requiresManualCollection": false
+    },
+    {
+      "id": "W_BRENNAN_1",
+      "type": "witness",
+      "source": "police/interrogation",
+      "summary": "Бреннан был на объекте и уехал за бумагами, утаивает схему",
+      "requiresManualCollection": false
+    },
+    {
+      "id": "W_GAS",
+      "type": "witness",
+      "source": "gas_station/cashier",
+      "summary": "АЗС подтверждена, точный час неизвестен",
+      "requiresManualCollection": false
+    },
+    {
+      "id": "W_HAYES_1",
+      "type": "witness",
+      "source": "police/interrogation",
+      "summary": "Неопознанная женщина у главных ворот, боковой проход не видел",
+      "requiresManualCollection": false
+    },
+    {
+      "id": "W_ELIZABETH_2",
+      "type": "witness",
+      "source": "mansion/salon",
+      "summary": "Признала приезд к воротам и встречу с Бреннаном",
+      "requiresManualCollection": false
+    },
+    {
+      "id": "W_NORA_AFFAIR",
+      "type": "witness",
+      "source": "secret_apartment/living",
+      "summary": "Нора признала роман без особой улики",
+      "requiresManualCollection": false
+    },
+    {
+      "id": "W_ELIZABETH_AFFAIR",
+      "type": "witness",
+      "source": "mansion/salon",
+      "summary": "Знала роман, угрожала прежде, теперь примирение",
+      "requiresManualCollection": false
+    },
+    {
+      "id": "W_NORA_ALIBI",
+      "type": "witness",
+      "source": "secret_apartment/living",
+      "summary": "Нора назвала соседку Айрин и время ~21:15",
+      "requiresManualCollection": false
+    },
+    {
+      "id": "W_IRENE",
+      "type": "witness",
+      "source": "police/interrogation",
+      "summary": "Айрин правдиво видела Нору дома ~21:15",
+      "requiresManualCollection": false
+    },
+    {
+      "id": "W_HAYES_2",
+      "type": "witness",
+      "source": "police/interrogation",
+      "summary": "Второе отдельное появление: задержан Эдди",
+      "requiresManualCollection": false
+    },
+    {
+      "id": "W_EDDIE",
+      "type": "witness",
+      "source": "police/interrogation",
+      "summary": "Кража, спор без лиц, сон, живой Ричард ~21:25–21:30",
+      "requiresManualCollection": false
+    },
+    {
+      "id": "W_BRENNAN_FIN",
+      "type": "witness",
+      "source": "police/interrogation",
+      "summary": "Бреннан: финансовая роль и чужое руководство схемой",
+      "requiresManualCollection": false
+    },
+    {
+      "id": "W_LILLIAN_FIN",
+      "type": "witness",
+      "source": "whitmore_office/accounting",
+      "summary": "Бухгалтерская сверка спорных платежей",
+      "requiresManualCollection": false
+    },
+    {
+      "id": "W_DANIEL_1",
+      "type": "witness",
+      "source": "whitmore_office/reception",
+      "summary": "Первый разговор после находки счетов",
+      "requiresManualCollection": false
+    },
+    {
+      "id": "W_DANIEL_EXPOSED",
+      "type": "witness",
+      "source": "police/interrogation",
+      "summary": "Дэниел изобличен в мошенничестве, не в убийстве",
+      "requiresManualCollection": false
+    },
+    {
+      "id": "W_NORA_SERIOUS",
+      "type": "witness",
+      "source": "police/interrogation",
+      "summary": "Серьезный допрос Норы; не признание толчка",
+      "requiresManualCollection": false
+    },
+    {
+      "id": "W_NORA_VISIT",
+      "type": "witness",
+      "source": "police/interrogation",
+      "summary": "При сильном предъявлении Нора признала приезд на стройку",
+      "requiresManualCollection": false
+    },
+    {
+      "id": "R_WRENCH",
+      "type": "forensic",
+      "source": "police/forensics",
+      "summary": "Ключ исключен как орудие, кровь попала вторично",
+      "requiresManualCollection": false
+    },
+    {
+      "id": "R_DELAYED",
+      "type": "forensic",
+      "source": "police/forensics",
+      "summary": "Падение совместимо с травмой, отсроченная смерть возможна",
+      "requiresManualCollection": false
+    },
+    {
+      "id": "R_EDDIE_COMPAT",
+      "type": "forensic",
+      "source": "police/forensics",
+      "summary": "Живой Ричард ~21:25 совместим с травмой",
+      "requiresManualCollection": false
+    },
+    {
+      "id": "R_BUTTON_MATCH",
+      "type": "forensic",
+      "source": "police/forensics",
+      "summary": "Пуговица соответствует пальто, не доказывает толчок",
+      "requiresManualCollection": false
+    }
+  ],
+  "requests": [
+    {
+      "id": "REQ_OWNER",
+      "statusFlow": [
+        "not_submitted",
+        "pending",
+        "ready",
+        "collected"
+      ],
+      "usesWallClock": false
+    },
+    {
+      "id": "REQ_SECRET_ADDR",
+      "statusFlow": [
+        "not_submitted",
+        "pending",
+        "ready",
+        "collected"
+      ],
+      "usesWallClock": false
+    },
+    {
+      "id": "REQ_DANIEL_ALIBI",
+      "statusFlow": [
+        "not_submitted",
+        "pending",
+        "ready",
+        "collected"
+      ],
+      "usesWallClock": false
+    },
+    {
+      "id": "REQ_WRENCH",
+      "statusFlow": [
+        "not_submitted",
+        "pending",
+        "ready",
+        "collected"
+      ],
+      "usesWallClock": false
+    },
+    {
+      "id": "REQ_DELAYED",
+      "statusFlow": [
+        "not_submitted",
+        "pending",
+        "ready",
+        "collected"
+      ],
+      "usesWallClock": false
+    },
+    {
+      "id": "REQ_NORA_ADDR",
+      "statusFlow": [
+        "not_submitted",
+        "pending",
+        "ready",
+        "collected"
+      ],
+      "usesWallClock": false
+    },
+    {
+      "id": "REQ_BUTTON",
+      "statusFlow": [
+        "not_submitted",
+        "pending",
+        "ready",
+        "collected"
+      ],
+      "usesWallClock": false
+    }
+  ],
+  "actions": [
+    {
+      "id": "A_START",
+      "label": "Новая игра и интро",
+      "mode": "player",
+      "place": "CONSTRUCTION",
+      "requires": {
+        "always": true
+      },
+      "effects": [
+        {
+          "addFact": "F_GAME_STARTED"
+        }
+      ]
+    },
+    {
+      "id": "A_FRANK",
+      "label": "Поговорить с Фрэнком",
+      "mode": "player",
+      "place": "CONSTRUCTION",
+      "requires": {
+        "fact": "F_GAME_STARTED"
+      },
+      "effects": [
+        {
+          "addCard": "W_FRANK"
+        }
+      ]
+    },
+    {
+      "id": "A_OBSERVE_WRENCH",
+      "label": "Осмотреть ключ",
+      "mode": "player",
+      "place": "CONSTRUCTION",
+      "requires": {
+        "fact": "F_GAME_STARTED"
+      },
+      "effects": [
+        {
+          "addObserved": "OBS_WRENCH"
+        }
+      ]
+    },
+    {
+      "id": "A_COLLECT_WRENCH",
+      "label": "Изъять ключ",
+      "mode": "player",
+      "place": "CONSTRUCTION",
+      "requires": {
+        "observed": "OBS_WRENCH"
+      },
+      "effects": [
+        {
+          "addCard": "E_WRENCH"
+        }
+      ]
+    },
+    {
+      "id": "A_OBSERVE_BUTTON",
+      "label": "Рассмотреть пуговицу",
+      "mode": "player",
+      "place": "CONSTRUCTION",
+      "requires": {
+        "fact": "F_GAME_STARTED"
+      },
+      "effects": [
+        {
+          "addObserved": "OBS_BUTTON"
+        }
+      ]
+    },
+    {
+      "id": "A_COLLECT_BUTTON",
+      "label": "Изъять пуговицу",
+      "mode": "player",
+      "place": "CONSTRUCTION",
+      "requires": {
+        "observed": "OBS_BUTTON"
+      },
+      "effects": [
+        {
+          "addCard": "E_BUTTON"
+        }
+      ]
+    },
+    {
+      "id": "A_SCENE_PHOTOS",
+      "label": "Сделать фотографии места",
+      "mode": "player",
+      "place": "CONSTRUCTION",
+      "requires": {
+        "fact": "F_GAME_STARTED"
+      },
+      "effects": [
+        {
+          "addCard": "D_SCENE_PHOTOS"
+        }
+      ]
+    },
+    {
+      "id": "A_AUTOPSY",
+      "label": "Забрать первое заключение коронера",
+      "mode": "player",
+      "place": "POLICE",
+      "requires": {
+        "card": "W_FRANK"
+      },
+      "effects": [
+        {
+          "addCard": "D_AUTOPSY"
+        }
+      ]
+    },
+    {
+      "id": "A_NORA_OFFICE",
+      "label": "Первый разговор с Норой",
+      "mode": "player",
+      "place": "WHITMORE_OFFICE",
+      "requires": {
+        "fact": "F_GAME_STARTED"
+      },
+      "effects": [
+        {
+          "addCard": "W_NORA_INITIAL"
+        },
+        {
+          "addFact": "F_OWEN_AVAILABLE"
+        },
+        {
+          "addFact": "F_BRENNAN_KNOWN"
+        }
+      ]
+    },
+    {
+      "id": "A_OWEN",
+      "label": "Поговорить с Оуэном",
+      "mode": "player",
+      "place": "CONSTRUCTION",
+      "requires": {
+        "fact": "F_OWEN_AVAILABLE"
+      },
+      "effects": [
+        {
+          "addCard": "W_OWEN"
+        }
+      ]
+    },
+    {
+      "id": "A_ELIZABETH_1",
+      "label": "Первый сочувственный разговор с Элизабет",
+      "mode": "player",
+      "place": "MANSION",
+      "requires": {
+        "fact": "F_GAME_STARTED"
+      },
+      "effects": [
+        {
+          "addCard": "W_ELIZABETH_1"
+        }
+      ]
+    },
+    {
+      "id": "A_BRENNAN_1",
+      "label": "Первый допрос Бреннана",
+      "mode": "player",
+      "place": "POLICE",
+      "requires": {
+        "fact": "F_BRENNAN_KNOWN"
+      },
+      "effects": [
+        {
+          "addCard": "W_BRENNAN_1"
+        },
+        {
+          "addFact": "F_ACCOUNTING_OPEN"
+        },
+        {
+          "addFact": "F_GAS_OPEN"
+        }
+      ]
+    },
+    {
+      "id": "A_GAS",
+      "label": "Опрос кассира АЗС",
+      "mode": "player",
+      "place": "GAS_STATION",
+      "requires": {
+        "fact": "F_GAS_OPEN"
+      },
+      "effects": [
+        {
+          "addCard": "W_GAS"
+        }
+      ]
+    },
+    {
+      "id": "A_LILLIAN_1",
+      "label": "Лилиан указывает на кабинет Ричарда",
+      "mode": "player",
+      "place": "WHITMORE_OFFICE",
+      "requires": {
+        "fact": "F_ACCOUNTING_OPEN"
+      },
+      "effects": [
+        {
+          "addFact": "F_LILLIAN_TOLD_OFFICE"
+        }
+      ]
+    },
+    {
+      "id": "A_WORK_OFFICE",
+      "label": "Нора открывает рабочий кабинет",
+      "mode": "player",
+      "place": "WHITMORE_OFFICE",
+      "requires": {
+        "fact": "F_LILLIAN_TOLD_OFFICE"
+      },
+      "effects": [
+        {
+          "addFact": "F_RICHARD_WORK_OPEN"
+        },
+        {
+          "openRoom": "WHITMORE_OFFICE/richard_work_office"
+        }
+      ]
+    },
+    {
+      "id": "A_INVOICE",
+      "label": "Найти видную папку со счетами",
+      "mode": "player",
+      "place": "WHITMORE_OFFICE",
+      "requires": {
+        "fact": "F_RICHARD_WORK_OPEN"
+      },
+      "effects": [
+        {
+          "addCard": "D_INVOICE_COMPARE"
+        },
+        {
+          "addFact": "F_DANIEL_AVAILABLE"
+        }
+      ]
+    },
+    {
+      "id": "A_RENT_TALLY",
+      "label": "Найти менее заметную арендную ведомость",
+      "mode": "player",
+      "place": "WHITMORE_OFFICE",
+      "requires": {
+        "fact": "F_RICHARD_WORK_OPEN"
+      },
+      "effects": [
+        {
+          "addCard": "D_RENT_TALLY"
+        }
+      ]
+    },
+    {
+      "id": "A_DANIEL_FIRST",
+      "label": "Первая встреча с Дэниелом",
+      "mode": "player",
+      "place": "WHITMORE_OFFICE",
+      "requires": {
+        "card": "D_INVOICE_COMPARE"
+      },
+      "effects": [
+        {
+          "addCard": "W_DANIEL_1"
+        }
+      ]
+    },
+    {
+      "id": "A_BRENNAN_FIN",
+      "label": "Повторный финансовый разговор с Бреннаном",
+      "mode": "player",
+      "place": "POLICE",
+      "requires": {
+        "all": [
+          {
+            "card": "W_BRENNAN_1"
+          },
+          {
+            "card": "D_INVOICE_COMPARE"
+          }
+        ]
+      },
+      "effects": [
+        {
+          "addCard": "W_BRENNAN_FIN"
+        },
+        {
+          "addFact": "F_MEANINGFUL_FIN_STEP"
+        }
+      ]
+    },
+    {
+      "id": "A_LILLIAN_FIN",
+      "label": "Сверить документы с Лилиан",
+      "mode": "player",
+      "place": "WHITMORE_OFFICE",
+      "requires": {
+        "all": [
+          {
+            "fact": "F_ACCOUNTING_OPEN"
+          },
+          {
+            "card": "D_INVOICE_COMPARE"
+          }
+        ]
+      },
+      "effects": [
+        {
+          "addCard": "W_LILLIAN_FIN"
+        },
+        {
+          "addFact": "F_MEANINGFUL_FIN_STEP"
+        }
+      ]
+    },
+    {
+      "id": "A_REQUEST_OWNER",
+      "label": "Отправить запрос собственников Marlowe",
+      "mode": "player",
+      "place": "WHITMORE_OFFICE",
+      "requires": {
+        "card": "D_RENT_TALLY"
+      },
+      "effects": [
+        {
+          "requestUpdate": {
+            "id": "REQ_OWNER",
+            "status": "pending"
+          }
+        }
+      ]
+    },
+    {
+      "id": "A_HAYES_FIRST",
+      "label": "Первый вызов Хейза",
+      "mode": "player",
+      "place": "POLICE",
+      "requires": {
+        "all": [
+          {
+            "card": "W_BRENNAN_1"
+          },
+          {
+            "atLeast": {
+              "n": 2,
+              "of": [
+                {
+                  "any": [
+                    {
+                      "card": "W_OWEN"
+                    },
+                    {
+                      "card": "W_ELIZABETH_1"
+                    }
+                  ]
+                },
+                {
+                  "any": [
+                    {
+                      "observed": "OBS_WRENCH"
+                    },
+                    {
+                      "card": "E_WRENCH"
+                    }
+                  ]
+                },
+                {
+                  "all": [
+                    {
+                      "card": "W_NORA_INITIAL"
+                    },
+                    {
+                      "card": "W_BRENNAN_1"
+                    }
+                  ]
+                }
+              ]
+            }
+          }
+        ]
+      },
+      "effects": [
+        {
+          "addCard": "W_HAYES_1"
+        }
+      ]
+    },
+    {
+      "id": "A_ELIZABETH_2",
+      "label": "Элизабет признает визит к главным воротам",
+      "mode": "player",
+      "place": "MANSION",
+      "requires": {
+        "all": [
+          {
+            "card": "W_HAYES_1"
+          },
+          {
+            "card": "W_ELIZABETH_1"
+          }
+        ]
+      },
+      "effects": [
+        {
+          "addCard": "W_ELIZABETH_2"
+        }
+      ]
+    },
+    {
+      "id": "A_ELIZABETH_GAP",
+      "label": "Отсутствие позднего подтвержденного алиби Элизабет",
+      "mode": "player",
+      "place": "MANSION",
+      "requires": {
+        "card": "W_ELIZABETH_2"
+      },
+      "effects": [
+        {
+          "addFact": "F_ELIZABETH_ALIBI_GAP"
+        }
+      ]
+    },
+    {
+      "id": "A_ELIZABETH_PRIVATE",
+      "label": "Открыть личные помещения Элизабет",
+      "mode": "player",
+      "place": "MANSION",
+      "requires": {
+        "suspect": "ELIZABETH"
+      },
+      "effects": [
+        {
+          "addFact": "F_ELIZABETH_PRIVATE_OPEN"
+        },
+        {
+          "openRoom": "MANSION/elizabeth_private"
+        }
+      ]
+    },
+    {
+      "id": "A_INSURANCE",
+      "label": "Изучить страховой полис",
+      "mode": "player",
+      "place": "MANSION",
+      "requires": {
+        "all": [
+          {
+            "fact": "F_ELIZABETH_PRIVATE_OPEN"
+          },
+          {
+            "card": "W_ELIZABETH_2"
+          }
+        ]
+      },
+      "effects": [
+        {
+          "addCard": "D_INSURANCE"
+        }
+      ]
+    },
+    {
+      "id": "A_DIVORCE",
+      "label": "Изучить консультацию по разводу",
+      "mode": "player",
+      "place": "MANSION",
+      "requires": {
+        "all": [
+          {
+            "fact": "F_ELIZABETH_PRIVATE_OPEN"
+          },
+          {
+            "card": "W_ELIZABETH_2"
+          }
+        ]
+      },
+      "effects": [
+        {
+          "addCard": "D_DIVORCE"
+        }
+      ]
+    },
+    {
+      "id": "A_BRENNAN_AFTER_HAYES",
+      "label": "Уточнить с Бреннаном время отъезда после сведений Хейза",
+      "mode": "player",
+      "place": "POLICE",
+      "requires": {
+        "all": [
+          {
+            "card": "W_BRENNAN_1"
+          },
+          {
+            "card": "W_HAYES_1"
+          }
+        ]
+      },
+      "effects": [
+        {
+          "addFact": "F_MEANINGFUL_POST_HAYES"
+        }
+      ]
+    },
+    {
+      "id": "A_FINANCE_AFTER_HAYES",
+      "label": "Повторно сверить счета с Лилиан после сведений Хейза",
+      "mode": "player",
+      "place": "WHITMORE_OFFICE",
+      "requires": {
+        "all": [
+          {
+            "card": "W_HAYES_1"
+          },
+          {
+            "card": "D_INVOICE_COMPARE"
+          }
+        ]
+      },
+      "effects": [
+        {
+          "addFact": "F_MEANINGFUL_POST_HAYES"
+        }
+      ]
+    },
+    {
+      "id": "A_WRENCH_REQUEST",
+      "label": "Заказать первый отчет по ключу",
+      "mode": "player",
+      "place": "POLICE",
+      "requires": {
+        "all": [
+          {
+            "card": "E_WRENCH"
+          },
+          {
+            "any": [
+              {
+                "fact": "F_ELIZABETH_ALIBI_GAP"
+              },
+              {
+                "all": [
+                  {
+                    "card": "W_BRENNAN_1"
+                  },
+                  {
+                    "card": "W_HAYES_1"
+                  },
+                  {
+                    "fact": "F_MEANINGFUL_POST_HAYES"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "effects": [
+        {
+          "requestUpdate": {
+            "id": "REQ_WRENCH",
+            "status": "pending"
+          }
+        }
+      ]
+    },
+    {
+      "id": "AUTO_WRENCH_READY",
+      "label": "Первый отчет готов",
+      "mode": "auto",
+      "place": null,
+      "requires": {
+        "request": {
+          "id": "REQ_WRENCH",
+          "status": "pending"
+        }
+      },
+      "effects": [
+        {
+          "requestUpdate": {
+            "id": "REQ_WRENCH",
+            "status": "ready"
+          }
+        }
+      ]
+    },
+    {
+      "id": "A_WRENCH_GET",
+      "label": "Получить первый отчет о ключе",
+      "mode": "player",
+      "place": "POLICE",
+      "requires": {
+        "request": {
+          "id": "REQ_WRENCH",
+          "status": "ready"
+        }
+      },
+      "effects": [
+        {
+          "requestUpdate": {
+            "id": "REQ_WRENCH",
+            "status": "collected"
+          }
+        },
+        {
+          "addCard": "R_WRENCH"
+        }
+      ]
+    },
+    {
+      "id": "AUTO_OWNER_READY",
+      "label": "Ответ по Marlowe готов",
+      "mode": "auto",
+      "place": null,
+      "requires": {
+        "all": [
+          {
+            "request": {
+              "id": "REQ_OWNER",
+              "status": "pending"
+            }
+          },
+          {
+            "any": [
+              {
+                "card": "W_BRENNAN_FIN"
+              },
+              {
+                "card": "W_LILLIAN_FIN"
+              },
+              {
+                "all": [
+                  {
+                    "fact": "F_ELIZABETH_ALIBI_GAP"
+                  },
+                  {
+                    "card": "R_WRENCH"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "effects": [
+        {
+          "requestUpdate": {
+            "id": "REQ_OWNER",
+            "status": "ready"
+          }
+        }
+      ]
+    },
+    {
+      "id": "A_OWNER_GET",
+      "label": "Получить ответ по владельцу Marlowe",
+      "mode": "player",
+      "place": "POLICE",
+      "requires": {
+        "request": {
+          "id": "REQ_OWNER",
+          "status": "ready"
+        }
+      },
+      "effects": [
+        {
+          "requestUpdate": {
+            "id": "REQ_OWNER",
+            "status": "collected"
+          }
+        },
+        {
+          "addCard": "D_MARLOWE_OWNER"
+        }
+      ]
+    },
+    {
+      "id": "A_CHECK_RENT",
+      "label": "Попросить проверить назначение арендного платежа",
+      "mode": "player",
+      "place": "POLICE",
+      "requires": {
+        "card": "D_RENT_TALLY"
+      },
+      "effects": [
+        {
+          "addFact": "F_RENT_TRACE_REQUESTED"
+        }
+      ]
+    },
+    {
+      "id": "A_ADDRESS_REQUEST",
+      "label": "Запросить адрес тайной квартиры",
+      "mode": "player",
+      "place": "POLICE",
+      "requires": {
+        "all": [
+          {
+            "card": "D_RENT_TALLY"
+          },
+          {
+            "any": [
+              {
+                "fact": "F_RENT_TRACE_REQUESTED"
+              },
+              {
+                "card": "D_MARLOWE_OWNER"
+              }
+            ]
+          }
+        ]
+      },
+      "effects": [
+        {
+          "requestUpdate": {
+            "id": "REQ_SECRET_ADDR",
+            "status": "pending"
+          }
+        }
+      ]
+    },
+    {
+      "id": "AUTO_ADDRESS_READY",
+      "label": "Адрес тайной квартиры готов",
+      "mode": "auto",
+      "place": null,
+      "requires": {
+        "request": {
+          "id": "REQ_SECRET_ADDR",
+          "status": "pending"
+        }
+      },
+      "effects": [
+        {
+          "requestUpdate": {
+            "id": "REQ_SECRET_ADDR",
+            "status": "ready"
+          }
+        }
+      ]
+    },
+    {
+      "id": "A_ADDRESS_GET",
+      "label": "Забрать адрес тайной квартиры",
+      "mode": "player",
+      "place": "POLICE",
+      "requires": {
+        "request": {
+          "id": "REQ_SECRET_ADDR",
+          "status": "ready"
+        }
+      },
+      "effects": [
+        {
+          "requestUpdate": {
+            "id": "REQ_SECRET_ADDR",
+            "status": "collected"
+          }
+        },
+        {
+          "addCard": "D_APT_ADDRESS"
+        },
+        {
+          "addFact": "F_SECRET_APT_OPEN"
+        },
+        {
+          "openRoom": "SECRET_APARTMENT/living"
+        }
+      ]
+    },
+    {
+      "id": "A_DANIEL_EXPOSE",
+      "label": "Разоблачить финансовую схему Дэниела",
+      "mode": "player",
+      "place": "POLICE",
+      "requires": {
+        "all": [
+          {
+            "card": "D_INVOICE_COMPARE"
+          },
+          {
+            "card": "D_MARLOWE_OWNER"
+          }
+        ]
+      },
+      "effects": [
+        {
+          "addCard": "W_DANIEL_EXPOSED"
+        }
+      ]
+    },
+    {
+      "id": "A_DANIEL_ALIBI_REQUEST",
+      "label": "Проверить алиби Дэниела",
+      "mode": "player",
+      "place": "POLICE",
+      "requires": {
+        "any": [
+          {
+            "card": "W_DANIEL_EXPOSED"
+          },
+          {
+            "all": [
+              {
+                "suspect": "DANIEL"
+              },
+              {
+                "card": "D_INVOICE_COMPARE"
+              }
+            ]
+          }
+        ]
+      },
+      "effects": [
+        {
+          "requestUpdate": {
+            "id": "REQ_DANIEL_ALIBI",
+            "status": "pending"
+          }
+        }
+      ]
+    },
+    {
+      "id": "AUTO_DANIEL_ALIBI_READY",
+      "label": "Справка по Милуоки готова",
+      "mode": "auto",
+      "place": null,
+      "requires": {
+        "request": {
+          "id": "REQ_DANIEL_ALIBI",
+          "status": "pending"
+        }
+      },
+      "effects": [
+        {
+          "requestUpdate": {
+            "id": "REQ_DANIEL_ALIBI",
+            "status": "ready"
+          }
+        }
+      ]
+    },
+    {
+      "id": "A_DANIEL_ALIBI_GET",
+      "label": "Получить справку по Милуоки",
+      "mode": "player",
+      "place": "POLICE",
+      "requires": {
+        "request": {
+          "id": "REQ_DANIEL_ALIBI",
+          "status": "ready"
+        }
+      },
+      "effects": [
+        {
+          "requestUpdate": {
+            "id": "REQ_DANIEL_ALIBI",
+            "status": "collected"
+          }
+        },
+        {
+          "addCard": "D_DANIEL_ALIBI"
+        }
+      ]
+    },
+    {
+      "id": "A_NORA_AFFAIR",
+      "label": "В тайной квартире Нора признает роман",
+      "mode": "player",
+      "place": "SECRET_APARTMENT",
+      "requires": {
+        "card": "D_APT_ADDRESS"
+      },
+      "effects": [
+        {
+          "addCard": "W_NORA_AFFAIR"
+        }
+      ]
+    },
+    {
+      "id": "A_NORA_ALIBI",
+      "label": "Нора называет соседку",
+      "mode": "player",
+      "place": "WHITMORE_OFFICE",
+      "requires": {
+        "card": "W_NORA_AFFAIR"
+      },
+      "effects": [
+        {
+          "addCard": "W_NORA_ALIBI"
+        },
+        {
+          "addFact": "F_IRENE_CALL_AVAILABLE"
+        }
+      ]
+    },
+    {
+      "id": "A_IRENE_CALL",
+      "label": "Вызвать Айрин в участок",
+      "mode": "player",
+      "place": "POLICE",
+      "requires": {
+        "fact": "F_IRENE_CALL_AVAILABLE"
+      },
+      "effects": [
+        {
+          "addFact": "F_IRENE_AT_STATION"
+        }
+      ]
+    },
+    {
+      "id": "A_IRENE_INTERVIEW",
+      "label": "Допросить Айрин",
+      "mode": "player",
+      "place": "POLICE",
+      "requires": {
+        "fact": "F_IRENE_AT_STATION"
+      },
+      "effects": [
+        {
+          "addCard": "W_IRENE"
+        }
+      ]
+    },
+    {
+      "id": "A_ELIZABETH_AFFAIR",
+      "label": "Повторный разговор с Элизабет о романе",
+      "mode": "player",
+      "place": "MANSION",
+      "requires": {
+        "card": "W_NORA_AFFAIR"
+      },
+      "effects": [
+        {
+          "addCard": "W_ELIZABETH_AFFAIR"
+        }
+      ]
+    },
+    {
+      "id": "A_DELAYED_REQUEST",
+      "label": "Заказать доп. медицинский анализ",
+      "mode": "player",
+      "place": "POLICE",
+      "requires": {
+        "all": [
+          {
+            "card": "D_SCENE_PHOTOS"
+          },
+          {
+            "card": "D_AUTOPSY"
+          },
+          {
+            "card": "W_NORA_AFFAIR"
+          }
+        ]
+      },
+      "effects": [
+        {
+          "requestUpdate": {
+            "id": "REQ_DELAYED",
+            "status": "pending"
+          }
+        }
+      ]
+    },
+    {
+      "id": "AUTO_DELAYED_READY",
+      "label": "Дополнительное заключение готово",
+      "mode": "auto",
+      "place": null,
+      "requires": {
+        "request": {
+          "id": "REQ_DELAYED",
+          "status": "pending"
+        }
+      },
+      "effects": [
+        {
+          "requestUpdate": {
+            "id": "REQ_DELAYED",
+            "status": "ready"
+          }
+        }
+      ]
+    },
+    {
+      "id": "A_DELAYED_GET",
+      "label": "Получить доп. заключение",
+      "mode": "player",
+      "place": "POLICE",
+      "requires": {
+        "request": {
+          "id": "REQ_DELAYED",
+          "status": "ready"
+        }
+      },
+      "effects": [
+        {
+          "requestUpdate": {
+            "id": "REQ_DELAYED",
+            "status": "collected"
+          }
+        },
+        {
+          "addCard": "R_DELAYED"
+        }
+      ]
+    },
+    {
+      "id": "A_HAYES_SECOND",
+      "label": "Второй отдельный вызов Хейза",
+      "mode": "player",
+      "place": "POLICE",
+      "requires": {
+        "all": [
+          {
+            "card": "W_HAYES_1"
+          },
+          {
+            "card": "W_NORA_AFFAIR"
+          },
+          {
+            "any": [
+              {
+                "card": "W_ELIZABETH_AFFAIR"
+              },
+              {
+                "card": "R_DELAYED"
+              }
+            ]
+          }
+        ]
+      },
+      "effects": [
+        {
+          "addCard": "W_HAYES_2"
+        },
+        {
+          "addFact": "F_EDDIE_AT_STATION"
+        }
+      ]
+    },
+    {
+      "id": "A_EDDIE",
+      "label": "Полный допрос Эдди",
+      "mode": "player",
+      "place": "POLICE",
+      "requires": {
+        "fact": "F_EDDIE_AT_STATION"
+      },
+      "effects": [
+        {
+          "addCard": "W_EDDIE"
+        }
+      ]
+    },
+    {
+      "id": "A_EDDIE_COMPAT",
+      "label": "Дополнительный разговор с экспертом о времени",
+      "mode": "player",
+      "place": "POLICE",
+      "requires": {
+        "all": [
+          {
+            "card": "W_EDDIE"
+          },
+          {
+            "card": "R_DELAYED"
+          }
+        ]
+      },
+      "effects": [
+        {
+          "addCard": "R_EDDIE_COMPAT"
+        }
+      ]
+    },
+    {
+      "id": "A_HOME_STUDY",
+      "label": "Элизабет открывает домашний кабинет",
+      "mode": "player",
+      "place": "MANSION",
+      "requires": {
+        "all": [
+          {
+            "card": "W_NORA_AFFAIR"
+          },
+          {
+            "any": [
+              {
+                "card": "W_EDDIE"
+              },
+              {
+                "card": "R_DELAYED"
+              }
+            ]
+          }
+        ]
+      },
+      "effects": [
+        {
+          "addFact": "F_HOME_STUDY_OPEN"
+        },
+        {
+          "openRoom": "MANSION/richard_home_study"
+        }
+      ]
+    },
+    {
+      "id": "A_HOME_DRAWER",
+      "label": "Найти письмо и увольнение в ящике",
+      "mode": "player",
+      "place": "MANSION",
+      "requires": {
+        "fact": "F_HOME_STUDY_OPEN"
+      },
+      "effects": [
+        {
+          "addCard": "D_FIRING"
+        },
+        {
+          "addCard": "D_LETTER"
+        }
+      ]
+    },
+    {
+      "id": "A_HOME_DIARY",
+      "label": "Найти ежедневник отдельно на столе",
+      "mode": "player",
+      "place": "MANSION",
+      "requires": {
+        "fact": "F_HOME_STUDY_OPEN"
+      },
+      "effects": [
+        {
+          "addCard": "D_DIARY"
+        }
+      ]
+    },
+    {
+      "id": "A_NORA_ADDRESS_REQ",
+      "label": "Запросить личный адрес Норы",
+      "mode": "player",
+      "place": "POLICE",
+      "requires": {
+        "all": [
+          {
+            "suspect": "NORA"
+          },
+          {
+            "card": "D_DIARY"
+          },
+          {
+            "any": [
+              {
+                "card": "D_FIRING"
+              },
+              {
+                "card": "D_LETTER"
+              }
+            ]
+          }
+        ]
+      },
+      "effects": [
+        {
+          "requestUpdate": {
+            "id": "REQ_NORA_ADDR",
+            "status": "pending"
+          }
+        }
+      ]
+    },
+    {
+      "id": "AUTO_NORA_ADDRESS_READY",
+      "label": "Адрес Норы готов",
+      "mode": "auto",
+      "place": null,
+      "requires": {
+        "request": {
+          "id": "REQ_NORA_ADDR",
+          "status": "pending"
+        }
+      },
+      "effects": [
+        {
+          "requestUpdate": {
+            "id": "REQ_NORA_ADDR",
+            "status": "ready"
+          }
+        }
+      ]
+    },
+    {
+      "id": "A_NORA_ADDRESS_GET",
+      "label": "Получить личный адрес Норы",
+      "mode": "player",
+      "place": "POLICE",
+      "requires": {
+        "request": {
+          "id": "REQ_NORA_ADDR",
+          "status": "ready"
+        }
+      },
+      "effects": [
+        {
+          "requestUpdate": {
+            "id": "REQ_NORA_ADDR",
+            "status": "collected"
+          }
+        },
+        {
+          "addCard": "D_NORA_ADDRESS"
+        },
+        {
+          "addFact": "F_NORA_PRIVATE_OPEN"
+        },
+        {
+          "openRoom": "NORA_PRIVATE/bedroom"
+        }
+      ]
+    },
+    {
+      "id": "A_OBSERVE_COAT",
+      "label": "Осмотреть пальто",
+      "mode": "player",
+      "place": "NORA_PRIVATE",
+      "requires": {
+        "fact": "F_NORA_PRIVATE_OPEN"
+      },
+      "effects": [
+        {
+          "addObserved": "OBS_COAT"
+        }
+      ]
+    },
+    {
+      "id": "A_COLLECT_COAT",
+      "label": "Изъять пальто",
+      "mode": "player",
+      "place": "NORA_PRIVATE",
+      "requires": {
+        "observed": "OBS_COAT"
+      },
+      "effects": [
+        {
+          "addCard": "E_COAT"
+        }
+      ]
+    },
+    {
+      "id": "A_NORA_SERIOUS",
+      "label": "Официальный допрос Норы",
+      "mode": "player",
+      "place": "POLICE",
+      "requires": {
+        "all": [
+          {
+            "suspect": "NORA"
+          },
+          {
+            "card": "D_DIARY"
+          }
+        ]
+      },
+      "effects": [
+        {
+          "addCard": "W_NORA_SERIOUS"
+        }
+      ]
+    },
+    {
+      "id": "A_NORA_VISIT",
+      "label": "Нора признает визит при сильном предъявлении",
+      "mode": "player",
+      "place": "POLICE",
+      "requires": {
+        "all": [
+          {
+            "card": "W_NORA_SERIOUS"
+          },
+          {
+            "card": "D_DIARY"
+          },
+          {
+            "card": "D_LETTER"
+          },
+          {
+            "card": "D_FIRING"
+          }
+        ]
+      },
+      "effects": [
+        {
+          "addCard": "W_NORA_VISIT"
+        }
+      ]
+    },
+    {
+      "id": "A_BUTTON_COAT_LINK",
+      "label": "Соединить карточки нитью и выбрать гипотезу",
+      "mode": "player",
+      "place": "BOARD",
+      "requires": {
+        "all": [
+          {
+            "card": "E_BUTTON"
+          },
+          {
+            "card": "E_COAT"
+          }
+        ]
+      },
+      "effects": [
+        {
+          "addFact": "F_BUTTON_LINK_LAB_REQUESTABLE"
+        }
+      ]
+    },
+    {
+      "id": "A_BUTTON_LAB_REQ",
+      "label": "Заказать лабораторное сопоставление",
+      "mode": "player",
+      "place": "POLICE",
+      "requires": {
+        "fact": "F_BUTTON_LINK_LAB_REQUESTABLE"
+      },
+      "effects": [
+        {
+          "requestUpdate": {
+            "id": "REQ_BUTTON",
+            "status": "pending"
+          }
+        }
+      ]
+    },
+    {
+      "id": "AUTO_BUTTON_READY",
+      "label": "Заключение о пуговице готово",
+      "mode": "auto",
+      "place": null,
+      "requires": {
+        "request": {
+          "id": "REQ_BUTTON",
+          "status": "pending"
+        }
+      },
+      "effects": [
+        {
+          "requestUpdate": {
+            "id": "REQ_BUTTON",
+            "status": "ready"
+          }
+        }
+      ]
+    },
+    {
+      "id": "A_BUTTON_GET",
+      "label": "Получить заключение о пуговице",
+      "mode": "player",
+      "place": "POLICE",
+      "requires": {
+        "request": {
+          "id": "REQ_BUTTON",
+          "status": "ready"
+        }
+      },
+      "effects": [
+        {
+          "requestUpdate": {
+            "id": "REQ_BUTTON",
+            "status": "collected"
+          }
+        },
+        {
+          "addCard": "R_BUTTON_MATCH"
+        }
+      ]
+    }
+  ],
+  "finalRules": {
+    "selectedEvidenceOnly": true,
+    "priority": [
+      "NORA_CONVICTED",
+      "NORA_ACQUITTED",
+      "BRENNAN_WRONGFUL_CONVICTION",
+      "BRENNAN_ACQUITTED",
+      "ELIZABETH_ACQUITTED",
+      "DANIEL_DISMISSED",
+      "EDDIE_DISMISSED",
+      "HAYES_DISMISSED",
+      "OTHER_DISMISSED"
+    ],
+    "NORA_CONVICTED": {
+      "defendant": "NORA",
+      "all": [
+        "R_BUTTON_MATCH",
+        "E_BUTTON",
+        "E_COAT",
+        "D_DIARY",
+        "W_NORA_SERIOUS"
+      ],
+      "oneFromEach": [
+        [
+          "D_FIRING",
+          "D_LETTER"
+        ],
+        [
+          "R_DELAYED",
+          "W_EDDIE",
+          "R_EDDIE_COMPAT"
+        ]
+      ]
+    },
+    "NORA_ACQUITTED": {
+      "defendant": "NORA",
+      "otherwise": true
+    },
+    "BRENNAN_WRONGFUL_CONVICTION": {
+      "defendant": "BRENNAN",
+      "all": [
+        "W_OWEN",
+        "W_BRENNAN_1",
+        "E_WRENCH"
+      ],
+      "oneFromEach": [
+        [
+          "W_ELIZABETH_1",
+          "W_NORA_INITIAL",
+          "W_FRANK"
+        ]
+      ],
+      "none": [
+        "R_WRENCH"
+      ]
+    },
+    "BRENNAN_ACQUITTED": {
+      "defendant": "BRENNAN",
+      "otherwise": true
+    },
+    "ELIZABETH_ACQUITTED": {
+      "defendant": "ELIZABETH",
+      "otherwise": true
+    },
+    "DANIEL_DISMISSED": {
+      "defendant": "DANIEL",
+      "otherwise": true
+    },
+    "EDDIE_DISMISSED": {
+      "defendant": "EDDIE",
+      "otherwise": true
+    },
+    "HAYES_DISMISSED": {
+      "defendant": "HAYES",
+      "otherwise": true
+    },
+    "OTHER_DISMISSED": {
+      "defendant": "ANY_OTHER",
+      "otherwise": true
+    },
+    "EMPTY_FILE_REPRIMAND": {
+      "emptyPacket": true,
+      "presentationalVariantOf": "OTHER_DISMISSED"
+    }
+  },
+  "boardSpecialRule": {
+    "sourceCards": [
+      "E_BUTTON",
+      "E_COAT"
+    ],
+    "explicitThread": true,
+    "hypothesisChoice": "H_BUTTON_COAT_SIMILAR",
+    "unlocks": "F_BUTTON_LINK_LAB_REQUESTABLE"
+  },
+  "truthGuards": [
+    "Nora inflicted fatal injury by an unplanned shove",
+    "Irene genuinely saw Nora home about 21:15",
+    "Eddie saw alive Richard about 21:25-21:30 but does not know argument time",
+    "No in-game arrival log for Richard at 20:18",
+    "Wrench is not injury causing weapon",
+    "Daniel guilty of financial fraud, not homicide",
+    "Incorrect endings never reveal Nora"
+  ],
+  "implementationNotes": [
+    "Physical item inspected != collected",
+    "Second Hayes interview distinct from first",
+    "All pending requests fetched at station",
+    "Only court selected cards matter",
+    "Case flags remain after suspect status toggled",
+    "No timers",
+    "Board user labels do not open scenes"
+  ]
+}
