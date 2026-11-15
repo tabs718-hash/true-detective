@@ -1,0 +1,10 @@
+import 'fake-indexeddb/auto';
+import { beforeEach, expect, test } from 'vitest';
+import { clearGame, inspectStorage, loadManual, markFinished, saveManual } from '../src/persistence/save';
+import { selectPacket, submitCase } from '../src/engine/engine';
+import { beforeAffair } from './routes';
+beforeEach(async()=>{await clearGame()});
+test('одна ручная ячейка перезаписывается',async()=>{const s=beforeAffair();await saveManual(s);const n=selectPacket(s,{defendant:'ELIZABETH',selectedCardIds:['W_FRANK']});await saveManual(n);expect(await loadManual()).toEqual(n);expect((await inspectStorage()).finished).toBeNull()});
+test('финал атомарно удаляет слот и запрещает загрузку после перезахода',async()=>{const s=beforeAffair();await saveManual(s);const ended=submitCase(selectPacket(s,{defendant:'ELIZABETH',selectedCardIds:['W_FRANK']}));await markFinished(ended);expect((await inspectStorage()).save).toBeNull();expect((await inspectStorage()).finished?.endingId).toBe('ELIZABETH_ACQUITTED');await expect(loadManual()).rejects.toThrow(/завершено/);await expect(saveManual(s)).rejects.toThrow(/финала/)});
+test('новая игра снимает финальную блокировку и очищает слот',async()=>{const s=beforeAffair();await markFinished(submitCase(selectPacket(s,{defendant:'ELIZABETH',selectedCardIds:[]})));await clearGame();await expect(loadManual()).rejects.toThrow(/пока нет/);await saveManual(s);expect(await loadManual()).toEqual(s)});
+test('одновременное позднее сохранение не отменяет финал',async()=>{const s=beforeAffair();const ended=submitCase(selectPacket(s,{defendant:'ELIZABETH',selectedCardIds:['W_FRANK']}));await Promise.allSettled([markFinished(ended),saveManual(s)]);expect((await inspectStorage()).save).toBeNull();expect((await inspectStorage()).finished).toEqual(ended)});
