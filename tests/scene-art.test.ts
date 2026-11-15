@@ -9,7 +9,7 @@ import { SceneEvidence } from '../src/features/SceneEvidence';
 import { Scene } from '../src/features/Scene';
 import { initialState, travel } from '../src/engine/engine';
 import type { GameState } from '../src/engine/types';
-import { sequence } from './routes';
+import { beforeAffair, sequence } from './routes';
 
 function evidence(game: GameState, width = 1536, height = 1024) {
   return renderToStaticMarkup(createElement(SceneEvidence, { game, width, height, onItem: () => { throw new Error('Осмотр не должен запускаться при рендере'); } }));
@@ -22,7 +22,7 @@ test('каждый план имеет фон, а реалистичные ре�
     const art = sceneArt(room.art);
     expect(existsSync('public' + art.src)).toBe(true);
     expect(existsSync('public' + art.fallback)).toBe(true);
-    if (art.src === art.fallback) continue;
+    expect(art.src).not.toBe(art.fallback);
     const entry = manifest.assets.find(asset => art.src === '/assets/realistic/' + asset.file);
     expect(entry).toBeDefined();
     const bytes = readFileSync('public' + art.src);
@@ -34,6 +34,31 @@ test('каждый план имеет фон, а реалистичные ре�
     used.add(entry!.file);
   }
   expect([...used].sort()).toEqual(manifest.assets.map(a => a.file).sort());
+});
+
+test('домашний кабинет сохраняет два независимых осмотра в любом порядке', () => {
+  let game = sequence(beforeAffair(), ['A_DELAYED_REQUEST', 'A_DELAYED_GET', 'A_HOME_STUDY']);
+  game = travel(game, 'MANSION', 'richard_home_study');
+  const render = (state: GameState) => renderToStaticMarkup(createElement(Scene, {
+    game: state, onTravel: () => {}, onAct: () => {}, onItem: () => {}, onDetail: () => {}, onConsult: () => {}
+  }));
+  const first = render(game);
+  expect(first).toContain('/assets/realistic/rooms/mansion-study.png');
+  expect(first).toContain('data-action="A_HOME_DRAWER"');
+  expect(first).toContain('data-action="A_HOME_DIARY"');
+  expect(game.collectedCards).not.toContain('D_DIARY');
+  expect(game.collectedCards).not.toContain('D_LETTER');
+  expect(game.collectedCards).not.toContain('D_FIRING');
+  for (const [firstAction, secondAction] of [['A_HOME_DRAWER', 'A_HOME_DIARY'], ['A_HOME_DIARY', 'A_HOME_DRAWER']]) {
+    const one = sequence(game, [firstAction]);
+    expect(render(one)).not.toContain(`data-action="${firstAction}"`);
+    expect(render(one)).toContain(`data-action="${secondAction}"`);
+    if (firstAction === 'A_HOME_DIARY') {
+      expect(one.collectedCards).not.toContain('D_LETTER');
+      expect(one.collectedCards).not.toContain('D_FIRING');
+    } else expect(one.collectedCards).not.toContain('D_DIARY');
+    expect(sequence(one, [secondAction]).collectedCards).toEqual(expect.arrayContaining(['D_DIARY', 'D_LETTER', 'D_FIRING']));
+  }
 });
 
 test('новый рабочий фон не выдаёт документы: точки осмотра исчезают отдельно после действия', () => {

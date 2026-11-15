@@ -3,7 +3,7 @@
   "method": "OpenAI image generation tool; original generated PNG, unmodified",
   "setting": "Chicago, autumn 1966; color cinematic environment studies",
   "purpose": "Environment only. All collectible evidence remains separate interactive artwork.",
-  "historical_review": "Construction skyline corrected to low-rise industrial buildings; no post-1966 landmark retained. Interior props reviewed in source images without launching a browser. Version 0.6 adds a mechanical gasoline station register, clearly distinct rented sitting room and private bedroom, and a neutral civilian prosecutor office. No built-in coat, clocks, readable story documents or modern devices. Version 0.7 adds a plain interview room, optical forensic office with closed anonymous packages, mechanical bookkeeping room and separate corporate work office. No case results or readable document contents are embedded.",
+  "historical_review": "Construction skyline corrected to low-rise industrial buildings; no post-1966 landmark retained. Interior props reviewed in source images without launching a browser. Version 0.6 adds a mechanical gasoline station register, clearly distinct rented sitting room and private bedroom, and a neutral civilian prosecutor office. No built-in coat, clocks, readable story documents or modern devices. Version 0.7 adds a plain interview room, optical forensic office with closed anonymous packages, mechanical bookkeeping room and separate corporate work office. No case results or readable document contents are embedded. Version 0.8 completes all seventeen room backgrounds: gate sightlines are blocked toward the far side; side passage turns out of view; storage is anonymous normal material storage; Elizabeth has neutral private domestic rooms; home study has a closed drawer and a closed unmarked notebook with no readable plot information.",
   "assets": [
     {
       "file": "construction.png",
@@ -53,6 +53,41 @@
       "height": 1024,
       "bytes": 2335029,
       "sha256": "7cc3389229b4e421e2ad1d90075d19494fe0eba090d9b58bae81a9598af6aaec"
+    },
+    {
+      "file": "rooms/construction-gate.png",
+      "width": 1536,
+      "height": 1024,
+      "bytes": 3107569,
+      "sha256": "c84724c5fab318d2470dd81d8861bdc2ac70b67cede59f9cfff705e03eb77247"
+    },
+    {
+      "file": "rooms/construction-side.png",
+      "width": 1536,
+      "height": 1024,
+      "bytes": 3464989,
+      "sha256": "553e4f12001cbaa0b29272f8d3f6ed7c1aeeadb821ec58138a872071f7b77269"
+    },
+    {
+      "file": "rooms/construction-storage.png",
+      "width": 1536,
+      "height": 1024,
+      "bytes": 2637476,
+      "sha256": "23db7f1d06c4e8f58659c9495729a877bc77b0a02f0d860e96148721673f0cc2"
+    },
+    {
+      "file": "rooms/mansion-elizabeth.png",
+      "width": 1536,
+      "height": 1024,
+      "bytes": 2659087,
+      "sha256": "b79f00e43127033e05f0c7845460b45424b9ac78dd45ba2476acc1ae6966a5da"
+    },
+    {
+      "file": "rooms/mansion-study.png",
+      "width": 1536,
+      "height": 1024,
+      "bytes": 2386623,
+      "sha256": "08515fd6469c752563ab371479f3e508418b0e4d1eeae6bf3ae9422a7e6cdf5f"
     },
     {
       "file": "rooms/office-accounting.png",
