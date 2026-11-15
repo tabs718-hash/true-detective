@@ -1,0 +1,4 @@
+.settings-fullscreen { margin-top: 22px; padding-bottom: 19px; border-bottom: 1px solid #c6cdb8; }
+.fullscreen-row { display: flex; align-items: center; justify-content: space-between; gap: 22px; margin-bottom: 9px; color: #4c6246; font-size: 12px; }
+.fullscreen-row .secondary { min-width: 190px; padding: 10px 13px; }
+.settings-fullscreen .fullscreen-error { color: #81503b; }
