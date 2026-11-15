@@ -7,6 +7,7 @@ import { buildFinale, type FinalePhase } from '../cases/chuzhoe-alibi/court';
 import { cardTitle, typeSingular } from '../cases/chuzhoe-alibi/content';
 import { cards, characters } from '../engine/case';
 import { saveEndingProgress } from '../persistence/save';
+import { DocumentFacsimile } from '../ui/DocumentFacsimile';
 import { Modal } from '../ui/Modal';
 import type { SoundEvent } from '../ui/sound-design';
 
@@ -70,6 +71,6 @@ export function EndingPlayer({ game, onProgress, onNewGame, notice, onSound, onE
       {final && index > 0 && <button className="finale-skip" disabled={busy} onClick={() => void go(0)}>Пересмотреть финал</button>}
     </main>
     <footer className="finale-footer"><span>Чикаго · осень 1966</span><span>Художественная редакция · тестовая версия</span></footer>
-    {card && game.casePacket.selectedCardIds.includes(card) && <Modal title={cardTitle(card)} onClose={() => setCard(null)}><span className="card-kind">{typeSingular[cards[card].type]}</span><p className="detail-text">{cards[card].summary}</p><button className="primary" onClick={() => setCard(null)}>Вернуться к сцене</button></Modal>}
+    {card && game.casePacket.selectedCardIds.includes(card) && <Modal title={cardTitle(card)} onClose={() => setCard(null)}><span className="card-kind">{typeSingular[cards[card].type]}</span><p className="detail-text">{cards[card].summary}</p><DocumentFacsimile id={card} availableCardIds={game.casePacket.selectedCardIds}/><button className="primary" onClick={() => setCard(null)}>Вернуться к сцене</button></Modal>}
   </div>;
 }

@@ -50,3 +50,7 @@
 
 .artwork-unavailable { display: grid; place-items: center; min-height: 160px; padding: 16px; background: #263b32; color: #aeb69c; text-align: center; font-size: 12px; }
 .city-map > .map-background { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+.facsimile-paper section + section { margin-top: 19px; }
+.facsimile-paper h4 { margin: 0 0 7px; font-size: 10px; font-weight: 600; text-transform: uppercase; letter-spacing: 1.1px; color: #6c775e; }
+.facsimile-paper .facsimile-extract-note { font: italic 11px/1.6 var(--serif); color: #81916d; margin-bottom: 18px; }
+.forensic-report section:last-of-type { border-top: 1px solid #bdc5af; padding-top: 15px; }
