@@ -14,6 +14,7 @@ import { SceneBackground } from './ui/SceneBackground';
 import { clearGame, inspectStorage, loadManual, markFinished, saveManual } from './persistence/save';
 import { actionRooms, cardTitle, dialogueFor, itemDescriptions, typeSingular } from './cases/chuzhoe-alibi/content';
 import { Scene } from './features/Scene';
+import { NewspaperOpening } from './features/NewspaperOpening';
 const CityMap=lazy(()=>import('./features/CityMap').then(module=>({default:module.CityMap})));
 const Archive=lazy(()=>import('./features/Archive').then(module=>({default:module.Archive})));
 const Board=lazy(()=>import('./features/Board').then(module=>({default:module.Board})));
@@ -32,7 +33,7 @@ const defaults:Preferences={music:.5,ambience:.35,effects:.7,sound:false,reduced
 function preferences():Preferences{try{const p=JSON.parse(localStorage.getItem('alibi-preferences')??'{}');return {...defaults,...p,sound:false}}catch{return defaults}}
 const nav=[['scene','На месте',Maximize2],['case','Дело',ClipboardList],['archive','Улики',FileText],['board','Доска',Pin],['map','Карта',Map],['journal','Журнал',BookOpen]] as const;
 export default function App(){
- const[game,setGame]=useState<GameState|null>(null);const[section,setSection]=useState<Section>('scene');const[overlay,setOverlay]=useState<Overlay>(null);const[toast,setToast]=useState('');const[hasSave,setHasSave]=useState(false);const[busy,setBusy]=useState(false);const[intro,setIntro]=useState<number|null>(null);const[prefs,setPrefs]=useState(preferences);const[pageVisible,setPageVisible]=useState(()=>!document.hidden);const audio=useRef(new Atmosphere());const toastTimer=useRef<ReturnType<typeof setTimeout>|null>(null);
+ const[game,setGame]=useState<GameState|null>(null);const[section,setSection]=useState<Section>('scene');const[overlay,setOverlay]=useState<Overlay>(null);const[toast,setToast]=useState('');const[hasSave,setHasSave]=useState(false);const[busy,setBusy]=useState(false);const[intro,setIntro]=useState(false);const[prefs,setPrefs]=useState(preferences);const[pageVisible,setPageVisible]=useState(()=>!document.hidden);const audio=useRef(new Atmosphere());const toastTimer=useRef<ReturnType<typeof setTimeout>|null>(null);
  function notice(message:string){setToast(message);if(toastTimer.current)clearTimeout(toastTimer.current);toastTimer.current=setTimeout(()=>setToast(''),5500)}
  function report(e:unknown){notice(e instanceof Error?e.message:'Не удалось выполнить действие')}
  useEffect(()=>{inspectStorage().then(({save,finished})=>{setHasSave(!!save);if(finished)setGame(finished)}).catch(()=>notice('Хранилище браузера недоступно. Сохранение может не работать.'));return()=>{if(toastTimer.current)clearTimeout(toastTimer.current)}},[]);
@@ -42,9 +43,8 @@ export default function App(){
  useEffect(()=>{if(prefs.sound&&pageVisible){void audio.current.start({music:prefs.music,ambience:prefs.ambience,effects:prefs.effects}).catch(()=>notice('Не удалось включить звук. Попробуйте переключить его ещё раз.'))}else void audio.current.stop()},[prefs.sound,prefs.music,prefs.ambience,prefs.effects,pageVisible]);
  const setEnvironment=useCallback((location:string)=>audio.current.setLocation(location),[]);
  function play(event:SoundEvent){audio.current.effect(event)}
- useEffect(()=>{if(intro===null)return;const t=setTimeout(()=>{if(intro<3)setIntro(intro+1);else finishIntro()},10000);return()=>clearTimeout(t)},[intro]);
- function finishIntro(){setIntro(null);setGame(travel(perform(initialState(),'A_START'),'CONSTRUCTION','gate'));setSection('scene')}
- async function newGame(){setBusy(true);try{await clearGame();setHasSave(false);setGame(null);setOverlay(null);setIntro(0)}catch(e){report(e)}finally{setBusy(false)}}
+ function finishIntro(){setIntro(false);setGame(travel(perform(initialState(),'A_START'),'CONSTRUCTION','gate'));setSection('scene')}
+ async function newGame(){setBusy(true);try{await clearGame();setHasSave(false);setGame(null);setOverlay(null);setIntro(true)}catch(e){report(e)}finally{setBusy(false)}}
  function navigate(loc:string,room?:string){if(!game)return;try{setGame(travel(game,loc,room));if(loc!==game.location||(room&&room!==game.room))play('door');setSection('scene')}catch(e){report(e)}}
  function complete(id:string,transcript?:TranscriptLine[]){if(!game)return;try{let n=perform(game,id);if(transcript)n=rememberDialogue(n,id,transcript);setGame(n);setOverlay(null);play(actionSound(id)==='telephone'?'paper':actionSound(id));const rewards=n.collectedCards.filter(c=>!game.collectedCards.includes(c));if(rewards.length){notice('В архив добавлено: '+rewards.map(cardTitle).join(', '));setOverlay({kind:'card',id:rewards[0]})}else notice('Действие записано в журнал.')}catch(e){report(e)}}
  function startAction(id:string){if(!game)return;try{if(!canPerform(game,id))throw Error('Пока нет основания для этого действия.');const a=actions[id];let next=game;if(a.place&&a.place!=='BOARD'&&!actionHere(game,id)){next=travel(game,a.place,actionRooms[id]);setGame(next);setSection('scene')}
@@ -62,7 +62,7 @@ export default function App(){
  const itemKinds:Record<string,ItemKind>={E_WRENCH:'wrench',E_BUTTON:'button',E_COAT:'coat'};
  const transcriptAction=overlay?.kind==='card'?Object.values(actions).find(a=>game?.completedActions.includes(a.id)&&a.effects.some(e=>e.addCard===overlay.id)&&dialogueFor(a.id,{collectedCards:[]}).length>0):undefined;
  const toastView=toast&&<div className="toast" role="status"><Check size={17}/>{toast}<button onClick={()=>setToast('')} aria-label="Закрыть уведомление"><X size={15}/></button></div>;
- if(intro!==null)return <div className="intro-screen"><SceneBackground art="construction"/><div className="intro-shade"/><span className="intro-location">Чикаго · осень 1966</span><div className="intro-text" key={intro}><span className="eyebrow">{['Ночь','Чужие голоса','Утро','Дело № 66–041'][intro]}</span><h1>{['Металл помнит.','«Ты обещал…»','«Полиция? Здесь человек».','Чужое алиби'][intro]}</h1><p>{['Дождь оставляет на стали тёмные следы. За строительными лесами — неразличимые силуэты.','Ни лица, ни имени. Только обрывок разговора и резкий металлический звук.','Фрэнк Миллер нашёл тело, заступив на утреннюю смену. Ричард Уитмор больше не ответит на вопросы.','Правдивое свидетельство ещё не означает верного вывода.'][intro]}</p></div><button className="intro-skip" onClick={finishIntro}>Пропустить вступление<ArrowRight size={18}/></button><div className="intro-progress">{[0,1,2,3].map(i=><i className={i<=intro?'active':''} key={i}/>)}</div></div>;
+ if(intro)return <NewspaperOpening onContinue={finishIntro}/>;
  if(game?.endingId)return <FeatureBoundary onReturn={()=>window.location.reload()} returnLabel="Обновить страницу" message="Финал этой партии сохранён. Можно обновить страницу, чтобы повторить открытие; возврат к расследованию остаётся закрыт."><Suspense fallback={<p className="module-loading">Открываем заключительную часть дела…</p>}><EndingPlayer game={game} onProgress={step=>setGame(current=>current?{...current,endingProgress:step}:current)} onNewGame={()=>void newGame()} notice={notice} onSound={play} onEnvironment={setEnvironment}/>{toastView}</Suspense></FeatureBoundary>;
 
  return <div className="app-shell">

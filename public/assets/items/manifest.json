@@ -12,18 +12,19 @@
       "sha256": "fc7bf3ccb4950aba89aca050d10950a135fc4b9cb1c91f97b05312a9b4a41ea5"
     },
     {
-      "file": "coat.png",
+      "file": "coat-lower-button.png",
       "width": 1536,
       "height": 1024,
-      "bytes": 2363330,
-      "sha256": "705286f0c5a4963ad35e78a6d66fce09a110a3e1e78cb2a1cff30aa19d32a04c"
+      "bytes": 2158221,
+      "sha256": "f41aa64c820b8ae18694be6ac8cb875d77f70238e816a8e919c091c90b1231a5"
     },
     {
-      "file": "wrench.png",
+      "file": "wrench-bloodied.png",
       "width": 1536,
       "height": 1024,
-      "bytes": 2653662,
-      "sha256": "69fe8e42cd2dd4afd5c6cd775832490faa5373cc462f64c683ff908a46f4883a"
+      "bytes": 2320436,
+      "sha256": "1d415b2110b18807c67adbfd404ff9a34613a0b42a03d0556a8768bab514f7fa"
     }
-  ]
+  ],
+  "revision": "0.14.0: spatial continuity, first-visit covered body, bloodied wrench, lowest coat button and ordinary non-evidence decoys."
 }

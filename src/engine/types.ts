@@ -29,4 +29,5 @@ export interface GameState {
   dialogueHistory:Record<string,TranscriptLine[]>;
   consultationRecord:ConsultationRecord|null;
   endingProgress:number;
+  constructionScene:'unvisited'|'body_present'|'body_removed';
 }

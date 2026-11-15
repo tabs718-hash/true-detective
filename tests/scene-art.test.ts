@@ -3,7 +3,7 @@ import { readFileSync, existsSync } from 'node:fs';
 import { createElement } from 'react';
 import { renderToStaticMarkup } from 'react-dom/server';
 import { expect, test } from 'vitest';
-import { sceneArt } from '../src/cases/chuzhoe-alibi/art';
+import { sceneArt, realisticScenes } from '../src/cases/chuzhoe-alibi/art';
 import { roomPresentations } from '../src/cases/chuzhoe-alibi/rooms';
 import { SceneEvidence } from '../src/features/SceneEvidence';
 import { Scene } from '../src/features/Scene';
@@ -18,7 +18,7 @@ function evidence(game: GameState, width = 1536, height = 1024) {
 test('каждый план имеет фон, а реалистичные ресурсы совпадают с реестром', () => {
   const manifest = JSON.parse(readFileSync('public/assets/realistic/manifest.json', 'utf8')) as { assets: {file: string; bytes: number; width: number; height: number; sha256: string}[] };
   const used = new Set<string>();
-  for (const room of Object.values(roomPresentations)) {
+  for (const room of [...Object.values(roomPresentations), ...Object.keys(realisticScenes).map(art => ({art}))]) {
     const art = sceneArt(room.art);
     expect(existsSync('public' + art.src)).toBe(true);
     const entry = manifest.assets.find(asset => art.src === '/assets/realistic/' + asset.file);

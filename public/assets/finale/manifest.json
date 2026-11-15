@@ -1,63 +1,57 @@
 {
   "created": "2026-11-15",
   "method": "OpenAI image generation and reference-based edits; original PNG, no postprocessing",
-  "notes": "Original generated1966 cinematic scenes; argument/fall/alive/home are restricted to verified true ending after the decision. Neutral courtroom/corridor/closed-case disclose no culprit. Nora remains blonde; argument coat has all buttons before the fall; home is nighttime; Eddie is only in alive.",
+  "notes": "Truth-only argument and shove on upper landing, Richard prone and Eddie hidden at a distance; home coat missing lowest button, top three intact. Other endings use neutral scenes only.",
   "assets": [
     {
-      "file": "alive.png",
+      "file": "alive-prone.png",
       "width": 1536,
       "height": 1024,
-      "bytes": 2403799,
-      "sha256": "2862bae33768a19b1cb27d486d07de05cf090ca6c54a6535b67f14844cd5c292",
-      "pngColorType": 2
+      "bytes": 2487797,
+      "sha256": "f37885c6cc8d04a8dd4c9b6ffdd7085e4450e56488e6016eb83db57dab68fd00"
     },
     {
-      "file": "argument.png",
+      "file": "argument-upper.png",
       "width": 1536,
       "height": 1024,
-      "bytes": 2105744,
-      "sha256": "1ed05c564474e1437d76096780f9404017adc3f9fc77456f22b2b958be01e997",
-      "pngColorType": 2
+      "bytes": 2151434,
+      "sha256": "eb22f8748331428d2d8dc40271d0c191b7e4f365a91a8f999f05dae8f2a5a577"
     },
     {
       "file": "closed-case.png",
       "width": 1536,
       "height": 1024,
       "bytes": 1982303,
-      "sha256": "89223b5befd62f9206304ef24fcc83034bfe87caa6ff4a47c22179ee00da8bb4",
-      "pngColorType": 2
+      "sha256": "89223b5befd62f9206304ef24fcc83034bfe87caa6ff4a47c22179ee00da8bb4"
     },
     {
       "file": "corridor.png",
       "width": 1536,
       "height": 1024,
       "bytes": 2252641,
-      "sha256": "bee371324584f9e71ed63c11d6d3f158fef6005aeeb4fce27b881ba24c6640c8",
-      "pngColorType": 2
+      "sha256": "bee371324584f9e71ed63c11d6d3f158fef6005aeeb4fce27b881ba24c6640c8"
     },
     {
       "file": "courtroom.png",
       "width": 1536,
       "height": 1024,
       "bytes": 2155963,
-      "sha256": "e75e36ab28bb9d4b8756e7eccd47aa37ef758b09d0efbc20074a2c763c34fe76",
-      "pngColorType": 2
+      "sha256": "e75e36ab28bb9d4b8756e7eccd47aa37ef758b09d0efbc20074a2c763c34fe76"
     },
     {
-      "file": "fall.png",
+      "file": "fall-upper.png",
       "width": 1536,
       "height": 1024,
-      "bytes": 2291413,
-      "sha256": "2612b6ec083f4082f8ec534615f492c195c0c11304834f1ee138d5c338939ce5",
-      "pngColorType": 2
+      "bytes": 2149133,
+      "sha256": "a30bd45e23406d6108dd66bd95f720c67c0d86157f7aa3b6d0d408d7391ff52e"
     },
     {
-      "file": "home.png",
+      "file": "home-lower-button.png",
       "width": 1536,
       "height": 1024,
-      "bytes": 2143608,
-      "sha256": "514440e8791b4d83418eac7f3aa336dcaec3d1ad13fa91d385cb6c674cd15590",
-      "pngColorType": 2
+      "bytes": 2005010,
+      "sha256": "48d0912b5aa618b33eea5d22ca6720ebd7351c81968a171d4317f99b4ec17674"
     }
-  ]
+  ],
+  "revision": "0.14.0: spatial continuity, first-visit covered body, bloodied wrench, lowest coat button and ordinary non-evidence decoys."
 }

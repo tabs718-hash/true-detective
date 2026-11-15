@@ -17,3 +17,5 @@
 .scene-evidence .wrench-object { transform: none; }
 .scene-evidence .button-object .scene-item-sprite { width: 42%; height: 42%; }
 .scene-evidence .artwork-unavailable { min-height: 0; background: transparent; font-size: 8px; }
+
+.scene-evidence .debris-object .scene-item-sprite { width: 65%; height: 65%; }

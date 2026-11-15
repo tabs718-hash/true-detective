@@ -57,7 +57,7 @@ test('предметы в сцене используют прозрачные �
   expect(stairs).toContain(sceneItemArt.button.src); expect(stairs).toContain(sceneItemArt.wrench.src);
   expect(coat).toContain(sceneItemArt.coat.src);
   expect(stairs).not.toContain('<path'); expect(coat).not.toContain('<path');
-  expect(stairs.match(/<button /g)).toHaveLength(2); expect(coat.match(/<button /g)).toHaveLength(1);
+  expect(stairs.match(/<button /g)).toHaveLength(5); expect(coat.match(/<button /g)).toHaveLength(1);
   for (const art of Object.values(sceneItemArt)) {
     const bytes = readFileSync('public' + art.src);
     expect(bytes[25]).toBe(6);

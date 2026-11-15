@@ -37,9 +37,9 @@ export function dialogueFor(id:string,context?:{collectedCards:readonly string[]
 }
 export const speakerNames:Record<string,string>={D:'Детектив',N:'Нора Хилл',E:'Элизабет Уитмор',B:'Томас Бреннан',H:'Уолтер Хейз',L:'Лилиан Эйвери'};
 export const itemDescriptions:Record<string,{title:string;text:string;collect:string;observed:string}>={
- wrench:{title:'Гаечный ключ',text:'Холодный тяжёлый металл. На рукояти различимы следы захвата, у головки — бурые брызги. Пока рано говорить, как они здесь оказались.',collect:'A_COLLECT_WRENCH',observed:'A_OBSERVE_WRENCH'},
+ wrench:{title:'Гаечный ключ',text:'Холодный тяжёлый металл. На рукояти различимы следы захвата, на головке и части рукояти — тёмно-красные следы. Пока рано говорить, как они здесь оказались.',collect:'A_COLLECT_WRENCH',observed:'A_OBSERVE_WRENCH'},
  button:{title:'Пуговица среди мусора',text:'Тёмная, с гладкой отделкой. На изнанке держатся обрывки нити. На крепёжную деталь лесов не похожа.',collect:'A_COLLECT_BUTTON',observed:'A_OBSERVE_BUTTON'},
- coat:{title:'Пальто на спинке стула',text:'Тёмная ткань, аккуратный покрой. Одного крепления недостаёт. Вокруг места пришива ткань немного вытянута. Доступ к осмотру оформлен в установленном порядке.',collect:'A_COLLECT_COAT',observed:'A_OBSERVE_COAT'}
+ coat:{title:'Пальто на спинке стула',text:'Тёмная ткань, аккуратный покрой. Нижняя пуговица оторвана; три верхние на месте. Вокруг места пришива ткань немного вытянута. Доступ к осмотру оформлен в установленном порядке.',collect:'A_COLLECT_COAT',observed:'A_OBSERVE_COAT'}
 };
 export const documentContents:Record<string,string>={D_DIARY:'Нора. 20:30. Западный объект. Последний разговор.',D_LETTER:'Нора, я не стану больше обещать жизнь, которую не могу тебе дать. Мы должны закончить это. Завтра я попрошу оформить твоё увольнение. Я возвращаюсь к Элизабет. Р.',D_FIRING:'Проект. О прекращении трудовых отношений с Норой Хилл. Подготовить расчёт и передачу текущей корреспонденции. Не подписан.'};
 export const endings:Record<string,{title:string;text:string[];reveal:boolean}>={

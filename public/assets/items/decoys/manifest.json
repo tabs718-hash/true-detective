@@ -1,0 +1,28 @@
+{
+  "created": "2026-11-15",
+  "method": "Original OpenAI image generation; unmodified transparent PNGs",
+  "revision": "0.14.0: spatial continuity, first-visit covered body, bloodied wrench, lowest coat button and ordinary non-evidence decoys.",
+  "assets": [
+    {
+      "file": "plain-pen.png",
+      "width": 1254,
+      "height": 1254,
+      "bytes": 413344,
+      "sha256": "546c851ec590986321aff0402c6ca012a189d6a22a198a4a8f4a4965b2092a8f"
+    },
+    {
+      "file": "rusty-nail.png",
+      "width": 1254,
+      "height": 1254,
+      "bytes": 387891,
+      "sha256": "c281e4e8131f7838257fa7da6ecf30864eba124498324ba78411a8820ac149bf"
+    },
+    {
+      "file": "shoelace.png",
+      "width": 1254,
+      "height": 1254,
+      "bytes": 451641,
+      "sha256": "6a77c4a6392394908afd790d9fc4b4e00fd0c6c391b650d7e01841b5749fa653"
+    }
+  ]
+}

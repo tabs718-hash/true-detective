@@ -7,8 +7,10 @@ export interface SceneArt {
 }
 
 // Presentation only: changing a background never changes case state or evidence.
-const realisticScenes: Record<string, string> = {
+export const realisticScenes: Record<string, string> = {
   construction: 'Незавершённая стройка с металлической лестницей и мокрым бетонным полом',
+  'construction-first': 'У основания металлической лестницы тело под брезентом и тёмные лужи крови на мокром бетоне',
+  'construction-cleared': 'Основание металлической лестницы после вывоза тела, тёмные лужи на бетоне и мусор',
   police: 'Общий зал участка с деревянными столами, пишущей машинкой и дисковым телефоном',
   office: 'Приёмная компании с деревянной стойкой и стеклянной перегородкой',
   mansion: 'Гостиная особняка с мягкой мебелью и кофейным сервизом',

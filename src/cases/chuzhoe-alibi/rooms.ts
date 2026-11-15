@@ -1,3 +1,4 @@
+import type { GameState } from '../../engine/types';
 import { locationArt } from './content';
 
 interface RoomPresentation {
@@ -94,7 +95,13 @@ export const roomPresentations: Record<string, RoomPresentation> = {
   }
 };
 
-export function roomPresentation(location: string, room: string): RoomPresentation {
+export function roomPresentation(location: string, room: string, constructionScene: GameState['constructionScene'] = 'unvisited'): RoomPresentation {
+  if (location === 'CONSTRUCTION' && room === 'stairs') {
+    const cleared = constructionScene === 'body_removed';
+    return {...roomPresentations['CONSTRUCTION/stairs'],
+      art: cleared ? 'construction-cleared' : 'construction-first',
+      description: cleared ? 'Тело уже увезли. На сыром бетоне у основания лестницы остались тёмные лужи и строительный мусор.' : 'У основания лестницы лежит тело Ричарда Уитмора, накрытое брезентом. Из-под края полотна растекается кровь.'};
+  }
   return roomPresentations[location + '/' + room] ?? { art: locationArt[location], description: 'Тихое помещение. Осмотрите обстановку и поговорите с теми, кто здесь находится.', details: [] };
 }
 

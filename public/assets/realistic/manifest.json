@@ -2,9 +2,23 @@
   "created": "2026-11-15",
   "method": "OpenAI image generation tool; original generated PNG, unmodified",
   "setting": "Chicago, autumn 1966; color cinematic environment studies",
-  "purpose": "Environment only. All collectible evidence remains separate interactive artwork.",
+  "purpose": "Seventeen room backgrounds, neutral title backdrop, and two construction visit variants. Covered body and blood are environment; all collectible items and decoys remain separate clickable sprites.",
   "historical_review": "Construction skyline corrected to low-rise industrial buildings; no post-1966 landmark retained. Interior props reviewed in source images without launching a browser. Version 0.6 adds a mechanical gasoline station register, clearly distinct rented sitting room and private bedroom, and a neutral civilian prosecutor office. No built-in coat, clocks, readable story documents or modern devices. Version 0.7 adds a plain interview room, optical forensic office with closed anonymous packages, mechanical bookkeeping room and separate corporate work office. No case results or readable document contents are embedded. Version 0.8 completes all seventeen room backgrounds: gate sightlines are blocked toward the far side; side passage turns out of view; storage is anonymous normal material storage; Elizabeth has neutral private domestic rooms; home study has a closed drawer and a closed unmarked notebook with no readable plot information.",
   "assets": [
+    {
+      "file": "construction-cleared.png",
+      "width": 1536,
+      "height": 1024,
+      "bytes": 2454842,
+      "sha256": "e5b067f7d00f79eb4dda4cad29f317105328301a7957ac2621f6a5568c48a915"
+    },
+    {
+      "file": "construction-first.png",
+      "width": 1536,
+      "height": 1024,
+      "bytes": 2411073,
+      "sha256": "0311101242b7a61c70c5219c682d1c709fafbcd6b68441e5c28985f6bdab7b29"
+    },
     {
       "file": "construction.png",
       "width": 1536,
@@ -125,5 +139,6 @@
       "sha256": "1bddfd83f3bbc19aa1cc923b12e5228c5fc6c2071c78b2cf227da004d7fd9aa5"
     }
   ],
-  "updated": "2026-11-15"
+  "updated": "2026-11-15",
+  "revision": "0.14.0: spatial continuity, first-visit covered body, bloodied wrench, lowest coat button and ordinary non-evidence decoys."
 }

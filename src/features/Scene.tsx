@@ -20,7 +20,7 @@ export function Scene({game,onTravel,onAct,onItem,onDetail,onConsult}:Props){
  for(const id of permanent[game.room]??[])if(knownCharacters(game).some(c=>c.id===id)&&!people.includes(id))people.push(id);
  const physical=['A_OBSERVE_WRENCH','A_COLLECT_WRENCH','A_OBSERVE_BUTTON','A_COLLECT_BUTTON','A_OBSERVE_COAT','A_COLLECT_COAT'];
  const objects=here.filter(a=>!actionCharacters[a.id]&&!physical.includes(a.id));
- const presentation=roomPresentation(game.location,game.room);
+ const presentation=roomPresentation(game.location,game.room,game.constructionScene);
  const art=sceneArt(presentation.art);
  const [loadedArt,setLoadedArt]=useState<{art:string;width:number;height:number}|null>(null);
  const dimensions=loadedArt?.art===presentation.art?loadedArt:art;
@@ -28,7 +28,7 @@ export function Scene({game,onTravel,onAct,onItem,onDetail,onConsult}:Props){
  const spatial:Record<string,{x:number;y:number}>={A_HOME_DRAWER:{x:30,y:73},A_HOME_DIARY:{x:66,y:61},A_INVOICE:{x:49,y:56},A_RENT_TALLY:{x:73,y:61}};
  return <div className="scene-layout"><section className={'scene-stage room-'+game.room} aria-label={location.name+' — '+roomNames[game.room]}><SceneBackground art={presentation.art} className="scene-art" onDimensions={(width,height)=>setLoadedArt({art:presentation.art,width,height})}/><div className="scene-vignette"/><div className="scene-title"><span className="eyebrow"><MapPin size={12}/>{locationSubtitles[game.location]}</span><h1>{location.name}</h1><span className="scene-room">{roomNames[game.room]}</span></div><span className="scene-take">CHICAGO · 1966</span>
  {location.rooms.length>1&&<div className="scene-doors">{location.rooms.filter(r=>r.id!==game.room&&game.openedRooms.includes(location.id+'/'+r.id)).map(r=><button key={r.id} aria-label={'Дверь: '+r.name} onClick={()=>onTravel(location.id,r.id)}><DoorOpen size={20} strokeWidth={1}/><span>{r.name}</span><ChevronRight size={12}/></button>)}</div>}
- <SceneEvidence game={game} width={dimensions.width} height={dimensions.height} onItem={onItem}/>
+ <SceneEvidence game={game} width={dimensions.width} height={dimensions.height} onItem={onItem} onDetail={onDetail}/>
  <div className="document-hotspots">{objects.filter(a=>spatial[a.id]).map(a=><button className="object-hotspot" data-action={a.id} key={a.id} style={{left:spatial[a.id].x+'%',top:spatial[a.id].y+'%'}} onClick={()=>onAct(a.id)}><FileText size={17}/><span>{actionLabels[a.id]??a.label}</span><ArrowUpRight size={14}/></button>)}</div><div className="scene-objects">{objects.filter(a=>!spatial[a.id]).map(a=><button className="object-hotspot" data-action={a.id} key={a.id} onClick={()=>onAct(a.id)}><FileText size={17}/><span>{actionLabels[a.id]??a.label}</span><ArrowUpRight size={14}/></button>)}</div>
  {people.length>0&&<div className="scene-person"><Portrait character={people[0]} alt={characters[people[0]]?.name??'Собеседник'}/></div>}
  <div className="scene-caption"><span className="caption-line"/><p>{roomText}</p><span className="scene-art-label">{sceneArt(presentation.art).caption}</span></div>
