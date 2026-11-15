@@ -1,3 +1,4 @@
+import { assetUrl } from './asset-url';
 import { useState } from 'react';
 
 export function ArtworkUnavailable({ alt, className, label = 'Изображение временно недоступно' }: { alt: string; className?: string; label?: string }) {
@@ -7,5 +8,5 @@ export function ArtworkUnavailable({ alt, className, label = 'Изображен
 export function ArtworkImage({ src, alt, className, onDimensions, unavailableLabel }: { src: string; alt: string; className?: string; onDimensions?: (width: number, height: number) => void; unavailableLabel?: string }) {
   const [failedSource, setFailedSource] = useState<string | null>(null);
   if (!src || failedSource === src) return <ArtworkUnavailable alt={alt} className={className} label={unavailableLabel}/>;
-  return <img src={src} className={className} alt={alt} draggable={false} onError={() => setFailedSource(src)} onLoad={event => onDimensions?.(event.currentTarget.naturalWidth, event.currentTarget.naturalHeight)}/>;
+  return <img src={assetUrl(src)} className={className} alt={alt} draggable={false} onError={() => setFailedSource(src)} onLoad={event => onDimensions?.(event.currentTarget.naturalWidth, event.currentTarget.naturalHeight)}/>;
 }
