@@ -1,0 +1,90 @@
+import { useEffect, useState } from 'react';
+import { ArrowRight, MessageCircle } from 'lucide-react';
+import { actions, characters } from '../engine/case';
+import { actionCharacters, actionLabels, cardTitle, presentationReaction, speakerNames } from '../cases/chuzhoe-alibi/content';
+import type { TranscriptLine } from '../engine/types';
+import { Modal } from '../ui/Modal';
+
+interface Props {
+  id: string;
+  lines: TranscriptLine[];
+  cardIds: string[];
+  speed: number;
+  readOnly?: boolean;
+  onComplete: (lines: TranscriptLine[]) => void;
+  onClose: () => void;
+}
+
+export function Dialogue({ id, lines, cardIds, speed, readOnly = false, onComplete, onClose }: Props) {
+  const [index, setIndex] = useState(0);
+  const [all, setAll] = useState(readOnly);
+  const [letters, setLetters] = useState(speed === 0 ? lines[0].text.length : 0);
+  const [shownCard, setShownCard] = useState('');
+  const [reaction, setReaction] = useState('');
+  const [presentations, setPresentations] = useState<TranscriptLine[]>([]);
+  const line = lines[index];
+  const char = actionCharacters[id] ?? 'COLLEAGUE';
+  const personName = id === 'A_GAS' ? 'Кассир' : characters[char]?.name ?? 'Собеседник';
+  const title = actionLabels[id] ?? actions[id].label;
+
+  useEffect(() => {
+    setLetters(speed === 0 || all ? line.text.length : 0);
+    if (speed === 0 || all) return;
+    const interval = setInterval(() => setLetters(previous => {
+      const next = Math.min(previous + 3 * speed, line.text.length);
+      if (next === line.text.length) clearInterval(interval);
+      return next;
+    }), 20);
+    return () => clearInterval(interval);
+  }, [index, speed, all, line.text]);
+
+  function present() {
+    const text = presentationReaction(char, shownCard);
+    setReaction(text);
+    setPresentations(previous => [...previous,
+      { speaker: 'D', text: 'Предъявленный материал: ' + cardTitle(shownCard) },
+      { speaker: personName, text }
+    ]);
+  }
+
+  return <Modal title={(readOnly ? 'Протокол: ' : '') + title} onClose={onClose} wide>
+    <div className="dialogue-layout">
+      <div className="dialogue-portrait">
+        <img src={'/assets/portraits/' + char.toLowerCase() + '.svg'} alt={personName}/>
+        <span>{personName}</span>
+      </div>
+      <div className="dialogue-body">
+        {readOnly && <p className="transcript-caption">Записано при проведении беседы. Новые находки не меняют прежние показания.</p>}
+        {all ? <div className="dialogue-transcript">
+          {lines.map((entry, i) => <div key={i}>
+            <span className="eyebrow">{speakerNames[entry.speaker] ?? entry.speaker}</span>
+            <p>{entry.text}</p>
+          </div>)}
+        </div> : <div className="spoken-line">
+          <MessageCircle size={23} strokeWidth={1}/>
+          <span className="eyebrow">{speakerNames[line.speaker] ?? line.speaker}</span>
+          <p>{line.text.slice(0, letters)}{letters < line.text.length && <span className="typing-caret"/>}</p>
+        </div>}
+        {!readOnly && cardIds.length > 0 && <div className="evidence-presentation">
+          <label>Предъявить материал
+            <select aria-label="Предъявляемая карточка" value={shownCard} onChange={e => { setShownCard(e.target.value); setReaction(''); }}>
+              <option value="">Выберите из архива…</option>
+              {cardIds.map(card => <option key={card} value={card}>{cardTitle(card)}</option>)}
+            </select>
+          </label>
+          <button className="secondary" disabled={!shownCard} onClick={present}>Предъявить</button>
+          {reaction && <p role="status">{reaction}</p>}
+        </div>}
+        <div className="dialogue-controls">
+          {!readOnly && <button className="text-button" onClick={() => setAll(!all)}>{all ? 'По одной реплике' : 'Прочитать разговор целиком'}</button>}
+          <button className="primary" onClick={() => {
+            if (readOnly) onClose();
+            else if (all || index === lines.length - 1) onComplete([...lines, ...presentations]);
+            else if (letters < line.text.length) setLetters(line.text.length);
+            else setIndex(index + 1);
+          }}>{readOnly ? 'Закрыть протокол' : all || index === lines.length - 1 ? 'Закончить разговор' : 'Продолжить'}<ArrowRight size={17}/></button>
+        </div>
+      </div>
+    </div>
+  </Modal>;
+}

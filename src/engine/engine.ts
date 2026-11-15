@@ -3,7 +3,7 @@ import { actionRooms } from '../cases/chuzhoe-alibi/contexts';
 import type { Action, CasePacket, Condition, GameState, RequestStatus } from './types';
 const add=(list:string[],id:string)=>{if(!list.includes(id))list.push(id)};
 export function initialState():GameState {
-  return {saveVersion:1,caseId:caseDefinition.caseId,facts:[],suspects:[],openedRooms:[],observedObjects:[],collectedCards:[],completedActions:[],requests:Object.fromEntries(caseDefinition.requests.map(r=>[r.id,'not_submitted'])),location:'CONSTRUCTION',room:'gate',visitedLocations:[],board:{nodes:[],links:[],hypotheses:[],view:{x:0,y:0,zoom:1}},casePacket:{defendant:'',selectedCardIds:[]},consultationUsed:false,endingId:null,journal:[],hintUsage:{}};
+  return {saveVersion:1,caseId:caseDefinition.caseId,facts:[],suspects:[],openedRooms:[],observedObjects:[],collectedCards:[],completedActions:[],requests:Object.fromEntries(caseDefinition.requests.map(r=>[r.id,'not_submitted'])),location:'CONSTRUCTION',room:'gate',visitedLocations:[],board:{nodes:[],links:[],hypotheses:[],view:{x:0,y:0,zoom:1}},casePacket:{defendant:'',selectedCardIds:[]},consultationUsed:false,endingId:null,journal:[],hintUsage:{},personalNotes:[],dialogueHistory:{}};
 }
 export function holds(s:GameState,c:Condition):boolean {
   if('always'in c)return c.always;

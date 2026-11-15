@@ -1,0 +1,40 @@
+.inspection-layout { display: grid; grid-template-columns: 1.45fr 1fr; gap: 28px; align-items: start; }
+.inspection-picture { position: relative; overflow: hidden; border: 1px solid #8c9d80; background: #32493c; }
+.item-artwork { display: block; width: 100%; height: auto; }
+.inspection-view-label { position: absolute; left: 16px; bottom: 13px; text-transform: uppercase; letter-spacing: 1.6px; font-size: 8px; color: #c7c8a7; pointer-events: none; }
+.inspection-reset { position: absolute; top: 12px; right: 12px; background: #eee8d3e8; color: #40543b; display: flex; align-items: center; gap: 7px; font-size: 9px; padding: 9px 11px; }
+.inspection-notes > p:not(.quiet-note) { font-family: var(--serif); color: #5d7352; font-size: 18px; line-height: 1.8; margin: 13px 0 20px; }
+.inspection-notes > .eyebrow { color: #8c9674; }
+.inspection-points { margin-bottom: 20px; border-top: 1px solid #ccd2b9; }
+.inspection-points button { display: flex; align-items: center; gap: 9px; background: none; color: #6c8059; border-bottom: 1px solid #ccd2b9; padding: 13px 6px; text-align: left; width: 100%; font-size: 11px; }
+.inspection-points button > svg:last-child { margin-left: auto; }
+.inspection-points button.active { color: #304f36; background: #dce3cc; }
+.modal > .item-artwork { max-height: 210px; object-fit: contain; background: #354b3c; }
+.evidence-symbol .item-artwork { height: 100%; object-fit: cover; }
+.transcript-caption { font-size: 10px; line-height: 1.7; color: #8b9677; border-bottom: 1px solid #ccd3b9; padding-bottom: 15px; margin-bottom: 18px; }
+.document-hotspots { position: absolute; inset: 0; pointer-events: none; z-index: 4; }
+.document-hotspots .object-hotspot { position: absolute; transform: translate(-50%, -50%); max-width: 235px; pointer-events: auto; }
+.room-observations { padding: 15px 23px; border-top: 1px solid #cfd4c0; margin-top: auto; }
+.room-observations > button { display: flex; align-items: center; width: 100%; text-align: left; gap: 10px; padding: 10px 0; background: transparent; color: #71835e; font-size: 10px; }
+.room-observations > button > span { flex: 1; }
+.room-observations + .scene-examine { margin-top: 0; }
+.document-facsimile { margin: 24px 0; }
+.document-facsimile > summary { cursor: pointer; color: #657b52; padding: 12px 0; font-size: 11px; border-top: 1px solid #c9d0b5; border-bottom: 1px solid #c9d0b5; }
+.facsimile-paper { position: relative; padding: 31px 29px 51px; margin: 18px 0 8px; background: #f6eed7; color: #5d6651; border: 1px solid #d7caa8; box-shadow: 2px 3px 0 #d6cfb7; font: 12px/1.9 'Courier New', monospace; }
+.facsimile-issuer { font-size: 9px; text-transform: uppercase; letter-spacing: 1.4px; color: #8c8d6e; }
+.facsimile-paper h3 { font-size: 16px; font-family: 'Courier New', monospace; text-transform: uppercase; font-weight: 400; letter-spacing: 1px; margin: 19px 0 20px; }
+.facsimile-paper p + p { margin-top: 16px; }
+.facsimile-paper.handwritten p { font: italic 20px/1.9 var(--serif); color: #5d6f55; }
+.facsimile-stamp { position: absolute; bottom: 19px; right: 22px; border: 1px solid #8a987966; padding: 4px 7px; font-size: 7px; color: #81916b; letter-spacing: 1.3px; transform: rotate(-5deg); }
+.journal-tabs { margin-bottom: 24px; }
+.notebook-composer { padding: 20px 23px; border: 1px solid #cad0b7; background: #e3e5d2; margin-bottom: 26px; max-width: 880px; }
+.notebook-composer > label { display: block; font-size: 9px; text-transform: uppercase; letter-spacing: 1.2px; color: #7c8d66; margin-bottom: 12px; }
+.notebook-composer textarea { width: 100%; resize: vertical; min-height: 110px; max-height: 300px; border: 1px solid #c6cdb4; background: #f1eddb; padding: 14px; font: 17px/1.7 var(--serif); color: #536c48; }
+.notebook-composer textarea:focus { outline: 2px solid #8a9f71; outline-offset: 2px; }
+.notebook-composer > div { display: flex; align-items: center; gap: 15px; margin-top: 15px; }
+.notebook-composer .quiet-note { margin-right: auto; max-width: 430px; font-size: 10px; }
+.notebook-composer .primary { padding: 10px 15px; font-size: 10px; }
+.personal-notes { max-width: 880px; margin-top: 25px; }
+.personal-notes > article { display: flex; gap: 20px; align-items: start; border-bottom: 1px solid #cbd1b8; padding: 22px 0; }
+.personal-notes > article > p { flex: 1; font: 18px/1.8 var(--serif); color: #60764e; white-space: pre-wrap; overflow-wrap: anywhere; }
+.personal-notes > article > div { display: flex; color: #81956a; }
