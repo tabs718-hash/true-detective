@@ -4,6 +4,8 @@ import { actions, characters } from '../engine/case';
 import { actionCharacters, actionLabels, cardTitle, presentationReaction, speakerNames } from '../cases/chuzhoe-alibi/content';
 import type { TranscriptLine } from '../engine/types';
 import { Modal } from '../ui/Modal';
+import { portraitFor } from '../cases/chuzhoe-alibi/portraits';
+import type { SoundEvent } from '../ui/sound-design';
 
 interface Props {
   id: string;
@@ -13,9 +15,10 @@ interface Props {
   readOnly?: boolean;
   onComplete: (lines: TranscriptLine[]) => void;
   onClose: () => void;
+  onSound?: (event: SoundEvent) => void;
 }
 
-export function Dialogue({ id, lines, cardIds, speed, readOnly = false, onComplete, onClose }: Props) {
+export function Dialogue({ id, lines, cardIds, speed, readOnly = false, onComplete, onClose, onSound }: Props) {
   const [index, setIndex] = useState(0);
   const [all, setAll] = useState(readOnly);
   const [letters, setLetters] = useState(speed === 0 ? lines[0].text.length : 0);
@@ -26,6 +29,7 @@ export function Dialogue({ id, lines, cardIds, speed, readOnly = false, onComple
   const char = actionCharacters[id] ?? 'COLLEAGUE';
   const personName = id === 'A_GAS' ? 'Кассир' : characters[char]?.name ?? 'Собеседник';
   const title = actionLabels[id] ?? actions[id].label;
+  const portrait = portraitFor(id, all ? 0 : index, !!reaction);
 
   useEffect(() => {
     setLetters(speed === 0 || all ? line.text.length : 0);
@@ -39,6 +43,7 @@ export function Dialogue({ id, lines, cardIds, speed, readOnly = false, onComple
   }, [index, speed, all, line.text]);
 
   function present() {
+    onSound?.('paper');
     const text = presentationReaction(char, shownCard);
     setReaction(text);
     setPresentations(previous => [...previous,
@@ -50,7 +55,7 @@ export function Dialogue({ id, lines, cardIds, speed, readOnly = false, onComple
   return <Modal title={(readOnly ? 'Протокол: ' : '') + title} onClose={onClose} wide>
     <div className="dialogue-layout">
       <div className="dialogue-portrait">
-        <img src={'/assets/portraits/' + char.toLowerCase() + '.svg'} alt={personName}/>
+        <img key={portrait.source} className="emotional-portrait" src={portrait.source} alt={personName} onError={event => { if (event.currentTarget.dataset.fallback) return; event.currentTarget.dataset.fallback = 'true'; event.currentTarget.src = portrait.base; }}/>
         <span>{personName}</span>
       </div>
       <div className="dialogue-body">

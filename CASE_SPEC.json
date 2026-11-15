@@ -1981,7 +1981,20 @@
       "mode": "player",
       "place": "POLICE",
       "requires": {
-        "fact": "F_BUTTON_LINK_LAB_REQUESTABLE"
+        "all": [
+          {
+            "fact": "F_BUTTON_LINK_LAB_REQUESTABLE"
+          },
+          {
+            "boardLink": [
+              "E_BUTTON",
+              "E_COAT"
+            ]
+          },
+          {
+            "boardHypothesis": "H_BUTTON_COAT_SIMILAR"
+          }
+        ]
       },
       "effects": [
         {
